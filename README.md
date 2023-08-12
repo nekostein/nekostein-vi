@@ -11,6 +11,11 @@ Try any of the following links.
 - [Link 2](https://minio.neruthes.xyz/oss/keep/nekostein-vi/Nekostein-VI.zip--932cd19c36bdde979f5fefbd23876e61.zip).
 
 
+## Install VI Lib
+
+Run `./make.sh install` to install the installer script.
+
+
 ## Copyright
 
 Copyright (c) 2023 Nekostein. All rights reserved.

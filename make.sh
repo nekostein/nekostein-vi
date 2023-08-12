@@ -12,6 +12,9 @@ case $1 in
         zip -9vr _pkg/Nekostein-VI _dist
         du -h _pkg/*
         ;;
+    install|ins)
+        ln -svf "$PWD/misc/nekostein-installvilib.sh" "$HOME/.local/bin/nekostein-installvilib.sh"
+        ;;
     ''|*)
         echo "Targets:   sh  pkg"
 esac
