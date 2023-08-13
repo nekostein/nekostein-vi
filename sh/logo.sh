@@ -8,8 +8,8 @@ makeLogo() {
   local letterSpacing=70
 
   # Set the input and output file names
-  local inputFile="_dist/logo/tmp--Nekostein-logo.$2.png"
-  local outputFilePrefix="_dist/logo/Nekostein-logo.$2"
+  local inputFile="_dist/wwwmisc/logo/tmp--Nekostein-logo.$2.png"
+  local outputFilePrefix="_dist/wwwmisc/logo/Nekostein-logo.$2"
 
   # Generate the input image with the transparent background and specified color
   convert -size '5000x1200' xc:none -gravity center \
@@ -23,10 +23,11 @@ makeLogo() {
   rm "$inputFile"
 }
 
+mkdir -p _dist/wwwmisc/logo
 
 makeLogo "#000000" "black" &
 makeLogo "#FFFFFF" "white" &
 
 wait
 
-file _dist/logo/Nekostein-logo.*
+file _dist/wwwmisc/logo/Nekostein-logo.*
