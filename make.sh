@@ -9,7 +9,7 @@ case $1 in
             bash "$i"
         done
         ;;
-    pkg)
+    zip)
         zip -9vr _pkg/Nekostein-VI _dist
         du -h _pkg/*
         ;;
@@ -21,5 +21,7 @@ case $1 in
         ln -svf "$PWD/misc/nekostein-installvilib.sh" "$HOME/.local/bin/nekostein-installvilib.sh"
         ;;
     ''|*)
-        echo "Targets:   sh  pkg"
+        bash "$0" sh
+        bash "$0" zip
+        bash "$0" upload
 esac
