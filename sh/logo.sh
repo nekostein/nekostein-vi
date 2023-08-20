@@ -1,6 +1,6 @@
 #!/bin/bash
 
-makeLogo() {
+function makeLogo() {
     # Set the text to be rendered and the font properties
     local text="NEKOSTEIN"
     local font="$HOME/.fonts/Brygada1918/Brygada1918-Bold.ttf"
@@ -23,11 +23,29 @@ makeLogo() {
     rm "$inputFile"
 }
 
+function makeSquare() {
+    textcolor="$1"
+    bgcolor="$2"
+    convert "_dist/wwwmisc/logo/Nekostein-logo.$textcolor.png" -resize 2200x ".tmp/logo_resized.$textcolor.png"
+    convert -size 3000x3000 xc:"$bgcolor" ".tmp/canvas-$bgcolor.png"
+    convert ".tmp/canvas-$bgcolor.png" ".tmp/logo_resized.$textcolor.png" \
+        -gravity center -composite "_dist/wwwmisc/logo/Nekostein-logo-square.$bgcolor.png"
+}
+
+
+
+
 mkdir -p _dist/wwwmisc/logo
 
 makeLogo "#000000" "black" &
 makeLogo "#FFFFFF" "white" &
-
 wait
 
 file _dist/wwwmisc/logo/Nekostein-logo.*
+
+
+makeSquare white black &
+makeSquare black white &
+wait
+
+file _dist/wwwmisc/logo/Nekostein-logo-square.*
