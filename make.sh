@@ -23,8 +23,10 @@ case $1 in
     rel|release)
         echo "url:  https://github.com/nekostein/nekostein-vi/releases/new"
         echo "zip:  $(realpath _pkg/Nekostein-VI.zip)"
-        echo '$' git tag "snapshot-$(TZ=UTC date +%Y%m%d)"
-        echo '$' git push origin
+        tagid="snapshot-$(TZ=UTC date +%Y%m%d)"
+        echo '$' git tag "$tagid"
+        echo '$' git push origin "$tagid"
+        find _dist/ -type f | sort | grep -v misc.tar | cut -d/ -f3-
         ;;
     ''|*)
         bash "$0" sh
