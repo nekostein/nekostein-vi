@@ -26,7 +26,7 @@ case $1 in
         tagid="snapshot-$(TZ=UTC date +%Y%m%d)"
         echo '$' git tag "$tagid"
         echo '$' git push origin "$tagid"
-        find _dist/ -type f | sort | grep -v misc.tar | cut -d/ -f3-
+        # find _dist/ -type f | sort | grep -v misc.tar | cut -d/ -f3-
         ;;
     ''|*)
         bash "$0" sh
