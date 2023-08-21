@@ -6,15 +6,26 @@ function makegeologo() {
     shapecolor="$1"
     bgcolor="$2"
     suffix="$3"
+    prefix="$4"
+    mkdir -p "_dist/$prefix"/{geologo,avatar}
     TMP=".tmp/geologo-$suffix.svg"
-    DEST="_dist/wwwmisc/geologo/Nekostein-geologo.$suffix.png"
+    DEST="_dist/$prefix/geologo/Nekostein-geologo.$suffix.png"
     sed "s|#BEEF01|$shapecolor|" res/geologo.svg | \
-    sed "s|#DEAD02|$bgcolor|" > "$TMP"
+        sed "s|#DEAD02|$bgcolor|" > "$TMP"
     rsvg-convert "$TMP" -o "$DEST" -z 2
 
     ### Avatar
-    convert -size '2200x2200' xc:"$bgcolor" "$DEST" -gravity center -composite "_dist/wwwmisc/avatar/Nekostein-avatar.$suffix.png"
+    convert -size '2200x2200' xc:"$bgcolor" "$DEST" -gravity center -composite "_dist/$prefix/avatar/Nekostein-avatar.$suffix.png"
 }
 
-makegeologo '#FFFFFF' '#000000' white_black
-makegeologo '#000000' '#FFFFFF' black_white
+makegeologo '#FFFFFF' '#000000' white_black wwwmisc
+makegeologo '#D3E9CA' '#0E497E' D3E9CA_0E497E wwwmisc
+
+makegeologo '#000000' '#FFFFFF' black_white doc-example
+
+
+
+### Transparent white logo
+sed "s|#BEEF01|#FFFFFF|" res/geologo.svg | \
+    sed "s|#DEAD02|rgba(0,0,0,0)|" > _dist/wwwmisc/geologo/Nekostein-geologo.white_null.svg
+rsvg-convert -z 2 _dist/wwwmisc/geologo/Nekostein-geologo.white_null.svg -o _dist/wwwmisc/geologo/Nekostein-geologo.white_null.png

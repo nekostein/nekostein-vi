@@ -10,7 +10,7 @@ case $1 in
         done
         ;;
     zip)
-        zip -9vr _pkg/Nekostein-VI _dist
+        zip -9vr _pkg/Nekostein-VI _dist/wwwmisc
         du -h _pkg/*
         ;;
     up|upload)

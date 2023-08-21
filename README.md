@@ -3,6 +3,11 @@
 This repository contains corporate visual identity materials of Nekostein.
 
 
+Read [Nekostein VI Manual](https://nekostein-wwwmisc.pages.dev/vi/doc/Nekostein_VI.pdf) before downloading.
+And make sure that you follow the instructions included in the manual.
+
+
+
 ## Download ZIP Archive
 
 Try any of the following links.
@@ -13,9 +18,11 @@ Try any of the following links.
 Or navigate to the [latest release](https://github.com/nekostein/nekostein-vi/releases/latest) of this repository.
 
 
+
 ## Install VI Lib
 
 Run `./make.sh install` to install the installer script.
+
 
 
 ## Copyright
