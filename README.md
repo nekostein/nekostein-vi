@@ -23,6 +23,8 @@ Or navigate to the [latest release](https://github.com/nekostein/nekostein-vi/re
 
 Run `./make.sh install` to install the installer script.
 
+Run `nekostein-installvilib.sh` in another repository to install the latest VI library into `/_dist/libvi`.
+
 
 
 ## Copyright
