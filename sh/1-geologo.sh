@@ -24,6 +24,11 @@ makegeologo '#D3E9CA' '#0E497E' D3E9CA_0E497E wwwmisc
 makegeologo '#000000' '#FFFFFF' black_white doc-example
 
 
+### Rounded avatar
+convert -size 2200x2200 xc:none -fill white -draw "roundrectangle 0,0,2200,2200,387,387" .tmp/rdsqmask.png
+convert _dist/wwwmisc/avatar/Nekostein-avatar.white_black.png .tmp/rdsqmask.png -alpha off -compose copy_opacity -composite _dist/wwwmisc/avatar/Nekostein-avatar.white_black.rounded.png
+
+
 
 ### Transparent white logo
 sed "s|#BEEF01|#FFFFFF|" res/geologo.svg | \
