@@ -29,7 +29,7 @@ case $1 in
         echo "zip:  $(realpath _pkg/Nekostein-VI.zip)"
         ;;
     ''|*)
-        bash "$0" sh
         bash "$0" zip
         bash "$0" upload
+        bash "$0" release
 esac
