@@ -30,7 +30,16 @@ convert _dist/wwwmisc/avatar/Nekostein-avatar.white_black.png .tmp/rdsqmask.png 
 
 
 
-### Transparent white logo
-sed "s|#BEEF01|#FFFFFF|" res/geologo.svg | \
-    sed "s|#DEAD02|rgba(0,0,0,0)|" > _dist/wwwmisc/geologo/Nekostein-geologo.white_null.svg
-rsvg-convert -z 2 _dist/wwwmisc/geologo/Nekostein-geologo.white_null.svg -o _dist/wwwmisc/geologo/Nekostein-geologo.white_null.png
+### Transparent geologo
+function makeTransparentGeologo() {
+    colorcode="$1"
+    colorname="$2"
+    sed "s|#BEEF01|$colorcode|" res/geologo.svg | \
+        sed "s|#DEAD02|rgba(0,0,0,0)|" > _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.svg
+    rsvg-convert -z 2 _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.svg -o _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.png
+    rsvg-convert -z 4 _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.svg -o _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.4x.png
+    rsvg-convert -z 8 _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.svg -o _dist/wwwmisc/geologo/Nekostein-geologo.${colorname}_null.8x.png
+}
+
+makeTransparentGeologo '#FFFFFF' white
+makeTransparentGeologo '#000000' black

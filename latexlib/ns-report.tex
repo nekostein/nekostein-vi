@@ -1,0 +1,81 @@
+% Ver 2023-08-27T18:52:42+00:00
+\usepackage[textwidth=38em]{geometry}
+\usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
+\usepackage{amssymb,amsmath,multicol}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xeCJK,xeCJKfntef}
+\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
+\setmainfont{Brygada 1918}
+\setromanfont{Brygada 1918}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{JetBrains Mono NL}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKromanfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans CJK SC}
+
+\setdefaultleftmargin{2em}{2em}{2em}{2em}{2em}{2em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\linespread{1.18}
+\setlength{\tabulinesep}{3.5pt}
+\frenchspacing
+\hyphenpenalty=1
+\tolerance=1
+\emergencystretch=\maxdimen
+
+
+
+
+\newcommand{\nsreportcover}[5]{
+	% argv: date, author, title, department, annotation
+	\begin{titlepage}
+        \newgeometry{hmargin=36mm,tmargin=45mm,bmargin=36mm}
+		\parskip=3pt
+        \sffamily
+        \pagecolor{black!93}
+        \color{white}
+
+        \AddToShipoutPictureBG*{
+            \put(-1pt,-1pt){%
+                \includegraphics[width=0.75\paperwidth]{_dist/libvi/decoration/geodeco-crop.tr.white.png}
+            }
+        }
+
+        \flushright
+		\includegraphics[width=56pt]{_dist/libvi/geologo/Nekostein-geologo.white_null.png}\par
+		\vskip 140pt
+
+        \flushleft
+
+        \rmfamily
+		\Huge
+		\fontsize{32pt}{37pt}\selectfont
+		\bfseries
+        \raggedright
+		#3
+		\mdseries
+
+		\vfill
+        
+		\sffamily
+
+		\normalsize
+		\Large
+        \bfseries
+		\vphantom{1Ahjp}{#2}\par
+		\vphantom{1Ahjp}{#1}\par
+		\vskip 80pt
+
+        \flushleft
+		\normalsize
+        \mdseries
+		\vphantom{1Ahjp}{#4}\hfill%
+		\vphantom{1Ahjp}{#5}\par
+	\end{titlepage}
+    \restoregeometry
+    \pagecolor{white}
+    \color{black}
+}
+

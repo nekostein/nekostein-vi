@@ -1,0 +1,53 @@
+% Ver 2023-08-27T18:52:42+00:00
+\usepackage[textwidth=38em]{geometry}
+% \newgeometry{textwidth=40em}
+\usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
+\usepackage{amssymb,amsmath,multicol}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xeCJK,xeCJKfntef}
+\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
+\setmainfont{Brygada 1918}
+\setromanfont{Brygada 1918}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{JetBrains Mono NL}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKromanfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans CJK SC}
+
+\setdefaultleftmargin{2em}{2em}{2em}{2em}{2em}{2em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\linespread{1.18}
+\setlength{\tabulinesep}{3.5pt}
+\frenchspacing
+
+
+
+\newcommand{\stdtitle}[5]{
+	% argv: date, author, title, department, annotation
+	\begin{minipage}{\linewidth}
+        \includegraphics[width=90pt]{_dist/libvi/logocomb/Nekostein-logocombH.black.png}
+        \par\vskip 20pt
+
+        \begin{flushleft}
+
+			\rmfamily
+			\huge
+			\bfseries
+			#3
+		\end{flushleft}
+        \vskip 26pt
+
+		\sffamily
+		\bfseries
+		\vphantom{1Ahjp}#2\par
+		\vphantom{1Ahjp}#1\par\vskip 7pt
+		\mdseries
+		\vphantom{1Ahjp}#4 \hfill #5\par
+        \vskip 5pt
+        \rule{\linewidth}{1pt}
+        \vskip 40pt
+	\end{minipage}
+}

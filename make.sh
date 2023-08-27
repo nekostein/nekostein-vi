@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p _dist _pkg
+mkdir -p _dist _pkg .tmp
 
 case $1 in
     sh)
@@ -28,8 +28,18 @@ case $1 in
         echo "url:  https://github.com/nekostein/nekostein-vi/releases/new"
         echo "zip:  $(realpath _pkg/Nekostein-VI.zip)"
         ;;
-    ''|*)
+    fast)
+        bash sh/1-texlib.sh
+        bash "$0" zip
+        bash "$0" upload
+        nekostein-installvilib.sh
+        ;;
+    '')
         bash "$0" zip
         bash "$0" upload
         bash "$0" release
+        ;;
+    *)
+        echo "No target specified"
+        ;;
 esac
