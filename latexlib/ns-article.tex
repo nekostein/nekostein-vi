@@ -1,6 +1,5 @@
 % Ver 2023-08-27T18:52:42+00:00
-\usepackage[textwidth=38em]{geometry}
-% \newgeometry{textwidth=40em}
+\usepackage[textwidth=40em,tmargin=25mm,bmargin=30mm]{geometry}
 \usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
 \usepackage{amssymb,amsmath,multicol}
 \usepackage[hidelinks]{hyperref}
@@ -32,8 +31,8 @@
         \par\vskip 20pt
 
         \begin{flushleft}
-
 			\rmfamily
+            \fontspec{Playfair Display}
 			\huge
 			\bfseries
 			#3
@@ -48,6 +47,6 @@
 		\vphantom{1Ahjp}#4 \hfill #5\par
         \vskip 5pt
         \rule{\linewidth}{1pt}
-        \vskip 40pt
 	\end{minipage}
+    \par\vskip 40pt
 }
