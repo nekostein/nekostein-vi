@@ -5,6 +5,7 @@ mkdir -p _dist _pkg .tmp
 case $1 in
     sh)
         mkdir -p wwwmisc _dist/wwwmisc
+        chmod +x sh/*.sh
         for i in sh/*.sh; do
             bash "$i"
         done
@@ -38,6 +39,7 @@ case $1 in
         bash "$0" zip
         bash "$0" upload
         bash "$0" release
+        nekostein-installvilib.sh
         ;;
     *)
         echo "No target specified"
