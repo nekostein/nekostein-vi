@@ -33,15 +33,8 @@
 	\begin{titlepage}
         \newgeometry{hmargin=36mm,tmargin=45mm,bmargin=36mm}
 		\parskip=3pt
-        \sffamily
-        \pagecolor{black!93}
+        \pagecolor{black!91}
         \color{white}
-
-        \AddToShipoutPictureBG*{
-            \put(-1pt,-1pt){%
-                \includegraphics[width=0.75\paperwidth]{_dist/libvi/decoration/geodeco-crop.tr.white.png}
-            }
-        }
 
         \flushright
 		\includegraphics[width=50pt]{_dist/libvi/geologo/Nekostein-geologo.white_null.png}\par
@@ -49,28 +42,26 @@
 
         \flushleft
 
-        \rmfamily
-        \fontspec{Playfair Display}
-		\Huge
-		\fontsize{32pt}{37pt}\selectfont
+        \sffamily
+        \fontspec{Inter Tight Medium}
+		% \Huge
+		\fontsize{31pt}{37pt}\selectfont
 		\bfseries
         \raggedright
 		#3
-		\mdseries
 
 		\vfill
         
-		\sffamily
-
-		\normalsize
-		\Large
+		% \Large
+        \fontsize{14pt}{18pt}\selectfont
         \bfseries
 		\vphantom{1Ahjp}{#2}\par
 		\vphantom{1Ahjp}{#1}\par
 		\vskip 80pt
 
         \flushleft
-		\normalsize
+		% \normalsize
+        \fontsize{10.95pt}{13pt}\selectfont
         \mdseries
 		\vphantom{1Ahjp}{#4}\hfill%
 		\vphantom{1Ahjp}{#5}\par
