@@ -7,7 +7,7 @@ mkdir -p _dist/{libvi,libvitmp}
 cd "$REPODIR/_dist/libvitmp"
 wget "$ZIPURL" -O Nekostein-VI.zip
 unzip Nekostein-VI.zip
-rm *.zip *.tar
+rm *.zip
 
 cd "$REPODIR"
 rsync -av --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
