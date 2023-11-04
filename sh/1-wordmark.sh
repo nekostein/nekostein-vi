@@ -3,7 +3,8 @@
 function makeLogo() {
     # Set the text to be rendered and the font properties
     local text="NEKOSTEIN"
-    local font="$HOME/.fonts/Brygada1918/Brygada1918-Bold.ttf"
+    # local font="$HOME/.fonts/Brygada1918/Brygada1918-Bold.ttf"
+    local font="$HOME/.fonts/TTF/PassionOne-Regular.ttf"
     local fontSize=700
     local letterSpacing=70
 

@@ -42,6 +42,6 @@ case $1 in
         nekostein-installvilib.sh
         ;;
     *)
-        echo "No target specified"
+        echo "[ERROR] Invalid target"
         ;;
 esac
