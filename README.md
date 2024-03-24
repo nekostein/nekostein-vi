@@ -25,6 +25,9 @@ Run `./make.sh install` to install the installer script.
 
 Run `nekostein-installvilib.sh` in another repository to install the latest VI library into `/_dist/libvi`.
 
+Alternatively, run `nekostein-installvilib.sh --local` to rsync from the local repository.
+Make sure to run a full local build of the VI lib before doing this.
+
 
 
 ## Copyright

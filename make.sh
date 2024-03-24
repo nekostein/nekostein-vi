@@ -35,6 +35,12 @@ case $1 in
         bash "$0" upload
         nekostein-installvilib.sh
         ;;
+    send)
+        ### Send dist to a local directory
+        if [[ -e "$2/_dist/libvi/geologo/Nekostein-geologo.white_null.png" ]]; then
+            rsync -av _dist/wwwmisc/ "$(realpath "$2/_dist/libvi")/"
+        fi
+        ;;
     '')
         bash "$0" zip
         bash "$0" upload
