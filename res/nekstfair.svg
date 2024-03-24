@@ -1,0 +1,27 @@
+<svg width="800" height="800" viewBox="-400 -400 800 800" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- <rect x="-400" y="-400" width="100%" height="100%" fill="#000101" /> -->
+    <defs>
+        <style>
+            #title2 {
+                /* font-family: 'TeX Gyre Schola'; */
+                font-family: 'Libre Bodoni';
+                font-style: italic;
+                font-weight: 900;
+                font-size: 320px;
+            }
+            .title1 {
+                /* font-family: 'DM Sans'; */
+                font-family: 'Mona-Sans';
+                /* font-family: 'Radio-Canada'; */
+                font-weight: 900;
+                font-size: 170px;
+            }
+        </style>
+    </defs>
+
+    <text fill="#111213" id="title2" x="0" y="101" text-anchor="middle" stroke="#111213" stroke-linejoin="round" stroke-width="8">fair</text>
+
+    <text fill="#FDFEFF" class="title1" x="0" y="0" text-anchor="middle" stroke="#111213" stroke-linejoin="round" stroke-width="19">NEKST</text>
+    <text fill="#FDFEFF" class="title1" x="0" y="0" text-anchor="middle">NEKST</text>
+</svg>
