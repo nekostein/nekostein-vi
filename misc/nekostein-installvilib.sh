@@ -16,6 +16,7 @@ function download_fonts() {
     cd "$FONTDIR"
     download_font_from_google "https://gwfh.mranftl.com/api/fonts/brygada-1918?download=zip&subsets=greek,latin,latin-ext&variants=500,600,700,regular,italic,500italic,600italic,700italic&formats=ttf"
     download_font_from_google "https://gwfh.mranftl.com/api/fonts/inter-tight?download=zip&subsets=greek,greek-ext,latin,latin-ext&variants=100,200,300,500,600,700,800,900,100italic,200italic,300italic,regular,italic,500italic,600italic,700italic,800italic,900italic&formats=ttf"
+    download_font_from_google "https://gwfh.mranftl.com/api/fonts/jetbrains-mono?download=zip&subsets=cyrillic-ext,greek,latin,latin-ext&variants=100,200,300,500,600,700,800,100italic,200italic,300italic,regular,italic,500italic,600italic,700italic,800italic&formats=ttf"
 }
 
 
