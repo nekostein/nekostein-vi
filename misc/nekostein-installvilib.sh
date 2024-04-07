@@ -9,7 +9,25 @@ if [[ "$1" == '--local' ]]; then
     USE_LOCAL=y
 fi
 
-if [[ $USE_LOCAL == y ]]; then
+
+function download_fonts() {
+    FONTDIR="_dist/fonts"
+    mkdir -p "$FONTDIR"
+    cd "$FONTDIR"
+    download_font_from_google "https://gwfh.mranftl.com/api/fonts/brygada-1918?download=zip&subsets=greek,latin,latin-ext&variants=500,600,700,regular,italic,500italic,600italic,700italic&formats=ttf"
+    download_font_from_google "https://gwfh.mranftl.com/api/fonts/inter-tight?download=zip&subsets=greek,greek-ext,latin,latin-ext&variants=100,200,300,500,600,700,800,900,100italic,200italic,300italic,regular,italic,500italic,600italic,700italic,800italic,900italic&formats=ttf"
+}
+
+
+function download_font_from_google() {
+    FONT_URL="$1"
+    curl -o f.zip $FONT_URL
+    unzip -oq f.zip
+    rm f.zip
+}
+
+
+if [[ "$USE_LOCAL" == y ]]; then
     LOCAL_DISTDIR="$(realpath "$0" | xargs dirname | xargs dirname)/_dist/wwwmisc"
     # echo "LOCAL_DISTDIR = $LOCAL_DISTDIR"
     rsync -av "$LOCAL_DISTDIR/" "$REPODIR/_dist/libvi/"
@@ -21,4 +39,6 @@ else
     cd "$REPODIR"
     rsync -av --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
     rm -rf _dist/libvitmp
+    download_fonts
 fi
+

@@ -33,13 +33,16 @@ case $1 in
         bash sh/01-texlib.sh
         bash "$0" zip
         bash "$0" upload
-        nekostein-installvilib.sh
+        nekostein-installvilib.sh --local
         ;;
     send)
         ### Send dist to a local directory
         if [[ -e "$2/_dist/libvi/geologo/Nekostein-geologo.white_null.png" ]]; then
             rsync -av _dist/wwwmisc/ "$(realpath "$2/_dist/libvi")/"
         fi
+        ;;
+    fonts)
+        cfoss ~/.fonts/inter-tight/InterTight-Medium.ttf
         ;;
     '')
         bash "$0" zip
