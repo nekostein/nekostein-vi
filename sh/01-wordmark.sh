@@ -2,9 +2,9 @@
 
 function makeLogo() {
     # Set the text to be rendered and the font properties
-    local text="NEKOSTEIN"
-    # local font="$HOME/.fonts/Brygada1918/Brygada1918-Bold.ttf"
-    local font="$HOME/.fonts/OTF/MyriadPro-Black.otf"
+    text="NEKOSTEIN"
+    # local font="$HOME/.fonts/OTF/MyriadPro-Black.otf"
+    font="$(command fc-list | grep MyriadPro-Black.otf | cut -d: -f1 | head -n1)"
     local fontSize=700
     local letterSpacing=70
 

@@ -30,6 +30,21 @@ Make sure to run a full local build of the VI lib before doing this.
 
 
 
+## Extra Techniques
+
+### Using TeX Live with Docker
+
+Save the following script as `~/.local/bin/xelatex-docker`.
+
+```sh
+#!/bin/bash
+docker run --rm -v "$PWD":/workdir -v "/usr/share/fonts":/root/.fonts registry.gitlab.com/islandoftex/images/texlive:latest xelatex "$@"
+```
+
+Set up `XELATEX_CMDNAME=xelatex-docker` environment variable.
+
+
+
 ## Copyright
 
 Copyright (c) 2023 Nekostein. All rights reserved.
