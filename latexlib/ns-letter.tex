@@ -6,8 +6,8 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{xeCJK,xeCJKfntef}
 \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
-\setmainfont{TeX Gyre Schola}
-\setromanfont{TeX Gyre Schola}
+\setmainfont{XCharter}
+\setromanfont{XCharter}
 \setsansfont{Inter}
 \setmonofont{JetBrains Mono NL}
 \setCJKmainfont{Noto Serif CJK SC}
@@ -38,17 +38,31 @@
 		\put(25mm,54mm){%
 			\noindent\begin{minipage}[b][150mm][t]{43mm}%
 				\footnotesize\sffamily\noindent#1%
-				% \par\rule{10mm}{50mm}
 			\end{minipage}%
 		}%
 	}
+}
+
+\newcommand{\emailheading}[1]{
+    \AddToShipoutPictureFG*{
+        \put(\paperwidth-\textwidth-25mm,307mm){%
+            \begin{minipage}[t][90mm][t]{\textwidth}%
+                \vfill\tabcolsep=0pt
+                \small\sffamily\mdseries
+                \begin{tabu}{lX}
+                    {\hspace{6em}} & {}          \\
+                    #1
+                    \hline
+                \end{tabu}
+            \end{minipage}
+        }
+    }
 }
 
 \newcommand{\letterhello}[1]{\noindent#1\par\vskip 1em}
 
 \newcommand{\lettersig}[1]{
 	\vfill
-	% \hfill
 	\noindent\parbox{\linewidth}{#1}
 	\vskip 1em
 }
@@ -88,3 +102,9 @@
 % Extra utils
 % =================================================
 \newcommand{\enableCjkIndenting}[0]{\setlength{\parindent}{2em}}
+\newcommand{\enableFoldingHints}[0]{
+	\AddToShipoutPictureFG{
+		\put(203mm,95mm){\rule{2mm}{0.4pt}}
+		\put(203mm,190mm){\rule{2mm}{0.4pt}}
+	}
+}

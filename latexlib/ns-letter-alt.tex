@@ -37,11 +37,27 @@
 	\AddToShipoutPictureFG*{
 		\put(25mm,275mm){%
 			\begin{minipage}[t][150mm][t]{150mm}%
-                #1%
-            \end{minipage}
+				#1%
+			\end{minipage}
 		}
 	}
 }
+
+\newcommand{\emailheading}[1]{
+	\AddToShipoutPictureFG*{
+		\put(\paperwidth-\textwidth-25mm,307mm){%
+			\begin{minipage}[t][90mm][t]{\textwidth}%
+				\vfill\tabcolsep=0pt
+				\begin{tabu}{lX}
+					{\hspace{6em}} & {} \\
+					#1
+					\hline
+				\end{tabu}
+			\end{minipage}
+		}
+	}
+}
+
 
 \newcommand{\letterhello}[1]{\noindent#1\par\vskip 1em}
 
@@ -62,7 +78,6 @@
 			\parbox{\paperwidth-50mm}{%
 				\flushright%
 				\includegraphics[width=33mm]{_dist/libvi/logocomb/Nekostein-logocombH.black.png}%
-				% 株式会社ネコスタイン%
 			}
 		}
 		% \put(25mm,275mm){%
@@ -73,23 +88,23 @@
 		% }
 		\put(25mm,18mm){%
 			\parbox{\paperwidth-50mm}{%
-		        \noindent%
+				\noindent%
 				\adjustbox{width=\linewidth,height=0.5pt}{%
-		            \noindent%
+					\noindent%
 					\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}%
 				}%
 			}
 		}
-		% \put(25mm,23mm){%
-		% 	\parbox{\paperwidth-50mm}{%
-		% 		\footnotesize%
-		% 		\sffamily\noindent%
-		%         \vphantom{1IQfgqa\"A}%
-		% 		Nekostein HQ
-		% 		\hfill
-		% 		\footercontentright%
-		% 	}
-		% }
+		\put(25mm,23mm){%
+			\parbox{\paperwidth-50mm}{%
+				\footnotesize%
+				\sffamily\noindent%
+				\vphantom{1IQfgqa\"A}株式会社ネコスタイン%
+				% Nekostein HQ
+				\hfill
+				\footercontentright%
+			}
+		}
 	}
 }
 
@@ -97,3 +112,9 @@
 % Extra utils
 % =================================================
 \newcommand{\enableCjkIndenting}[0]{\setlength{\parindent}{2em}}
+\newcommand{\enableFoldingHints}[0]{
+	\AddToShipoutPictureFG{
+		\put(203mm,95mm){\rule{2mm}{0.4pt}}
+		\put(203mm,190mm){\rule{2mm}{0.4pt}}
+	}
+}

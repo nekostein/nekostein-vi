@@ -1,7 +1,7 @@
 \input{latexlib/ns-letter.tex}
-% \renewcommand{\footercontentright}[0]{https://nekostein.com}
-\renewcommand{\footercontentright}[0]{\thepage}
-\enableCjkIndenting
+\renewcommand{\footercontentright}[0]{https://nekostein.com}
+% \enableCjkIndenting
+% \enableFoldingHints
 
 \begin{document}
 \setupdecorations
@@ -16,7 +16,7 @@ whose name is completely made up \textit{ex nihilo}.
 
 
 \lettersig{
-    Sincerely,\\
+    Best regards,\\
     Neruthes\\
     \vskip 1em
     \includegraphics[width=9em]{.miscpic/neruthes-sigalt1.png}\\
@@ -24,5 +24,31 @@ whose name is completely made up \textit{ex nihilo}.
     Nekostein
 }
 
+
+\clearpage
+% \sendto{}
+\emailheading{
+    Subject & Re: NekstFair location options \\
+    From & Neruthes <neruthes@outlook.com> \\
+    To & John Appleseed <john@example.com> \\
+}
+\letterhello{Dear John Appleseed,}
+
+Thanks for writing in.
+We have studied the location options you mentioned and many of them appear to be convincing.
+
+Among all options, we are particularly interested in Nakamura \& Co, the coffee shop in Vancouver.
+Please find the preliminary event plan document in attachments.
+We will be happy to discuss details with the business owner.
+
+
+\lettersig{
+    Best regards,\\
+    Neruthes\\
+    \vskip 1em
+    \includegraphics[width=9em]{.miscpic/neruthes-sigalt1.png}\\
+    \small Torishimariyaku \& Shachou\\
+    Nekostein
+}
 
 \end{document}
