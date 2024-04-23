@@ -1,0 +1,99 @@
+% Ver 2024-04-20T20:15:31+00:00
+\documentclass[a4paper,10pt]{article}
+\usepackage[textwidth=36em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
+\usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
+\usepackage{amssymb,amsmath,multicol,fancyhdr,adjustbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xeCJK,xeCJKfntef}
+\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
+\setmainfont{TeX Gyre Termes}
+\setromanfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{ocrb10}
+\setCJKmainfont{Noto Serif CJK JP}
+\setCJKromanfont{Noto Serif CJK JP}
+\setCJKsansfont{Noto Sans CJK JP}
+\setCJKmonofont{Noto Sans CJK JP}
+
+\setdefaultleftmargin{2em}{2em}{2em}{2em}{2em}{2em}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\linespread{1.18}
+\setlength{\tabulinesep}{3.5pt}
+\frenchspacing
+
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\raggedright}
+
+\pagestyle{fancy}
+\fancyfoot[C]{}
+\fancyfoot[R]{}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+
+
+\newcommand{\sendto}[1]{
+	\AddToShipoutPictureFG*{
+		\put(25mm,275mm){%
+			\begin{minipage}[t][150mm][t]{150mm}%
+                #1%
+            \end{minipage}
+		}
+	}
+}
+
+\newcommand{\letterhello}[1]{\noindent#1\par\vskip 1em}
+
+\newcommand{\lettersig}[1]{
+	\vfill
+	% \hfill
+	\noindent\parbox{\linewidth}{#1}
+	\vskip 1em
+}
+
+
+\newcommand{\footercontentright}[0]{\thepage}
+
+\newcommand{\setupdecorations}[0]{
+	\AddToShipoutPictureBG{
+		\put(25mm,275mm){%
+			\noindent%
+			\parbox{\paperwidth-50mm}{%
+				\flushright%
+				\includegraphics[width=33mm]{_dist/libvi/logocomb/Nekostein-logocombH.black.png}%
+				% 株式会社ネコスタイン%
+			}
+		}
+		% \put(25mm,275mm){%
+		%     \noindent%
+		%     \parbox{150mm}{
+		%         株式会社ネコスタイン%
+		%     }
+		% }
+		\put(25mm,18mm){%
+			\parbox{\paperwidth-50mm}{%
+		        \noindent%
+				\adjustbox{width=\linewidth,height=0.5pt}{%
+		            \noindent%
+					\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}%
+				}%
+			}
+		}
+		% \put(25mm,23mm){%
+		% 	\parbox{\paperwidth-50mm}{%
+		% 		\footnotesize%
+		% 		\sffamily\noindent%
+		%         \vphantom{1IQfgqa\"A}%
+		% 		Nekostein HQ
+		% 		\hfill
+		% 		\footercontentright%
+		% 	}
+		% }
+	}
+}
+
+% =================================================
+% Extra utils
+% =================================================
+\newcommand{\enableCjkIndenting}[0]{\setlength{\parindent}{2em}}
