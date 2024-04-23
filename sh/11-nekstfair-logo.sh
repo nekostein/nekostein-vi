@@ -13,5 +13,5 @@ function make_img() {
     convert "$prefix.$output_name.png" -trim "$prefix.$output_name.trim.png"
 }
 
-make_img '000000' 'FFFFFF' black
-make_img 'FFFFFF' '000000' white
+make_img '000000' 'FFFFFF' white
+make_img 'FFFFFF' '000000' black

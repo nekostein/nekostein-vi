@@ -4,23 +4,25 @@
     <defs>
         <style>
             #title2 {
-                font-family: 'Bowlby One';
+                font-family: 'Cinzel Decorative Black';
                 font-weight: 900;
                 font-size: 270px;
+                letter-spacing: 5px;
             }
             .title1 {
-                font-family: 'Myriad Pro';
+                /* font-family: 'Nunito'; */
+                font-family: 'Inter Bold';
                 font-weight: 900;
-                font-size: 170px;
-                letter-spacing: 11px;
+                font-size: 110px;
+                letter-spacing: 21.5px;
                 transform: translateX(9px);
             }
         </style>
     </defs>
 
-    <text fill="#111213" id="title2" x="0" y="195" text-anchor="middle" stroke="#111213" stroke-linejoin="round" stroke-width="1" transform="scale(1.0, 0.75)">FAIR</text>
+    <path d="M 232,185 l -620,0 0,-345 835,0 0,295" fill="none" stroke="#111213" stroke-width="20" stroke-linejoin="miter" stroke-linecap="square"  />
 
-    <text fill="#FDFEFF" class="title1" x="0" y="0" text-anchor="middle" stroke="#111213" stroke-linejoin="round" stroke-width="35">NEKST</text>
-    <text fill="#FDFEFF" class="title1" x="0" y="0" text-anchor="middle" stroke="#FDFEFF" stroke-linejoin="round" stroke-width="3">NEKST</text>
-    <text fill="#FDFEFF" class="title1" x="0" y="0" text-anchor="middle">NEKST</text>
+    <text fill="#111213" id="title2" x="-342" y="195" text-anchor="left" stroke="#111213" stroke-linejoin="round" stroke-width="0.5" transform="scale(1.0, 0.75)">faiR</text>
+
+    <text fill="#111213" class="title1" x="-340" y="-33" text-anchor="left">NEKST</text>
 </svg>

@@ -1,0 +1,29 @@
+\input{latexlib/ns-letter.tex}
+% \renewcommand{\footercontentright}[0]{https://nekostein.com}
+\renewcommand{\footercontentright}[0]{\thepage}
+\enableCjkIndenting
+
+\begin{document}
+\setupdecorations
+\sendto{Mr. John Appleseed\\1 Infinite Loop\\Cupertino\\CA 95014\\USA}
+\letterhello{Dear John Appleseed,}
+
+Long time no see.
+
+This is a sample letter from Nekostein HQ to fictional figure John Appleseed,
+whose name is completely made up \textit{ex nihilo}.
+
+
+
+\lettersig{
+    Sincerely,\\
+    Neruthes\\
+    \vskip 1em
+    \includegraphics[width=9em]{.tmp/neruthes-sigalt1.png}\\
+    \small Torishimariyaku \& Shachou\\
+    Nekostein
+}
+
+
+\end{document}
+% cp /home/neruthes/DEV/ntexlibs/pic/neruthes-sigalt1.png .tmp/neruthes-sigalt1.png
