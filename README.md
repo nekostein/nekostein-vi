@@ -45,6 +45,20 @@ Set up `XELATEX_CMDNAME=xelatex-docker` environment variable.
 
 
 
+## Developer Notes
+
+- `/latexlib`: Portable LaTeX library.
+- `/distutils`: Scripts that lib users may need when making assets.
+- `/misc`: Scripts and other stuff that lib developers use.
+- `/wwwmisc`: Stuff to publish on misc.nekostein.com website.
+- `/static`: Pre-made asset to be used independently.
+- `/platform`: Marketing assets tailored for specific platforms.
+- `/altdocs`: Documents that will hardly be used by anyone.
+
+
+
+
+
 ## Copyright
 
 Copyright (c) 2023 Nekostein. All rights reserved.

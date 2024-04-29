@@ -1,0 +1,13 @@
+<!-- 
+Use this as mask for generating postcard-ready images
+-->
+
+<svg viewBox="-300 -200 600 400" height="600px" xmlns="http://www.w3.org/2000/svg">
+    <!-- <rect x="-300" y="-200" width="600" height="400" fill="black" /> -->
+    <ellipse rx="283" ry="176" transform="rotate(-12)" fill="white" />
+</svg>
+
+<!--
+How to build:
+rsvg-convert res/postcard1mask.svg -z4 -o res/postcard1mask.png
+-->
