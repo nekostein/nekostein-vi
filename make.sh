@@ -47,6 +47,7 @@ case $1 in
     patterns/js/*.js)
         svgpath="$(sed 's|js|svg|g' <<< "$1")"
         node "$1" > "$svgpath"
+        realpath "$svgpath"
         pngpath="_dist/wwwmisc/patterns/$(basename "$1" | cut -d- -f1).png"
         dirname "$pngpath" | xargs mkdir -p
         [[ "$2" == png ]] && rsvg-convert "$svgpath" -z1 -o "$pngpath"

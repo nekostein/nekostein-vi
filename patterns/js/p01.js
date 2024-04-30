@@ -1,8 +1,8 @@
 const fs = require('fs');
 const svgplotlib = require('../svgplotlib.js');
 
-const COLOR_DECO = '#BBC4F3';
-const COLOR1 = `#AAAAAA`;
+const COLOR_DECO = '#BEC5E0';
+const COLOR1 = `#C4C7D3`;
 const COLOR2 = `#EEEEEE`;
 
 let SVG_DEFS = '';
@@ -133,16 +133,6 @@ SVG_CONTENTS_INNER += (function () {
 // Border decoration component
 const border_deco_c1 = (function () {
     let grandtmpstr = '';
-    // grandtmpstr += svgplotlib.drawpolarcircle({ // Wrapper
-    //     attrs: {
-    //         'fill': '#E4E4E4',
-    //         'stroke': `#000000`,
-    //         'transform': `scale(4)`
-    //     }, func: function (theta_rad) {
-    //         const raw_length = 64 + Math.cos(theta_rad * 8) * 7.5;
-    //         return raw_length;
-    //     }
-    // });
     grandtmpstr += (function () {
         let tmpstr_low = '';
         let tmpstr_high = '';

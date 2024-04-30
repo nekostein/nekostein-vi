@@ -32,6 +32,7 @@ if [[ "$USE_LOCAL" == y ]]; then
     LOCAL_DISTDIR="$(realpath "$0" | xargs dirname | xargs dirname)/_dist/wwwmisc"
     # echo "LOCAL_DISTDIR = $LOCAL_DISTDIR"
     rsync -av "$LOCAL_DISTDIR/" "$REPODIR/_dist/libvi/"
+    rm -rf _dist/libvitmp 2>/dev/null
 else
     cd "$REPODIR/_dist/libvitmp"
     wget "$ZIPURL" -O Nekostein-VI.zip
