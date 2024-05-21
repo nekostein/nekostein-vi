@@ -3,6 +3,9 @@
 mkdir -p _dist _pkg .tmp
 
 case $1 in
+    gc)
+        find _dist/wwwmisc/patterns -name '.goutputstream*' -delete
+        ;;
     sh)
         mkdir -p wwwmisc _dist/wwwmisc
         chmod +x sh/*.sh
@@ -12,6 +15,7 @@ case $1 in
         done
         ;;
     zip)
+        bash "$0" gc
         rm _pkg/Nekostein-VI.zip
         zip -9vr _pkg/Nekostein-VI _dist/wwwmisc
         du -h _pkg/*
