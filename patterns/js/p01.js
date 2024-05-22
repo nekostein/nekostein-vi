@@ -345,17 +345,12 @@ SVG_CONTENTS_OUTER += (function () { // Corners
 
 
 
-const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" height="100vh" xmlns="http://www.w3.org/2000/svg">
+const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" xmlns="http://www.w3.org/2000/svg">
 
 <defs>
     ${SVG_DEFS}
     <rect id="contentsizebox" x="-1220" y="-2020" width="2440" height="4040" rx="15" ry="15" />
     <mask id="contentsizebox-mask"><use href="#contentsizebox" fill="white" /></mask>
-    <g id="majortext">
-        <text text-anchor="middle" x="0" y="-410" font-size="350" font-family="Playfair Display" font-weight="bold">DECADE</text>
-        <text text-anchor="middle" x="0" y="-30" font-size="400" font-family="Playfair Display" font-weight="bold">PASS</text>
-        <text text-anchor="middle" x="0" y="280" font-size="300" font-family="New Heterodox Mono" font-weight="bold">2025·2035</text>
-    </g>
 </defs>
 
 
@@ -375,7 +370,6 @@ ${SVG_CONTENTS_OVERLAY}
 
 
 </svg>`;
-// <g transform="translate(-410, -2370)" >${EMBEDED_LOGO}</g>
 
 
 console.log(OUTPUT_SVG);

@@ -48,19 +48,20 @@ function drawpolarcircle(opt) {
     };
     let attrs = ''
     if (opt.attrs) {
-        let new_attr_obj = {};
-        Object.keys(DEFAULT_ATTRS).map(function (attrname) { new_attr_obj[attrname] = DEFAULT_ATTRS[attrname] }); // Initialize content
-        Object.keys(opt.attrs).map(function (attrname) { new_attr_obj[attrname] = opt.attrs[attrname] }); // Overwrite
-        attrs = Object.keys(new_attr_obj).map(function (attrname) {
-            return `  ${attrname}="${new_attr_obj[attrname]}"  `;
-        }).join(' ');
+        let new_attr_obj = Object.assign({}, DEFAULT_ATTRS, opt.attrs);
+        attrs = flatten_attr_obj(new_attr_obj);
     } else {
-        attrs = Object.keys(DEFAULT_ATTRS).map(function (attrname) {
-            return `  ${attrname}="${DEFAULT_ATTRS[attrname]}"  `;
-        }).join(' ');
+        attrs = flatten_attr_obj(DEFAULT_ATTRS);
     };
     let tmpnode = `<polygon ${attrs} points="${myshape_POINTS.join(' ')}" />`;
     return tmpnode;
+};
+
+
+function flatten_attr_obj(attr_obj) {
+    return Object.keys(attr_obj).map(function (attrname) {
+        return ` ${attrname}="${attr_obj[attrname]}" `;
+    }).join('');
 };
 
 module.exports = { drawstar, drawpolarcircle };
