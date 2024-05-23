@@ -74,19 +74,13 @@ SVG_DEFS += border_deco_c1;
 // Border decoration component: c2
 const border_deco_c2 = `<g x="0" y="0" id="border_deco_c2">` + (function () {
     let tmpstr = '';
+    // Extra dots
+    tmpstr += `<circle transform="translate(63,103)" r="16" fill="white" stroke="${COLOR_DECO}" stroke-width="6" />`;
+    tmpstr += `<circle transform="translate(-63,103)" r="16" fill="white" stroke="${COLOR_DECO}" stroke-width="6" />`;
+
     let circle_content = `<circle x="0" y="0" r="63" stroke="${COLOR_DECO}" stroke-width="6" fill="white" />`;
-    circle_content += svgplotlib.drawpolarcircle({
-        attrs: { fill: 'white', stroke: COLOR_DECO, 'stroke-width': 5 },
-        func: function (theta_rad) {
-            return 41 + Math.cos(8 * theta_rad) * 1;
-        }
-    });;
-    circle_content += svgplotlib.drawpolarcircle({
-        attrs: { fill: COLOR_DECO, stroke: 'none' },
-        func: function (theta_rad) {
-            return 33 + Math.cos(8 * theta_rad) * 1;
-        }
-    });;
+    circle_content += `<circle x="0" y="0" r="41" stroke="${COLOR_DECO}" stroke-width="5" fill="white" />`;
+    circle_content += `<circle x="0" y="0" r="33" stroke="none" fill="${COLOR_DECO}" />`;
     circle_content += `<circle x="0" y="0" r="19" stroke="none" fill="white" />`
     // Needles inside
     for (let itr = 0; itr < 24; itr++) { // Outer
@@ -104,8 +98,9 @@ const border_deco_c2 = `<g x="0" y="0" id="border_deco_c2">` + (function () {
     tmpstr += `<g transform="translate(0,-55)">` + circle_content + `</g>`;
     // Ribbon
     let ribbon_path_data = '';
+    const ribbon_wave_aptitude = 58;
     for (let index = -132; index <= 132; index++) {
-        ribbon_path_data += ` L ${index},${73 * Math.sin(deg2rad(index / 132 * 180))} `;
+        ribbon_path_data += ` L ${index},${ribbon_wave_aptitude * Math.sin(deg2rad(index / 132 * 180))} `;
     };
     // Ribbon filled with vertical lines
     let ribbon_path_data_vertlines_long = '';
@@ -113,7 +108,7 @@ const border_deco_c2 = `<g x="0" y="0" id="border_deco_c2">` + (function () {
     for (let index = -132; index <= 132; index++) {
         if (index % 9 == 0) {
             const rad1 = deg2rad(index / 132 * 180);
-            const valueY_raw = 73 * Math.sin(rad1);
+            const valueY_raw = ribbon_wave_aptitude * Math.sin(rad1);
             const shiftY = -3 * Math.sin(2 * rad1);
             const valueY_final = valueY_raw + shiftY;
             const semi_length_long = 23 + Math.abs(valueY_raw) * -0.15;
@@ -269,12 +264,6 @@ SVG_CONTENTS_INNER += (function () {
 })();
 
 SVG_CONTENTS_INNER += border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
-// SVG_CONTENTS_INNER += (function () {
-//     let tmpstr = '';
-//     const alt_c1 = border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
-//     tmpstr += alt_c1;
-//     return tmpstr;
-// })();
 
 
 
@@ -294,9 +283,9 @@ const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" xmlns="http://www.w3.or
 </defs>
 
 
-<rect x="-${(USABLE_CONTENT_SIZE_W + 91) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 91) / 2}"
-    width="${(USABLE_CONTENT_SIZE_W + 91)}" height="${(USABLE_CONTENT_SIZE_H + 91)}"
-    rx="0" ry="0" stroke="${COLOR_DECO}" stroke-width="69" fill="white" opacity="1" />
+<rect x="-${(USABLE_CONTENT_SIZE_W + 84) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 84) / 2}"
+    width="${(USABLE_CONTENT_SIZE_W + 84)}" height="${(USABLE_CONTENT_SIZE_H + 84)}"
+    rx="0" ry="0" stroke="${COLOR_DECO}" stroke-width="62" fill="white" opacity="1" />
 <rect x="-${(USABLE_CONTENT_SIZE_W + 111) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 111) / 2}"
     width="${(USABLE_CONTENT_SIZE_W + 111)}" height="${(USABLE_CONTENT_SIZE_H + 111)}"
     rx="0" ry="0" stroke="white" stroke-width="7" fill="none" opacity="1" />
@@ -309,7 +298,7 @@ ${SVG_CONTENTS_OUTER}
     ${SVG_CONTENTS_INNER}
 </g>
 
-<use href="#contentsizebox" stroke="${COLOR1}" stroke-width="5" fill="none" opacity="1" />
+<use href="#contentsizebox" stroke="${COLOR_DECO}" stroke-width="5" fill="none" opacity="1" />
 
 ${SVG_CONTENTS_OVERLAY}
 
