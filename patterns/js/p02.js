@@ -108,31 +108,30 @@ const border_deco_c2 = `<g x="0" y="0" id="border_deco_c2">` + (function () {
         ribbon_path_data += ` L ${index},${73 * Math.sin(deg2rad(index / 132 * 180))} `;
     };
     // Ribbon filled with vertical lines
-    let ribbon_path_data_vertlines = '';
+    let ribbon_path_data_vertlines_long = '';
+    let ribbon_path_data_vertlines_short = '';
     for (let index = -132; index <= 132; index++) {
         if (index % 9 == 0) {
             const rad1 = deg2rad(index / 132 * 180);
             const valueY_raw = 73 * Math.sin(rad1);
             const shiftY = -3 * Math.sin(2 * rad1);
             const valueY_final = valueY_raw + shiftY;
-            const semi_length = 33 + Math.abs(valueY_raw) * -0.27;
-            ribbon_path_data_vertlines += ` M ${index},${valueY_final - semi_length} l 0,${2 * semi_length}`;
+            const semi_length_long = 23 + Math.abs(valueY_raw) * -0.15;
+            const semi_length_short = 18 + Math.abs(valueY_raw) * -0.15;
+            ribbon_path_data_vertlines_long += ` M ${index},${valueY_final - semi_length_long} l 0,${2 * semi_length_long}`;
+            ribbon_path_data_vertlines_short += ` M ${index},${valueY_final - semi_length_short} l 0,${2 * semi_length_short}`;
         };
     };
     // Reverse ribbon background
     tmpstr += `<path transform="scale(-1,1)" d="M -132,0 ${ribbon_path_data}" fill="none" stroke-linecap="bevel" stroke="${COLOR_DECO}" stroke-width="54" />`; // Fill
     tmpstr += `<path transform="scale(-1,1)" d="M -132,0 ${ribbon_path_data}" fill="none" stroke-linecap="bevel" stroke="white" stroke-width="44" />`; // White
-    tmpstr += `<path transform="scale(-1,1)" d="${ribbon_path_data_vertlines}" fill="none" stroke-linecap="bevel" stroke="${COLOR_DECO}" stroke-width="4" />`; // Vertical lines
+    tmpstr += `<path transform="scale(-1,1)" d="${ribbon_path_data_vertlines_long}" fill="none" stroke-linecap="bevel" stroke="${COLOR_DECO}" stroke-width="4" />`; // Vertical lines
     // Real ribbon
     tmpstr += `<path d="M -132,0 ${ribbon_path_data}" fill="none" stroke-linecap="bevel" stroke="${COLOR_DECO}" stroke-width="54" />`; // Fill
     tmpstr += `<path d="M -132,0 ${ribbon_path_data}" fill="none" stroke-linecap="bevel" stroke="white" stroke-width="44" />`; // White
-    // Prepare for text!
+    // Prepare for fake text!
     tmpstr += `<path d="M -132,0 ${ribbon_path_data}" fill="none" stroke-linecap="bevel" stroke="${COLOR_DECO}" stroke-width="30" />`; // Under text
-    tmpstr += `<path id="id_eb412d0d8870" d="M -132,0 ${ribbon_path_data}" fill="none" stroke="none" transform="translate(-11,0)" />`; // For referencing textPath
-    tmpstr += `<text font-family="XCharter" font-weight="bold" font-size="27">
-        <textPath fill="white" href="#id_eb412d0d8870" startOffset="32.2%"
-        lengthAdjust="spacingAndGlyphs" spacing="auto" letter-spacing="1">NEKOSTEIN</textPath>
-    </text>`;
+    tmpstr += `<path transform="scale(1,1)" d="${ribbon_path_data_vertlines_short}" fill="none" stroke-linecap="bevel" stroke="white" stroke-width="4" />`; // Vertical lines
     return tmpstr;
 })() + '</g>';
 SVG_DEFS += border_deco_c2;
@@ -190,17 +189,17 @@ const border_small_text_style = ` fill="white"  font-family="XCharter" font-weig
 SVG_DEFS += `<text id="border_small_text_rowtop" x="0" y="0" ${border_small_text_style} letter-spacing="0.4">
 ${tp_long} · ${tp_long} · ${tp_long} · ${tp_long}
 </text>`;
-SVG_CONTENTS_OVERLAY += `<use href="#border_small_text_rowtop" transform="rotate(0) translate(0,-${19 + USABLE_CONTENT_SIZE_H / 2})" />
-<use href="#border_small_text_rowtop" transform="rotate(180) translate(0,-${19 + USABLE_CONTENT_SIZE_H / 2})" />`;
+SVG_CONTENTS_OVERLAY += `<use href="#border_small_text_rowtop" transform="rotate(0) translate(0,-${20.50 + USABLE_CONTENT_SIZE_H / 2})" />
+<use href="#border_small_text_rowtop" transform="rotate(180) translate(0,-${20.50 + USABLE_CONTENT_SIZE_H / 2})" />`;
 // Left and right
 SVG_DEFS += `<text id="border_small_text_rowside" x="0" y="0" ${border_small_text_style} letter-spacing="0.75">
 ${tp_long} · ${tp_short} · ${tp_long} · ${tp_short} · ${tp_long} · ${tp_short} · ${tp_long}
 </text>`;
-SVG_CONTENTS_OVERLAY += `<use href="#border_small_text_rowside" transform="rotate(90) translate(0,-${19 + USABLE_CONTENT_SIZE_W / 2})" />
-<use href="#border_small_text_rowside" transform="rotate(270) translate(0,-${19 + USABLE_CONTENT_SIZE_W / 2})" />`;
+SVG_CONTENTS_OVERLAY += `<use href="#border_small_text_rowside" transform="rotate(90) translate(0,-${21.00 + USABLE_CONTENT_SIZE_W / 2})" />
+<use href="#border_small_text_rowside" transform="rotate(270) translate(0,-${21.00 + USABLE_CONTENT_SIZE_W / 2})" />`;
 
 
-
+// Main texture background
 SVG_DEFS += `<mask id="mask_boxrepeat">
     <rect x="-180" y="-100" width="360" height="200" fill="white" />
 </mask>`;
@@ -211,25 +210,46 @@ SVG_DEFS += `<g mask="url(#mask_boxrepeat)" id="major_texture">` + (function () 
         for (let xx = -400; xx <= 400; xx++) {
             pathdata += ` L${xx},${97 * Math.cos(deg2rad(xx))} `;
         };
-        tmpstr += `<path transform="translate(${itr * 15.5},0)" stroke-width="3.5" stroke="${COLOR1}" fill="none" d="M -400,0 ${pathdata}" />`;
+        tmpstr += `<path transform="translate(${itr * 20},0)" stroke-width="3.5" stroke="${COLOR1}" fill="none" d="M -400,0 ${pathdata}" />`;
     };
     return tmpstr;
 })() + `</g>`
 
 for (let xx = -6; xx <= 6; xx++) {
     for (let yy = -10; yy <= 10; yy++) {
-        // const polarity = (xx % 2 === 0) || (yy % 2 === 0) ? 1 : -1;
-        const polarity = 1;
-        SVG_CONTENTS_INNER += `<use transform="scale(1,${polarity}) translate(${xx * 360},${yy * 200})" href="#major_texture" />`
+        SVG_CONTENTS_INNER += `<use transform="translate(${xx * 360},${yy * 200})" href="#major_texture" />`
     };
 };
 
+// Center flower big
 SVG_CONTENTS_INNER += (function () {
     let tmpstr_low = '';
-    let tmpstr_mid = '';
     let tmpstr_high = '';
-    for (let itr = -5; itr <= 5; itr++) {
-        const degskip = 2.3;
+    for (let itr = -15; itr <= 15; itr++) {
+        const degskip = 1.5;
+        tmpstr_low += svgplotlib.drawpolarcircle({
+            attrs: { fill: 'white', stroke: 'white', 'stroke-width': 3.5 },
+            func: function (theta_rad) {
+                const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
+                return 2.00 * (205 + Math.cos(8 * theta_rad_alt) * 61) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
+            }
+        });
+        tmpstr_high += svgplotlib.drawpolarcircle({
+            attrs: { fill: 'none', stroke: COLOR1, 'stroke-width': 4 },
+            func: function (theta_rad) {
+                const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
+                return 1.95 * (205 + Math.cos(8 * theta_rad_alt) * 61) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
+            }
+        });
+    };
+    return tmpstr_low + tmpstr_high;
+})();
+// Center flower small
+SVG_CONTENTS_INNER += (function () {
+    let tmpstr_low = '';
+    let tmpstr_high = '';
+    for (let itr = -7; itr <= 7; itr++) {
+        const degskip = 3;
         tmpstr_low += svgplotlib.drawpolarcircle({
             attrs: { fill: 'white', stroke: 'white', 'stroke-width': 3.5 },
             func: function (theta_rad) {
@@ -245,37 +265,18 @@ SVG_CONTENTS_INNER += (function () {
             }
         });
     };
-    return tmpstr_low + tmpstr_mid + tmpstr_high;
+    return tmpstr_low + tmpstr_high;
 })();
 
-SVG_CONTENTS_INNER += (function () {
-    let tmpstr = '';
-    const alt_c1 = border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
-    const alt_c2 = border_deco_c2.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c2/g, `rand-838306ae7a1c`);
-    // tmpstr += `<g transform="translate(${CORNER_DECORATION_BORDER_CIRCLE_SKIP/2},0)">${alt_c2}</g>`;
-    // tmpstr += `<g transform="translate(-${CORNER_DECORATION_BORDER_CIRCLE_SKIP/2},0)">${alt_c2}</g>`;
-    tmpstr += alt_c1;
-    return tmpstr;
-})();
+SVG_CONTENTS_INNER += border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
+// SVG_CONTENTS_INNER += (function () {
+//     let tmpstr = '';
+//     const alt_c1 = border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
+//     tmpstr += alt_c1;
+//     return tmpstr;
+// })();
 
 
-
-// // And another option here...
-// // Embed a logo in the center
-// SVG_DEFS += `<mask id="mask-circle-71fedfb611b8"><circle x="0" y="0" r="160" fill="white" /></mask>`; // Use a mask
-// SVG_CONTENTS_INNER += `<g mask="url(#mask-circle-71fedfb611b8)">
-//     ${(function () {
-//         let tmpstr = '';
-//         const HALFMAX = 40;
-//         for (let index = -HALFMAX; index <= HALFMAX; index++) {
-//             tmpstr += `<path d="M -1000 ${index * 9} l 2000 0" stroke="${COLOR2}" stroke-width="3" />`;
-//         }
-//         return tmpstr;
-//     })()}
-//     <g transform="scale(0.3) translate(-400,-300)">
-//         ${fs.readFileSync('res/geologo.svg').toString().replace(/#BEEF01/g, 'white').replace(/#DEAD02/g, 'none')}
-//     </g>
-// </g>`;
 
 
 
@@ -295,7 +296,7 @@ const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" xmlns="http://www.w3.or
 
 <rect x="-${(USABLE_CONTENT_SIZE_W + 91) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 91) / 2}"
     width="${(USABLE_CONTENT_SIZE_W + 91)}" height="${(USABLE_CONTENT_SIZE_H + 91)}"
-    rx="0" ry="0" stroke="${COLOR_DECO}" stroke-width="66" fill="white" opacity="1" />
+    rx="0" ry="0" stroke="${COLOR_DECO}" stroke-width="69" fill="white" opacity="1" />
 <rect x="-${(USABLE_CONTENT_SIZE_W + 111) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 111) / 2}"
     width="${(USABLE_CONTENT_SIZE_W + 111)}" height="${(USABLE_CONTENT_SIZE_H + 111)}"
     rx="0" ry="0" stroke="white" stroke-width="7" fill="none" opacity="1" />
@@ -323,5 +324,5 @@ console.log(OUTPUT_SVG);
 
 
 // Build SVG:
-// ./make.sh patterns/js/p02.js
+// ./make.sh patterns/js/p02.js png
 
