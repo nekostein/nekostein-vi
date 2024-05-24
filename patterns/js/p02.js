@@ -176,6 +176,10 @@ SVG_CONTENTS_OUTER += `<g id="real_border_deco_upper">
 </g>`;
 
 
+
+
+
+
 // Border text
 const tp_long = 'NEKO AND KUMA ARE FRIENDS FOREVER';
 const tp_short = 'ALLES IST RICHTIG MIT DER WELT';
@@ -192,6 +196,9 @@ ${tp_long} · ${tp_short} · ${tp_long} · ${tp_short} · ${tp_long} · ${tp_sho
 </text>`;
 SVG_CONTENTS_OVERLAY += `<use href="#border_small_text_rowside" transform="rotate(90) translate(0,-${21.00 + USABLE_CONTENT_SIZE_W / 2})" />
 <use href="#border_small_text_rowside" transform="rotate(270) translate(0,-${21.00 + USABLE_CONTENT_SIZE_W / 2})" />`;
+
+
+
 
 
 // Main texture background

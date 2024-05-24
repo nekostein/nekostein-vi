@@ -2,3 +2,5 @@
 /_pkg
 .tmp
 .miscpic/nogit
+node_modules
+yarn.lock
