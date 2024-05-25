@@ -65,41 +65,43 @@ SVG_DEFS += `<mask id="maskfor-border_deco_c1">
 </mask>`;
 const border_deco_c1 = `<g id="border_deco_c1" mask="url(#maskfor-border_deco_c1)"><g transform="translate(0,-15)">` + (function () {
     let tmpstr = '';
-    tmpstr += `<circle x="0" y="0" r="20" fill="${COLOR1}" />`;
-    tmpstr += svgplotlib.drawpolarcircle({
-        attrs: { fill: 'none', stroke: COLOR2, 'stroke-width': 6 },
-        func: function (theta_rad) {
-            const theta_rad_alt = theta_rad;
-            return 285 + Math.cos(24 * theta_rad_alt) * 6;
-        }
-    });
+    let tmpstr_over = '';
     // Outer Waves
-    for (let itr = 0; itr < 6; itr += 1) {
+    for (let itr = 0; itr < 13; itr += 1) {
         tmpstr += svgplotlib.drawpolarcircle({
-            attrs: { fill: 'none', stroke: [COLOR1, COLOR1][itr % 2], 'stroke-width': 4 },
+            attrs: { fill: 'none', stroke: COLOR1, 'stroke-width': 4 },
             func: function (theta_rad) {
-                const theta_rad_alt = theta_rad + deg2rad(itr * (360 / 24));
                 const shrink = 9;
-                return 260 + Math.cos(12 * theta_rad_alt) * 12 - itr * shrink;
+                return 250 - Math.cos(9 * theta_rad) * 22 - itr * shrink;
             }
         });
     };
     // Inner ribbons
-    for (let itr = 0; itr < 6; itr += 1) {
+    for (let itr = 0; itr < 9; itr += 1) {
         tmpstr += svgplotlib.drawpolarcircle({
             attrs: { fill: 'white', stroke: COLOR2, 'stroke-width': 4 },
             func: function (theta_rad) {
-                const theta_rad_alt = theta_rad + deg2rad(itr * (360 / 12));
                 const shrink = 9;
-                return 210 + Math.cos(12 * theta_rad_alt) * 8 - itr * shrink;
+                return 170 + Math.cos(12 * theta_rad) * 8 - itr * shrink;
             }
         });
     };
     // Middle star
     for (let itr = 0; itr < 36; itr += 1) {
-        tmpstr += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="73" rx="25" ry="73" stroke="${COLOR1}" stroke-width="4" fill="none" />`
+        tmpstr += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" fill="white" />`;
+        tmpstr_over += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" stroke="${COLOR1}" stroke-width="4" fill="none" />`;
     };
-    return tmpstr;
+    // Extra Outer Rim
+    for (let itr = 0; itr < 6; itr += 1) {
+        tmpstr_over += svgplotlib.drawpolarcircle({
+            attrs: { fill: 'none', stroke: COLOR2, 'stroke-width': 4 },
+            func: function (theta_rad) {
+                const shrink = 10;
+                return 259 + Math.cos(7 * theta_rad) * 17 - itr * shrink;
+            }
+        });
+    };
+    return tmpstr + tmpstr_over;
 })() + '</g></g>';
 SVG_DEFS += border_deco_c1;
 

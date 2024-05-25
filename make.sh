@@ -52,9 +52,14 @@ case $1 in
         svgpath="$(sed 's|js|svg|g' <<< "$1")"
         node "$1" > "$svgpath"
         realpath "$svgpath"
-        pngpath="_dist/wwwmisc/patterns/$(basename "$1" | cut -d- -f1).png"
-        dirname "$pngpath" | xargs mkdir -p
-        [[ "$2" == png ]] && rsvg-convert "$svgpath" -z1 -o "$pngpath"
+        extra_output_prefix="_dist/wwwmisc/patterns/$(basename "$1" | cut -d- -f1)"
+        dirname "$extra_output_prefix" | xargs mkdir -p
+        case $2 in
+            png|pdf)
+                rsvg-convert "$svgpath" -f "$2" -z1 -o "$extra_output_prefix.$2"
+                realpath "$extra_output_prefix.$2" | xargs du -h
+                ;;
+        esac
         ;;
     '')
         bash "$0" zip
