@@ -11,8 +11,8 @@ const COLOR2 = `#E8ECD4`;
 const CORNER_DECORATION_BORDER_CIRCLE_SKIP = 400;
 const USABLE_CONTENT_SIZE_W = CORNER_DECORATION_BORDER_CIRCLE_SKIP * 6 + 40;
 const USABLE_CONTENT_SIZE_H = CORNER_DECORATION_BORDER_CIRCLE_SKIP * 10 + 40;
-console.error(`USABLE_CONTENT_SIZE_W `, USABLE_CONTENT_SIZE_W);
-console.error(`USABLE_CONTENT_SIZE_H `, USABLE_CONTENT_SIZE_H);
+// console.error(`USABLE_CONTENT_SIZE_W `, USABLE_CONTENT_SIZE_W);
+// console.error(`USABLE_CONTENT_SIZE_H `, USABLE_CONTENT_SIZE_H);
 
 
 // Some functions
@@ -280,6 +280,7 @@ SVG_CONTENTS_INNER += border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1
 
 
 const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" xmlns="http://www.w3.org/2000/svg">
+<desc>Copyright (c) 2024 Nekostein, an unincorporated game development team. All rights reserved.</desc>
 
 <defs>
     ${SVG_DEFS}

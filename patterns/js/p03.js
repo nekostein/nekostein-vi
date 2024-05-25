@@ -6,17 +6,14 @@ const svg_round_corners = require('svg-round-corners');
 const COLOR1 = `#AF8260`;
 const COLOR2 = '#803D3B';
 const COLOR3 = '#EADBC8';
-// const COLOR1 = `#028391`;
-// const COLOR2 = '#01407E';
-// const COLOR3 = '#BDD8E5';
 
 
 // Some specific config variables
-const CORNER_DECORATION_BORDER_CIRCLE_SKIP = 400;
-const USABLE_CONTENT_SIZE_W = CORNER_DECORATION_BORDER_CIRCLE_SKIP * 6 + 0;
-const USABLE_CONTENT_SIZE_H = CORNER_DECORATION_BORDER_CIRCLE_SKIP * 10 + 0;
-console.error(`USABLE_CONTENT_SIZE_W `, USABLE_CONTENT_SIZE_W);
-console.error(`USABLE_CONTENT_SIZE_H `, USABLE_CONTENT_SIZE_H);
+const CORNER_DECORATION_BORDER_CIRCLE_SKIP = 230;
+const USABLE_CONTENT_SIZE_W = CORNER_DECORATION_BORDER_CIRCLE_SKIP * 11 + 0;
+const USABLE_CONTENT_SIZE_H = CORNER_DECORATION_BORDER_CIRCLE_SKIP * 17 + 0;
+// console.error(`USABLE_CONTENT_SIZE_W `, USABLE_CONTENT_SIZE_W);
+// console.error(`USABLE_CONTENT_SIZE_H `, USABLE_CONTENT_SIZE_H);
 
 
 // Some functions
@@ -210,6 +207,7 @@ SVG_CONTENTS_INNER += (function () {
 
 
 const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" data-height="100vh" xmlns="http://www.w3.org/2000/svg">
+<desc>Copyright (c) 2024 Nekostein, an unincorporated game development team. All rights reserved.</desc>
 
 <defs>
     ${SVG_DEFS}

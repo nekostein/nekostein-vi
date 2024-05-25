@@ -346,6 +346,7 @@ SVG_CONTENTS_OUTER += (function () { // Corners
 
 
 const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" xmlns="http://www.w3.org/2000/svg">
+<desc>Copyright (c) 2024 Nekostein, an unincorporated game development team. All rights reserved.</desc>
 
 <defs>
     ${SVG_DEFS}
