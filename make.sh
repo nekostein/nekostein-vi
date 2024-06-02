@@ -17,7 +17,7 @@ case $1 in
     zip)
         bash "$0" gc
         rm _pkg/Nekostein-VI.zip
-        zip -9vr _pkg/Nekostein-VI _dist/wwwmisc
+        zip -9vr _pkg/Nekostein-VI _dist/wwwmisc -x "_dist/wwwmisc/patterns/*.js.png"
         du -h _pkg/*
         ;;
     up|upload)
@@ -64,6 +64,7 @@ case $1 in
                 realpath "$extra_output_prefix.$2" | xargs du -h
                 ;;
         esac
+        rsync -av patterns/svg/ _dist/wwwmisc/patterns/
         ;;
     '')
         bash "$0" zip
