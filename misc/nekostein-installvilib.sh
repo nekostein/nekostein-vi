@@ -5,9 +5,9 @@ mkdir -p _dist/{libvi,libvitmp}
 rm -rf _dist/{libvi,libvitmp}
 mkdir -p _dist/{libvi,libvitmp}
 
-if [[ "$1" == '--local' ]]; then
-    USE_LOCAL=y
-fi
+### Command parameters
+[[ "$1" == '--local' ]] && USE_LOCAL=y
+[[ "$1" == '-l' ]] && USE_LOCAL=y
 
 
 function download_fonts() {

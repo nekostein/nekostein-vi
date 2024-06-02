@@ -1,10 +1,9 @@
 const fs = require('fs');
 const svgplotlib = require('../svgplotlib.js');
 
-const COLOR_DECO = '#C8D5B1';
-// const COLOR_DECO = '#E8ECD4';
-const COLOR1 = `#E8ECD4`;
-const COLOR2 = `#E8ECD4`;
+const COLOR_DECO = '#2F9831';
+const COLOR1 = `#C8D5B1`;
+const COLOR2 = `#C8D5B1`;
 
 
 // Some specific config variables

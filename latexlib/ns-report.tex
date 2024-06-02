@@ -5,8 +5,8 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{xeCJK,xeCJKfntef}
 \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
-\setmainfont{Brygada 1918}
-\setromanfont{Brygada 1918}
+\setmainfont{XCharter}
+\setromanfont{XCharter}
 \setsansfont{TeX Gyre Heros}
 \setmonofont{JetBrains Mono NL}
 \setCJKmainfont{Noto Serif CJK SC}
@@ -47,23 +47,23 @@
 		% \Huge
 		\fontsize{31pt}{37pt}\selectfont
         \raggedright
-		#3
+		\strut#3
 
 		\vfill
         
 		% \Large
         \fontspec[Numbers=Monospaced]{Inter Tight Medium}
         \fontsize{14pt}{18pt}\selectfont
-		\vphantom{1Ahjp}{#2}\par
-		\vphantom{1Ahjp}{#1}\par
+		\strut#2\par
+		\strut#1\par
 		\vskip 80pt
 
         \flushleft
 		% \normalsize
         \fontsize{10.95pt}{13pt}\selectfont
         \mdseries
-		\vphantom{1Ahjp}{#4}\hfill%
-		\vphantom{1Ahjp}{#5}\par
+		\strut#4\hfill%
+		\strut#5\par
 	\end{titlepage}
     \restoregeometry
     \pagecolor{white}

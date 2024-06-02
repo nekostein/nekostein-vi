@@ -1,6 +1,6 @@
 % Ver 2024-04-20T20:15:31+00:00
 \documentclass[a4paper,10pt]{article}
-\usepackage[textwidth=30em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
+\usepackage[textwidth=31em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
 \usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
 \usepackage{amssymb,amsmath,multicol,fancyhdr,adjustbox}
 \usepackage[hidelinks]{hyperref}
@@ -8,7 +8,7 @@
 \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
 \setmainfont{XCharter}
 \setromanfont{XCharter}
-\setsansfont{Inter}
+\setsansfont{TeX Gyre Heros}
 \setmonofont{JetBrains Mono NL}
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKromanfont{Noto Serif CJK SC}
@@ -27,15 +27,21 @@
 \allsectionsfont{\sffamily\raggedright}
 
 \pagestyle{fancy}
+\fancyhead[L]{}
+\fancyhead[C]{}
+\fancyhead[R]{}
 \fancyfoot[C]{}
 \fancyfoot[R]{}
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{15pt}
 
 
+
+\newlength{\sendtoareaextraraise}
+\setlength{\sendtoareaextraraise}{0pt}
 \newcommand{\sendto}[1]{
 	\AddToShipoutPictureFG*{
-		\put(25mm,54mm){%
+		\put(25mm,55mm+\sendtoareaextraraise){%
 			\noindent\begin{minipage}[b][150mm][t]{43mm}%
 				\footnotesize\sffamily\noindent#1%
 			\end{minipage}%
@@ -44,16 +50,21 @@
 }
 
 \newcommand{\emailheading}[1]{
+    \toparea{
+        \vfill\tabcolsep=0pt
+        \small\sffamily\mdseries
+        \begin{tabu}{lX}
+            {\hspace{6em}} & {} \\
+            #1
+            \hline
+        \end{tabu}
+    }
+}
+\newcommand{\toparea}[1]{
     \AddToShipoutPictureFG*{
         \put(\paperwidth-\textwidth-25mm,307mm){%
             \begin{minipage}[t][90mm][t]{\textwidth}%
-                \vfill\tabcolsep=0pt
-                \small\sffamily\mdseries
-                \begin{tabu}{lX}
-                    {\hspace{6em}} & {}          \\
-                    #1
-                    \hline
-                \end{tabu}
+                \vfill#1
             \end{minipage}
         }
     }
@@ -68,7 +79,10 @@
 }
 
 
+\newcommand{\footercontentleft}[0]{NEKOSTEIN HQ}
 \newcommand{\footercontentright}[0]{\thepage}
+
+
 
 \newcommand{\setupdecorations}[0]{
 	\AddToShipoutPictureBG{
@@ -88,10 +102,10 @@
 		\put(25mm,23mm){%
 			\parbox{\paperwidth-50mm}{%
 				\footnotesize%
-				\sffamily\noindent%
-                \vphantom{1IQfgqa\"A}%
-				Nekostein HQ
-				\hfill
+				\rmfamily\noindent%
+                \strut%
+                \footercontentleft%
+				\hfill%
 				\footercontentright%
 			}
 		}

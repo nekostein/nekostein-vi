@@ -33,6 +33,10 @@ case $1 in
         echo "url:  https://github.com/nekostein/nekostein-vi/releases/new"
         echo "zip:  $(realpath _pkg/Nekostein-VI.zip)"
         ;;
+    local)
+        bash sh/000-prepare.sh
+        nekostein-installvilib.sh --local
+        ;;
     fast)
         bash sh/000-prepare.sh
         bash "$0" zip
