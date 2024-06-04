@@ -9,7 +9,10 @@ missing_fonts=""
 
 function makepng() {
     pngpath="$(sed 's|.svg$|.js.png|g' <<< "$1")"
-    echo rsvg-convert "$1" -o "$pngpath"
+    rsvg-convert "$1" -o "$pngpath"
+    jpgpath_prefix="$(sed 's|.svg$||g' <<< "$1")"
+    convert "$pngpath" -quality 83 -background white -alpha remove -alpha off "$jpgpath_prefix.jpg"
+    convert "$jpgpath_prefix.jpg" -scale '33%' "$jpgpath_prefix.small.jpg"
 }
 
 function checkfonts() {
@@ -29,10 +32,10 @@ function checkfonts() {
     grep 'font-family:' "$1"
 }
 
-find _dist/libvi/patterns/*.svg | while read -r svgpath; do
+while read -r svgpath; do
     checkfonts "$svgpath"
     makepng "$svgpath"
-done
+done < <(find _dist/libvi/patterns/*.svg)
 
 
 [[ -n "$missing_fonts" ]] && echo "[ERROR] Need these fonts: $missing_fonts"
