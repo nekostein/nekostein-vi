@@ -2,7 +2,10 @@
 
 echo "[INFO] This script will render pattern SVGs into PNGs en masse."
 echo "[INFO] Some fonts may be needed."
+echo "[INFO] You can pass a filter string; only matching files will be rendered."
 
+
+FILTER="$1"
 
 
 missing_fonts=""
@@ -32,10 +35,20 @@ function checkfonts() {
     grep 'font-family:' "$1"
 }
 
-while read -r svgpath; do
-    checkfonts "$svgpath"
-    makepng "$svgpath"
-done < <(find _dist/libvi/patterns/*.svg)
+
+
+if [[ -n "$FILTER" ]]; then
+    while read -r svgpath; do
+        checkfonts "$svgpath"
+        makepng "$svgpath"
+    done < <(find _dist/libvi/patterns -name '*.svg' | grep "$FILTER")
+else
+    while read -r svgpath; do
+        checkfonts "$svgpath"
+        makepng "$svgpath"
+    done < <(find _dist/libvi/patterns -name '*.svg')
+fi
+
 
 
 [[ -n "$missing_fonts" ]] && echo "[ERROR] Need these fonts: $missing_fonts"
