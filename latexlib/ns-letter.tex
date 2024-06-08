@@ -1,6 +1,7 @@
 % Ver 2024-04-20T20:15:31+00:00
 \documentclass[a4paper,11pt]{article}
 \usepackage[textwidth=31em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
+\newcommand{\calculatedlogowidth}[0]{210mm-50mm-31em-1mm}
 \usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
 \usepackage{amssymb,amsmath,multicol,fancyhdr,adjustbox}
 \usepackage[hidelinks]{hyperref}
@@ -88,7 +89,8 @@
 	\AddToShipoutPictureBG{
 		\put(25mm,265mm){%
             \noindent%
-			\includegraphics[width=33mm]{_dist/libvi/logocomb/Nekostein-logocombH.black.png}
+            \normalsize
+			\includegraphics[width=\calculatedlogowidth]{_dist/libvi/logocomb/Nekostein-logocombH.black.png}
 		}
 		\put(25mm,18mm){%
 			\parbox{\paperwidth-50mm}{%
