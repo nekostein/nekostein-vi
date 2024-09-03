@@ -1,6 +1,7 @@
 #!/bin/bash
 REPODIR="$PWD"
-ZIPURL="https://pub-714f8d634e8f451d9f2fe91a4debfa23.r2.dev/keep/nekostein-vi/Nekostein-VI.zip--932cd19c36bdde979f5fefbd23876e61.zip"
+# ZIPURL="https://pub-714f8d634e8f451d9f2fe91a4debfa23.r2.dev/keep/nekostein-vi/Nekostein-VI.zip--932cd19c36bdde979f5fefbd23876e61.zip"
+ZIPURL="https://pub-714f8d634e8f451d9f2fe91a4debfa23.r2.dev/nekostein-vi/8ca76cdc91872ed0150f3182/Nekostein-VI.zip"
 mkdir -p _dist/{libvi,libvitmp}
 rm -rf _dist/{libvi,libvitmp}
 mkdir -p _dist/{libvi,libvitmp}

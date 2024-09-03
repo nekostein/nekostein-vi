@@ -21,8 +21,8 @@ case $1 in
         du -h _pkg/*
         ;;
     up|upload)
-        cfoss _pkg/Nekostein-VI.zip
-        minoss _pkg/Nekostein-VI.zip
+        cfoss2 _pkg/Nekostein-VI.zip
+        # minoss _pkg/Nekostein-VI.zip
         ;;
     install|ins)
         ln -svf "$PWD/misc/nekostein-installvilib.sh" "$HOME/.local/bin/nekostein-installvilib.sh"
@@ -50,7 +50,8 @@ case $1 in
         fi
         ;;
     fonts)
-        cfoss ~/.fonts/inter-tight/InterTight-Medium.ttf
+        exit 0
+        # cfoss2 ~/.fonts/inter-tight/InterTight-Medium.ttf
         ;;
     patterns/js/*.js)
         svgpath="$(sed 's|js|svg|g' <<< "$1")"
