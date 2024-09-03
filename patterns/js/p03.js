@@ -131,30 +131,32 @@ SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1V)"><g transform="rotate(270) t
 // Main texture spiral graph
 const spiral_c1 = (function () {
     let tmpstr = '';
-    const PERIOD = 8;
-    const SKIP = 20;
+    const PERIOD = 11;
+    const SKIP = 25;
     for (let itr = 0; itr < PERIOD; itr += 1) {
         let X = itr * SKIP + 0;
         const initY = 3;
         let rawpath = `M ${X},0 `;
-        for (let step = 1; step < 42; step += 1) {
-            const polarity = 0 - step % 2;
-            const dx = SKIP * PERIOD / 2;
-            X += dx;
-            const Y = (initY + X * 0.15) * polarity + 0.013 * Math.pow(X, 1.15) * polarity + 0.25 * X;
-            const realX = X;
-            rawpath += `L ${realX},${Y}`;
+        for (let step = 0; step < 2500; step += 2) {
+            const realX = step + itr * SKIP;
+            const apt = Math.pow((realX) * 0.055, 1.07);
+            // const apt = 100;
+            const Y = Math.sin((realX+X) / (PERIOD * SKIP) * 2 * Math.PI) * apt;
+            rawpath += `L ${realX},${Y} `;
         }
-        const newpath = svg_round_corners.roundCorners(rawpath, 5, 20).path;
-        tmpstr += `<path fill="none" opacity="${0.95 - itr * 0.0875}" stroke="${COLOR3}" stroke-width="5" d="${newpath}" />`;
+        tmpstr += `\n<path class="spiral-item-path" fill="none" opacity="${0.95 - itr * 0.0775}" stroke="${COLOR3}" stroke-width="5" d="${rawpath}" />\n`;
     };
     return tmpstr;
 })();
 
 SVG_DEFS += `<g id="spiral_c1">${spiral_c1}</g>`
 
-for (let itr = 0; itr < 36; itr++) {
-    SVG_CONTENTS_INNER += `<use href="#spiral_c1" transform="rotate(${itr * (360 / 36)})" />`
+for (let itr = 0; itr < 40; itr++) {
+    let extra = '';
+    if (itr % 2 === 0) {
+        extra = 'scale(-1,1)';
+    };
+    SVG_CONTENTS_INNER += `<use href="#spiral_c1" transform="rotate(${(itr+0.5) * (360 / 40)}) ${extra}" />`
 };
 
 
@@ -214,8 +216,8 @@ const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" data-height="100vh" xml
 <defs>
     ${SVG_DEFS}
     <rect id="contentsizebox"
-        x="-${(USABLE_CONTENT_SIZE_W+12) / 2}" y="-${(USABLE_CONTENT_SIZE_H+12) / 2}"
-        width="${USABLE_CONTENT_SIZE_W+12}" height="${USABLE_CONTENT_SIZE_H+12}" rx="0" ry="0" />
+        x="-${(USABLE_CONTENT_SIZE_W + 12) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 12) / 2}"
+        width="${USABLE_CONTENT_SIZE_W + 12}" height="${USABLE_CONTENT_SIZE_H + 12}" rx="0" ry="0" />
     <mask id="contentsizebox-mask"><use href="#contentsizebox" fill="white" /></mask>
 </defs>
 
