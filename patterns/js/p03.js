@@ -137,12 +137,12 @@ const spiral_c1 = (function () {
         let X = itr * SKIP + 0;
         const initY = 3;
         let rawpath = `M ${X},0 `;
-        for (let step = 0; step < 2500; step += 2) {
+        for (let step = 0; step < 2900; step += 2) {
             const realX = step + itr * SKIP;
-            const apt = Math.pow((realX) * 0.055, 1.07);
+            const apt = Math.pow((realX) * 0.055, 1.02);
             // const apt = 100;
             const Y = Math.sin((realX+X) / (PERIOD * SKIP) * 2 * Math.PI) * apt;
-            rawpath += `L ${realX},${Y} `;
+            rawpath += `L ${25 + realX * 0.8},${Y} `;
         }
         tmpstr += `\n<path class="spiral-item-path" fill="none" opacity="${0.95 - itr * 0.0775}" stroke="${COLOR3}" stroke-width="5" d="${rawpath}" />\n`;
     };
@@ -166,15 +166,15 @@ for (let itr = 0; itr < 40; itr++) {
 
 
 // Center flower
-for (let itr = 12; itr > 0; itr--) {
-    SVG_CONTENTS_INNER += svgplotlib.drawpolarcircle({
-        attrs: { fill: 'white', stroke: COLOR3, 'stroke-width': 4 },
-        func: function (theta_rad) {
-            const theta_rad_alt = theta_rad;
-            return itr * 13 + 305 * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
-        }
-    });
-}
+// for (let itr = 12; itr > 0; itr--) {
+//     SVG_CONTENTS_INNER += svgplotlib.drawpolarcircle({
+//         attrs: { fill: 'white', stroke: COLOR3, 'stroke-width': 4 },
+//         func: function (theta_rad) {
+//             const theta_rad_alt = theta_rad;
+//             return itr * 13 + 305 * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
+//         }
+//     });
+// }
 SVG_CONTENTS_INNER += (function () {
     let tmpstr_low = '';
     let tmpstr_high = '';
@@ -195,8 +195,96 @@ SVG_CONTENTS_INNER += (function () {
             }
         });
     };
-    return tmpstr_low + tmpstr_high;
+    return '';
+    // return tmpstr_low + tmpstr_high;
 })();
+
+
+
+
+const cneter_flower_outer_ring_big = function (extra_rotate) {
+    let tmpstr_low = '';
+    let tmpstr_up = '';
+    const HALFMAX = 12;
+    for (let itr = -HALFMAX; itr <= HALFMAX; itr++) {
+        const ROTATE = 1.4 * itr;
+        tmpstr_low += svgplotlib.drawpolarcircle({
+            attrs: {
+                'fill': 'white', 'stroke': 'white',
+                'transform': `scale(3.5) rotate(${ROTATE + extra_rotate})`
+            }, func: function (theta_rad) {
+                const ROTATE_rad = (ROTATE / 360) * (2 * Math.PI);
+                return 147 + Math.cos(theta_rad * 10) * 45 + Math.cos(ROTATE_rad * 10) * 9 + extra_rotate * 0.5;
+            }
+        });
+        tmpstr_up += '<g opacity="0.2777">' + svgplotlib.drawpolarcircle({
+            attrs: {
+                'fill': 'none', 'stroke': COLOR1,
+                'transform': `scale(3.5) rotate(${ROTATE + extra_rotate})`
+            }, func: function (theta_rad) {
+                const ROTATE_rad = (ROTATE / 360) * (2 * Math.PI);
+                return 147 + Math.cos(theta_rad * 10) * 45 + Math.cos(ROTATE_rad * 10) * 9 + extra_rotate * 0.5;
+            }
+        }) + '</g>\n';
+    };
+    return tmpstr_low + tmpstr_up;
+}
+
+SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(360/20);
+SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(0);
+SVG_CONTENTS_INNER += (function () { // Center star
+    let tmpstr = '';
+    const HALFMAX = 7;
+    for (let itr = -HALFMAX; itr <= HALFMAX; itr += 1) {
+        const ROTATE = itr * 2.2;
+        tmpstr += svgplotlib.drawpolarcircle({
+            attrs: {
+                'fill': 'none',
+                'stroke': COLOR3,
+                'transform': `scale(3.5) rotate(${ROTATE})`
+            }, func: function (theta_rad) {
+                const ROTATE_rad = (ROTATE / 360) * (2 * Math.PI);
+                const linear_fix = Math.cos(ROTATE_rad * 10);
+                const raw_length = 77 - Math.cos(theta_rad * 10) * (16 + linear_fix * 5) + linear_fix * 5;
+                return raw_length;
+            }
+        });
+    };
+    return tmpstr;
+})();
+SVG_CONTENTS_INNER += (function () { // Center flat ring
+    let tmpstr = '';
+    const HALFMAX = 3;
+    for (let itr = -HALFMAX; itr <= HALFMAX; itr += 1) {
+        const ROTATE = itr * 4;
+        tmpstr += svgplotlib.drawpolarcircle({
+            attrs: {
+                'fill': 'none',
+                'stroke': COLOR3,
+                'transform': `scale(3.5) rotate(${ROTATE})`
+            }, func: function (theta_rad) {
+                const raw_length = 44 + Math.cos(theta_rad * 12) * 12;
+                return raw_length;
+            }
+        });
+    };
+    return tmpstr;
+})();
+// Embed a logo in the center
+SVG_DEFS += `<mask id="mask-circle-71fedfb611b8"><circle x="0" y="0" r="105" fill="white" /></mask>`; // Use a mask
+SVG_CONTENTS_INNER += `<g mask="url(#mask-circle-71fedfb611b8)">
+    ${(function () {
+        let tmpstr = '';
+        const HALFMAX = 40;
+        for (let index = -HALFMAX; index <= HALFMAX; index++) {
+            tmpstr += `<path d="M -1000 ${index * 9} l 2000 0" stroke="${COLOR3}" stroke-width="3" />`;
+        }
+        return tmpstr;
+    })()}
+    <g transform="scale(0.2) translate(-400,-300)">
+        ${fs.readFileSync('res/geologo.svg').toString().replace(/#BEEF01/g, 'white').replace(/#DEAD02/g, 'none')}
+    </g>
+</g>`;
 
 
 
@@ -216,15 +304,15 @@ const OUTPUT_SVG = `<svg viewBox="-2500 -2500 5000 5000" data-height="100vh" xml
 <defs>
     ${SVG_DEFS}
     <rect id="contentsizebox"
-        x="-${(USABLE_CONTENT_SIZE_W + 12) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 12) / 2}"
-        width="${USABLE_CONTENT_SIZE_W + 12}" height="${USABLE_CONTENT_SIZE_H + 12}" rx="0" ry="0" />
+        x="-${(USABLE_CONTENT_SIZE_W + 66.00) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 66.00) / 2}"
+        width="${USABLE_CONTENT_SIZE_W + 66.00}" height="${USABLE_CONTENT_SIZE_H + 66.00}" rx="0" ry="0" />
     <mask id="contentsizebox-mask"><use href="#contentsizebox" fill="white" /></mask>
 </defs>
 
 
 ${SVG_CONTENTS_OUTER}
-<rect x="-${(USABLE_CONTENT_SIZE_W + 55) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 55) / 2}"
-    width="${(USABLE_CONTENT_SIZE_W + 55)}" height="${(USABLE_CONTENT_SIZE_H + 55)}"
+<rect x="-${(USABLE_CONTENT_SIZE_W + 111.00) / 2}" y="-${(USABLE_CONTENT_SIZE_H + 111.00) / 2}"
+    width="${(USABLE_CONTENT_SIZE_W + 111.00)}" height="${(USABLE_CONTENT_SIZE_H + 111.00)}"
     rx="0" ry="0" stroke="${COLOR2}" stroke-width="7" fill="white" opacity="1" />
 
 <g mask="url(#contentsizebox-mask)">

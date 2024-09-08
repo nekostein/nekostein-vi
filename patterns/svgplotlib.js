@@ -30,7 +30,7 @@ function drawstar(opt) {
             return `  ${attrname}="${DEFAULT_ATTRS[attrname]}"  `;
         }).join(' ');
     };
-    let tmpnode = `<polygon ${attrs} points="${myshape_POINTS.join(' ')}" />`;
+    let tmpnode = `<polygon ${attrs} points="${myshape_POINTS.join(' ')}" />\n`;
     return tmpnode;
 };
 
@@ -53,14 +53,14 @@ function drawpolarcircle(opt) {
     } else {
         attrs = flatten_attr_obj(DEFAULT_ATTRS);
     };
-    let tmpnode = `<polygon ${attrs} points="${myshape_POINTS.join(' ')}" />`;
+    let tmpnode = `<polygon ${attrs} points="${myshape_POINTS.join(' ')}" />\n`;
     return tmpnode;
 };
 
 
 function flatten_attr_obj(attr_obj) {
     return Object.keys(attr_obj).map(function (attrname) {
-        return ` ${attrname}="${attr_obj[attrname]}" `;
+        return ` ${attrname}="${attr_obj[attrname]}" \n`;
     }).join('');
 };
 
