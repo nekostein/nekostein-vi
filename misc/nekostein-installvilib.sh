@@ -23,7 +23,7 @@ function download_fonts() {
 
 function download_font_from_google() {
     FONT_URL="$1"
-    curl -o f.zip $FONT_URL
+    curl -o f.zip "$FONT_URL"
     unzip -oq f.zip
     rm f.zip
 }
@@ -32,7 +32,7 @@ function download_font_from_google() {
 if [[ "$USE_LOCAL" == y ]]; then
     LOCAL_DISTDIR="$(realpath "$0" | xargs dirname | xargs dirname)/_dist/wwwmisc"
     # echo "LOCAL_DISTDIR = $LOCAL_DISTDIR"
-    rsync -av "$LOCAL_DISTDIR/" "$REPODIR/_dist/libvi/"
+    rsync -auv "$LOCAL_DISTDIR/" "$REPODIR/_dist/libvi/"
     rm -rf _dist/libvitmp 2>/dev/null
 else
     cd "$REPODIR/_dist/libvitmp"
@@ -40,7 +40,7 @@ else
     unzip Nekostein-VI.zip
     rm *.zip
     cd "$REPODIR"
-    rsync -av --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
+    rsync -auv --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
     rm -rf _dist/libvitmp
     download_fonts
 fi
