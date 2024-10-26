@@ -39,3 +39,6 @@ convert _dist/wwwmisc/avatar/Nekostein-avatar.white_black.rounded.png -resize x1
 
 gap=560 wordHeight=580 makecombH white
 gap=430 wordHeight=470 makecombH black
+
+
+magick _dist/wwwmisc/logocomb/Nekostein-logocombH.white.png -channel RGB -negate _dist/wwwmisc/logocomb/Nekostein-logocombH.white-invert.png

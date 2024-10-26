@@ -1,28 +1,83 @@
-<svg width="1200" height="1200" viewBox="-600 -600 1200 1200" xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- <rect x="-600" y="-600" width="100%" height="100%" fill="#000101" /> -->
+<svg width="1200" height="1200" viewBox="-600 -600 1200 1200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect x="-600" y="-600" width="100%" height="100%" fill="#111213" />
     <defs>
         <style>
-            #title2 {
-                font-family: 'Cinzel Decorative Black';
-                font-weight: 900;
-                font-size: 270px;
-                letter-spacing: 5px;
+            text {
+                /* font-family: 'Rubik'; */
+                font-family: 'LT Museum';
+                font-weight: 800;
             }
+
             .title1 {
-                /* font-family: 'Nunito'; */
-                font-family: 'Inter Bold';
-                font-weight: 900;
-                font-size: 110px;
-                letter-spacing: 21.5px;
-                transform: translateX(9px);
+                font-size: 231px;
+            }
+
+            .year {
+                /* font-size: 170px; */
+                font-size: 152px;
+                font-variant-numeric: tabular-nums;
             }
         </style>
+        <path id="facetopleft" d="M -400 0 m 400 -233 c -110 0 -134 19 -134 19 c 0 0 -46 -143 -84 -143 c -56 0 -182 171 -182 357" />
+        <g id="facetop" transform="scale(0.91,0.91) translate(0,-54)">
+            <use href="#facetopleft" transform="scale(1,1)" />
+            <use href="#facetopleft" transform="scale(-1,1)" />
+        </g>
+        <text id="main_text" mask="url(#mask_titletext)" class="title1" x="0" y="180" stroke-linejoin="round" fill-rule="nonzero" text-anchor="middle">NekstFair</text>
+        <text id="main_text_new" mask="url(#mask_titletext)" class="title1" x="0" y="180" stroke-linejoin="round" fill-rule="nonzero" text-anchor="middle"><tspan dy="24">N</tspan><tspan dy="-6">e</tspan><tspan dy="-6">k</tspan><tspan dy="-6">s</tspan><tspan dy="-6">t</tspan><tspan dy="24">F</tspan><tspan dy="-8">a</tspan><tspan dy="-8">i</tspan><tspan dy="-8">r</tspan></text>
+        <polygon id="i_star" transform="translate(364.3,33)" points="0,37 12,12 37,0 12,-12 0,-37 -12,-12 -37,0 -12,12" />
+        <polygon id="i_star2" transform="translate(-422,265) scale(1.6,1.6) " points="0,37 12,12 37,0 12,-12 0,-37 -12,-12 -37,0 -12,12" />
+        <mask id="mask_moon">
+            <circle fill="white" cx="0" cy="0" r="700" />
+            <circle fill="black" cx="90" cy="-50" r="360" />
+            <rect x="-1000" y="-2" width="2000" height="214" fill="black" />
+        </mask>
+        <mask id="mask_titletext">
+            <rect x="-1000" y="-1000" width="2000" height="2000" fill="white" />
+            <!-- <circle fill="black" cx="350" cy="44" r="35" /> -->
+            <use href="#i_star" fill="black" stroke="black" stroke-width="19" stroke-linejoin="miter" />
+        </mask>
+        <mask id="mask_decobar">
+            <rect x="-1000" y="-1000" width="2000" height="2000" fill="white" />
+            <use href="#i_star2" fill="black" stroke="black" stroke-width="13" stroke-linejoin="miter" />
+            <rect x="-1000" y="260" width="2000" height="10" fill="black" />
+        </mask>
+        <path id="deco2_base" stroke="#FDFEFF" stroke-linecap="round" fill="none" stroke-width="9" d="M 108 100 L 160 100 Q 300 100 300 0 M 108 120 L 160 120 Q 320 120 320 0" />
     </defs>
 
-    <path d="M 232,185 l -620,0 0,-345 835,0 0,295" fill="none" stroke="#111213" stroke-width="20" stroke-linejoin="miter" stroke-linecap="square"  />
+    <g id="global-wrapper" transform="translate(0,-180)">
 
-    <text fill="#111213" id="title2" x="-342" y="195" text-anchor="left" stroke="#111213" stroke-linejoin="round" stroke-width="0.5" transform="scale(1.0, 0.75)">faiR</text>
 
-    <text fill="#111213" class="title1" x="-340" y="-33" text-anchor="left">NEKST</text>
+        <!-- Is the moon really necessary? -->
+        <!-- <circle fill="#FDFEFF" cx="0" cy="0" r="398" mask="url(#mask_moon)" /> -->
+
+
+        <use href="#main_text" fill="#FDFEFF" stroke="#FDFEFF" stroke-width="0" />
+
+        <!-- Decoration bar 1 -->
+        <!-- 265 +- 35  =>  range(230, 300) -->
+        <!-- <polygon points="-430,240 -430,290 88,300 55,265 88,230" fill="#FDFEFF" mask="url(#mask_decobar)" /> -->
+        <!-- <use href="#i_star2" fill="#FDFEFF" stroke="#FDFEFF" stroke-width="0" /> -->
+
+        <!-- Decoration bar 2 with year -->
+        <!-- <text class="year" fill="#FDFEFF" x="0" y="330" text-anchor="middle">1453</text>
+    <use href="#deco2_base" transform=" scale(1,1) translate(90,210)" />
+    <use href="#deco2_base" transform=" scale(-1,1) translate(90,210)" /> -->
+
+        <!-- Decoration bar 3 with year -->
+        <text class="year3" font-size="110" fill="#FDFEFF" x="106" y="307" text-anchor="start">1453</text>
+        <path d="
+    M -330,240 q 0,60 60,60 l 350,0
+    M -310,240 q 0,40 40,40 l 350,0
+    M -290,240 q 0,20 20,20 l 350,0
+    " stroke="#FDFEFF" fill="none" stroke-width="12" stroke-linecap="round" />
+        <!-- M -270,240 q 0,0 0,0 l 350,0 -->
+
+        <!-- <text class="year" fill="#FDFEFF" x="460" y="310" text-anchor="end">1453</text> -->
+
+        <use href="#i_star" fill="#FDFEFF" stroke="#FDFEFF" stroke-width="0" />
+
+        <!-- <use href="#facetop" fill="none" stroke="#FDFEFF" stroke-width="36" stroke-linejoin="round" stroke-linecap="round" /> -->
+    </g>
+
 </svg>

@@ -1,0 +1,140 @@
+<svg viewBox="-2000 -2000 4000 4000" xmlns="http://www.w3.org/2000/svg">
+<desc>Copyright (c) 2024 Neruthes. All rights reserved.</desc>
+
+<defs>
+    <mask id="contentsizebox-mask">
+        <rect x="-1855.5" y="-2755.5"
+            width="3711" height="5511"
+            rx="0" ry="0" stroke-width="0" fill="white" opacity="1" />
+    </mask>
+    <filter id="filter_blur" width="400" height="400">
+        <feOffset in="SourceGraphic" dx="0" dy="0" />
+        <feGaussianBlur stdDeviation="50" />
+        <feBlend in="SourceGraphic" in2="blurOut" />
+    </filter>
+    
+</defs>
+
+
+<!--
+canvas size debug
+<rect fill="gray" x="-2001" y="-2001" width="4002" height="4002" />
+-->
+<rect fill="black" x="-2001" y="-2001" width="4002" height="4002" />
+
+
+<g>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-671.09,-447.4) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-671.09,447.4) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-447.4,-671.09) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-447.4,671.09) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(447.4,-671.09) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(447.4,671.09) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(671.09,-447.4) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(671.09,447.4) rotate(45)"   points="0 102.5 102.5 0 0 -102.5 -102.5 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-745.98,-248.66) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-745.98,248.66) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-248.66,-745.98) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-248.66,745.98) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(248.66,-745.98) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(248.66,745.98) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(745.98,-248.66) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(745.98,248.66) rotate(45)"   points="0 121.82 121.82 0 0 -121.82 -121.82 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-774.02,0) rotate(45)"   points="0 129.18 129.18 0 0 -129.18 -129.18 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,-774.02) rotate(45)"   points="0 129.18 129.18 0 0 -129.18 -129.18 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,774.02) rotate(45)"   points="0 129.18 129.18 0 0 -129.18 -129.18 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(774.02,0) rotate(45)"   points="0 129.18 129.18 0 0 -129.18 -129.18 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-533.93,-533.93) rotate(45)"   points="0 136.31 136.31 0 0 -136.31 -136.31 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-533.93,533.93) rotate(45)"   points="0 136.31 136.31 0 0 -136.31 -136.31 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(533.93,-533.93) rotate(45)"   points="0 136.31 136.31 0 0 -136.31 -136.31 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(533.93,533.93) rotate(45)"   points="0 136.31 136.31 0 0 -136.31 -136.31 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-590.18,-295.09) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-590.18,295.09) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-295.09,-590.18) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-295.09,590.18) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(295.09,-590.18) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(295.09,590.18) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(590.18,-295.09) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(590.18,295.09) rotate(45)"   points="0 159.1 159.1 0 0 -159.1 -159.1 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-608.82,0) rotate(45)"   points="0 166.77 166.77 0 0 -166.77 -166.77 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,-608.82) rotate(45)"   points="0 166.77 166.77 0 0 -166.77 -166.77 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,608.82) rotate(45)"   points="0 166.77 166.77 0 0 -166.77 -166.77 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(608.82,0) rotate(45)"   points="0 166.77 166.77 0 0 -166.77 -166.77 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-324.95,-324.95) rotate(45)"   points="0 183.91 183.91 0 0 -183.91 -183.91 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-324.95,324.95) rotate(45)"   points="0 183.91 183.91 0 0 -183.91 -183.91 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(324.95,-324.95) rotate(45)"   points="0 183.91 183.91 0 0 -183.91 -183.91 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(324.95,324.95) rotate(45)"   points="0 183.91 183.91 0 0 -183.91 -183.91 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(-335.35,0) rotate(45)"   points="0 192.71 192.71 0 0 -192.71 -192.71 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,-335.35) rotate(45)"   points="0 192.71 192.71 0 0 -192.71 -192.71 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,335.35) rotate(45)"   points="0 192.71 192.71 0 0 -192.71 -192.71 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(335.35,0) rotate(45)"   points="0 192.71 192.71 0 0 -192.71 -192.71 0" />
+<polygon   stroke-width="20"     fill="white"     stroke="black"     transform="translate(0,0) rotate(45)"   points="0 204.58 204.58 0 0 -204.58 -204.58 0" /></g>
+<rect x="-1855.5" y="-2755.5"
+    width="3711" height="5511"
+    rx="0" ry="0" stroke="none" stroke-width="17" fill="white" opacity="0" />
+
+<g mask="url(#contentsizebox-mask)">
+    
+</g>
+
+<use href="#contentsizebox" stroke="rgba(0, 45, 151, 1)" stroke-width="35" fill="none" opacity="1" />
+
+
+
+
+<!-- Symbol knot1_real debug
+<use href="#knot1_real" />
+-->
+
+<!--
+gradient debug
+<rect opacity="1" x="0" y="0" width="2000" height="2000" fill="url(#bordergradient-radial)" />
+-->
+
+
+
+
+</svg>
