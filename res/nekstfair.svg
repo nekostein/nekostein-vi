@@ -67,9 +67,9 @@
         <!-- Decoration bar 3 with year -->
         <text class="year3" font-size="110" fill="#FDFEFF" x="106" y="307" text-anchor="start">1453</text>
         <path d="
-    M -330,240 q 0,60 60,60 l 350,0
-    M -310,240 q 0,40 40,40 l 350,0
-    M -290,240 q 0,20 20,20 l 350,0
+    M -340,240 q 15,60 70,60 l 330,0
+    M -315,240 q 10,40 50,40 l 325,0
+    M -290,240 q 5,20 30,20 l 320,0
     " stroke="#FDFEFF" fill="none" stroke-width="12" stroke-linecap="round" />
         <!-- M -270,240 q 0,0 0,0 l 350,0 -->
 
