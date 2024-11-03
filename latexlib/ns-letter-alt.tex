@@ -1,19 +1,19 @@
 % Ver 2024-04-20T20:15:31+00:00
-\documentclass[a4paper,10pt]{article}
-\usepackage[textwidth=36em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
-\usepackage{calc,fontspec,tocloft,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
+\documentclass[a4paper,12pt]{article}
+\usepackage[textwidth=30em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
+\usepackage{calc,fontspec,tocloft,longtable,tabu,tabulary,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
 \usepackage{amssymb,amsmath,multicol,fancyhdr,adjustbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xeCJK,xeCJKfntef}
-\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
+\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\strut\hskip 0pt,CJKecglue=\strut\hskip 0.35em plus 5em minus 0.09em}
 \setmainfont{TeX Gyre Termes}
 \setromanfont{TeX Gyre Termes}
 \setsansfont{TeX Gyre Heros}
-\setmonofont{ocrb10}
-\setCJKmainfont{Noto Serif CJK JP}
-\setCJKromanfont{Noto Serif CJK JP}
-\setCJKsansfont{Noto Sans CJK JP}
-\setCJKmonofont{Noto Sans CJK JP}
+\setmonofont{TeX Gyre Cursor}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKromanfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans CJK SC}
 
 \setdefaultleftmargin{2em}{2em}{2em}{2em}{2em}{2em}
 
@@ -44,18 +44,36 @@
 }
 
 \newcommand{\emailheading}[1]{
-	\AddToShipoutPictureFG*{
-		\put(\paperwidth-\textwidth-25mm,307mm){%
-			\begin{minipage}[t][90mm][t]{\textwidth}%
-				\vfill\tabcolsep=0pt
-				\begin{tabu}{lX}
-					{\hspace{6em}} & {} \\
-					#1
-					\hline
-				\end{tabu}
-			\end{minipage}
-		}
-	}
+	% \AddToShipoutPictureFG*{
+	% 	\put(\paperwidth-\textwidth-25mm,307mm){%
+	% 		\begin{minipage}[t][90mm][t]{\textwidth}%
+	% 			\vfill\tabcolsep=0pt
+	% 			\begin{tabulary}\linewidth{ll}
+	% 				{\hspace{6em}} & {} \\
+	% 				#1
+	% 			\end{tabulary}
+    %             \hrule
+	% 		\end{minipage}
+	% 	}
+	% }
+    \toparea{
+        \vfill\tabcolsep=0pt
+        \normalsize\rmfamily\mdseries
+        \begin{tabulary}\linewidth{ll}
+            {\hspace{6em}} & {} \\
+            #1
+        \end{tabulary}
+        \hrule
+    }
+}
+\newcommand{\toparea}[1]{
+    \AddToShipoutPictureFG*{
+        \put(\paperwidth-\textwidth-25mm,307mm){%
+            \begin{minipage}[t][90mm][t]{\textwidth}%
+                \vfill#1
+            \end{minipage}
+        }
+    }
 }
 
 
@@ -69,7 +87,9 @@
 }
 
 
+\newcommand{\footercontentleft}[0]{}
 \newcommand{\footercontentright}[0]{\thepage}
+\renewcommand{\footercontentright}[0]{}
 
 \newcommand{\setupdecorations}[0]{
 	\AddToShipoutPictureBG{
@@ -99,7 +119,7 @@
 			\parbox{\paperwidth-50mm}{%
 				\footnotesize%
 				\sffamily\noindent%
-				\vphantom{1IQfgqa\"A}株式会社ネコスタイン%
+				\strut \footercontentleft%
 				% Nekostein HQ
 				\hfill
 				\footercontentright%

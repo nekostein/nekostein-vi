@@ -42,6 +42,6 @@ else
     cd "$REPODIR"
     rsync -auv --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
     rm -rf _dist/libvitmp
-    download_fonts
+    # download_fonts
 fi
 
