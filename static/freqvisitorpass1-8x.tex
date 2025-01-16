@@ -1,0 +1,21 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx,eso-pic}
+\pagestyle{empty}
+
+\begin{document}
+~~~~
+
+
+\newcommand{\myimg}[0]{\includegraphics[width=0.5\paperwidth]{_dist/static/freqvisitorpass1.pdf}}
+\AddToShipoutPictureFG{
+    \put(0mm,0mm){\myimg}
+    \put(0mm,0.25\paperheight){\myimg}
+    \put(0mm,0.5\paperheight){\myimg}
+    \put(0mm,0.75\paperheight){\myimg}
+    \put(0.5\paperwidth,0mm){\myimg}
+    \put(0.5\paperwidth,0.25\paperheight){\myimg}
+    \put(0.5\paperwidth,0.5\paperheight){\myimg}
+    \put(0.5\paperwidth,0.75\paperheight){\myimg}
+}
+\end{document}

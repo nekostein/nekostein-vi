@@ -1,0 +1,42 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,margin=0mm]{geometry}
+\usepackage{calc,graphicx,eso-pic,fontspec,xeCJK,xcolor}
+
+\usepackage[scaled]{beramono}
+% \usepackage[sfdefault]{tgcursor}
+% \usepackage{ocr}
+\usepackage[T1]{fontenc}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\newcommand{\dataentry}[3]{\hspace{9mm}\parbox[t][0.2\paperheight]{0.5\paperwidth-0.01pt-9mm}{
+    \leavevmode\vskip 22.5mm%
+    % \ocrfamily%
+    \ttfamily
+    \fontsize{11pt}{14pt}\selectfont%
+    \strut#1\par\vskip 5.65mm%
+    \strut#2\par\vskip 5.65mm%
+    \strut#3%
+}\hskip 0pt plus 10pt}
+
+\newcommand{\finishdatarow}[0]{\vskip 0.0485\paperheight}
+
+
+
+
+
+\begin{document}%
+% \AddToShipoutPictureBG{\put(0mm,0mm){\includegraphics[width=\paperwidth]{_dist/static/freqvisitorpass1-8x.pdf}}}% Debug reference
+% \color{blue}%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}\par\finishdatarow%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}\par\finishdatarow%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}\par\finishdatarow%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}%
+\dataentry{FIVE (5) YEARS}{1453-05-29}{JOHN APPLESEED}\par%
+    
+\end{document}

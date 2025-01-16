@@ -1,0 +1,77 @@
+% =======================================================
+%
+% Notes:
+%   - Output h/w ratio is 6425/9500, like h = 1200 and w = 1200/6425*9500
+%   - p01 raw size 5000x5000
+%
+% Build script for dependencies:
+%   magick _dist/wwwmisc/patterns/p03.js.png -crop "2070x1400+$((2500+250-2070/2))+2900" _dist/static/freqvisitorpass1-bg1.png
+%
+% Create PNG:
+%   magick -density 600 _dist/static/freqvisitorpass1.pdf -background white -flatten _dist/static/freqvisitorpass1.pdf-1.png
+% =======================================================
+
+
+\documentclass[a4paper,10pt]{article}
+\usepackage[paperheight=74.25mm,paperwidth=105mm,hmargin=8mm,tmargin=8mm,bmargin=8mm]{geometry}
+\usepackage{calc,graphicx,eso-pic,fontspec}
+
+% \setmainfont{TeX Gyre Schola}
+% \setromanfont{TeX Gyre Schola}
+\setsansfont{TeX Gyre Heros}
+% \setmonofont{ocrb10}
+% \setmonofont{JetBrains Mono NL}
+
+\linespread{1}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\frenchspacing
+\pagestyle{empty}
+
+
+
+\newcommand{\makedataentrySepLine}[1]{
+    \textcolor{black!50}{\underline{\textcolor{red}{\ttfamily\small\hbox to 43mm{\strut#1~\hfill}}}}%
+}
+\newcommand{\makedataentry}[2]{
+    {\sffamily\footnotesize\strut\MakeUppercase{#1~}}\\%
+    #2%
+    \par\vskip 2mm%
+}
+
+
+
+
+
+\begin{document}
+\AddToShipoutPictureBG{%
+    \put(5mm,5mm){%
+        \includegraphics[width=\paperwidth-10mm]{_dist/static/freqvisitorpass1-bg1.png}%
+    }%
+    \put(0mm,0mm){%
+        \includegraphics[width=\paperwidth]{_dist/wwwmisc/patterns/p04.js.png}%
+    }%
+}
+
+
+\parbox{70mm}{%
+    \MakeUppercase{\large\bfseries\sffamily Nekostein HQ\\Frequent Visitor Pass}%
+}\hfill%
+\raisebox{-4mm}{\includegraphics[height=13mm]{_dist/wwwmisc/avatar/Nekostein-avatar.white_black.rounded.png}}%
+\par
+\vskip 3mm
+
+\makedataentry{Period of Validity}{\makedataentrySepLine{~}}
+\makedataentry{Date of Issue}{\makedataentrySepLine{~}}
+\makedataentry{Name of Bearer}{}
+
+\vfill
+\footnotesize\sffamily
+\color{black!80}
+The bearer may enter Nekostein workplaces\\at wish without prior appointment.
+\end{document}
+
+
+
+
+
