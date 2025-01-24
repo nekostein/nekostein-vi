@@ -3,7 +3,8 @@ const svgplotlib = require('../svgplotlib.js');
 
 const COLOR_DECO = '#2F9831';
 const COLOR1 = `#C8D5B1`;
-const COLOR2 = `#C8D5B1`;
+const COLOR2 = `#D8EEE5`;
+const COLOR3 = `#D0DFD8`;
 
 
 // Some specific config variables
@@ -209,30 +210,68 @@ SVG_CONTENTS_OVERLAY += `<use href="#border_small_text_rowside" transform="rotat
 
 
 
-// Main texture background
-SVG_DEFS += `<mask id="mask_boxrepeat">
-    <rect x="-181" y="-101" width="362" height="202" fill="white" />
-</mask>`;
-let pathdata = '';
-for (let xx = -400; xx <= 400; xx += 2) {
-    let yy = 97 * Math.cos(deg2rad(xx));
-    yy = Math.round(yy * 100) / 100;
-    pathdata += ` ${xx},${yy} `;
-};
-SVG_DEFS += `<path id="mathcos_maintexture_component_curve1" stroke-linejoin="round" stroke-width="3.5" stroke="${COLOR1}" fill="none" d="M -600,0 L ${pathdata} L 600,0" />\n`;
-SVG_DEFS += `<g mask="url(#mask_boxrepeat)" id="major_texture">` + (function () {
-    let tmpstr = '';
-    for (let itr = -11; itr <= 11; itr++) {
-        tmpstr += `<use href="#mathcos_maintexture_component_curve1" transform="translate(${itr * 20},0)" />\n`;
-    };
-    return tmpstr;
-})() + `</g>\n`
 
-for (let xx = -6; xx <= 6; xx++) {
-    for (let yy = -10; yy <= 10; yy++) {
-        SVG_CONTENTS_INNER += `<use transform="translate(${xx * 360},${yy * 200})" href="#major_texture" />\n`
-    };
+
+
+// Major texture
+let middle_content = '';
+for (let group_id = 14; group_id >= 0; group_id--) {
+    let tmpstr1 = '';
+    let tmpstr2 = '';
+    const major_repeats = 4 + 2 * Math.floor(group_id / 1);
+    // Certain shakes per 360deg
+    const shakes = 4*14 + 12 * Math.floor(group_id); // Every 1 group, increase by 12 shakes
+    let semitotal = 1;
+    let step_density = 4;
+    if (group_id > 3) { step_density = 8; };
+    if (group_id > 6) { step_density = 16; };
+    for (let shift_counter = -semitotal; shift_counter <= semitotal; shift_counter++) {
+        let myfunc = function (theta_rad) {
+            // Shaking has a constant aptitude
+            let apt = 35 + 2 * group_id;
+            // Shaking uses certain input frequency
+            let theta_rad_real = theta_rad + 360 / shakes / (semitotal*2) * shift_counter;
+            let input_freq = theta_rad_real * shakes;
+            const shaking_now = apt * Math.cos(input_freq);
+            const base_length = (90 + 45 * group_id);
+            // Fluctuate a few times
+            const grand_fluctuating = (1 + Math.cos(major_repeats * theta_rad)) * 0.66 * apt;
+            return (base_length + shaking_now + grand_fluctuating) * 3.0;
+        };
+        let rotate_deg = (group_id % 2) * 90 + 90;
+        tmpstr1 += svgplotlib.drawpolarcircle({
+            step: 1 / step_density,
+            attrs: {
+                'transform': `scale(0.85,1) rotate(${rotate_deg})`,
+                'fill': "white",
+                'stroke': "white",
+                'stroke-width': "15",
+                'stroke-linejoin': "round",
+            },
+            func: myfunc
+        }) + '\n\n';
+        tmpstr2 += svgplotlib.drawpolarcircle({
+            step: 1 / step_density,
+            attrs: {
+                'transform': `scale(0.85,1) rotate(${rotate_deg})`,
+                'fill': "none",
+                'stroke': (group_id % 2 === 0) ? COLOR3 : COLOR2,
+                'stroke-width': "3",
+                'stroke-linejoin': "round",
+            },
+            func: myfunc
+        }) + '\n\n';
+    }
+    middle_content += tmpstr1 + tmpstr2;
 };
+SVG_CONTENTS_INNER += middle_content;
+
+
+
+
+
+
+
 
 // Center flower big
 SVG_CONTENTS_INNER += (function () {
@@ -250,42 +289,44 @@ SVG_CONTENTS_INNER += (function () {
         });
         tmpstr_high += svgplotlib.drawpolarcircle({
             step: 2,
-            attrs: { fill: 'none', stroke: COLOR1, 'stroke-width': 4, 'stroke-linejoin': 'round' },
+            attrs: { fill: 'none', stroke: COLOR3, 'stroke-width': 4, 'stroke-linejoin': 'round' },
             func: function (theta_rad) {
                 const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
                 return 1.95 * (195 + Math.cos(8 * theta_rad_alt) * 61) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
             }
         });
     };
-    return tmpstr_low + tmpstr_high;
+    // return tmpstr_low + tmpstr_high;
+    return '';
 })();
+
+
+
 // Center flower small
 SVG_CONTENTS_INNER += (function () {
     let tmpstr_low = '';
     let tmpstr_high = '';
     for (let itr = -7; itr <= 7; itr++) {
         const degskip = 3;
+        let myfunc = function (theta_rad) {
+            const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
+            return (196 + Math.cos(8 * theta_rad_alt) * 82) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0 * Math.cos(2 * theta_rad));
+        }
         tmpstr_low += svgplotlib.drawpolarcircle({
             step: 2,
-            attrs: { fill: 'white', stroke: 'white', 'stroke-width': 3.5, 'stroke-linejoin': 'round' },
-            func: function (theta_rad) {
-                const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
-                return (166 + Math.cos(8 * theta_rad_alt) * 82) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
-            }
+            attrs: { fill: 'white', stroke: 'white', 'stroke-width': 15, 'stroke-linejoin': 'round' },
+            func: myfunc
         });
         tmpstr_high += svgplotlib.drawpolarcircle({
             step: 2,
-            attrs: { fill: 'none', stroke: COLOR1, 'stroke-width': 4, 'stroke-linejoin': 'round' },
-            func: function (theta_rad) {
-                const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
-                return (166 + Math.cos(8 * theta_rad_alt) * 82) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
-            }
+            attrs: { fill: 'none', stroke: COLOR3, 'stroke-width': 3, 'stroke-linejoin': 'round' },
+            func: myfunc
         });
     };
     return tmpstr_low + tmpstr_high;
 })();
 
-SVG_CONTENTS_INNER += border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR1).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
+SVG_CONTENTS_INNER += border_deco_c1.replace(new RegExp(COLOR_DECO, 'g'), COLOR3).replace(/border_deco_c1/g, `rand-447cc88f30f6`);
 
 
 

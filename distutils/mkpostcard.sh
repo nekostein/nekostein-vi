@@ -34,7 +34,7 @@ fi
 
 # Step 2: Use the resized image and MASK.png to create the final masked image
 # Use ImageMagick's -compose option to apply the mask
-convert -verbose "$PHOTOTMP" "$MASK" -compose CopyOpacity -composite "$OUTPUT"
+magick convert -verbose "$PHOTOTMP" "$MASK" -compose CopyOpacity -composite "$OUTPUT"
 
 if [[ "$ADD_DECO" == y ]]; then
     composite -verbose "$OUTPUT" "$DECORATION" "$OUTPUT"
