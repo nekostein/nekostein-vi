@@ -61,6 +61,6 @@ Set up `XELATEX_CMDNAME=xelatex-docker` environment variable.
 
 ## Copyright
 
-Copyright (c) 2023 Nekostein. All rights reserved.
+Copyright (c) 2023-2025 Nekostein. All rights reserved.
 
 Nekostein is an unincorporated game development team consisting of Neruthes and MIAO_OAIM.
