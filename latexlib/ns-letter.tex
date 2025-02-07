@@ -9,7 +9,7 @@
 \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
 \setmainfont{CMU Serif}
 \setromanfont{CMU Serif}
-\setsansfont{Inter}
+\setsansfont{Roboto}
 \setmonofont{JetBrains Mono NL}
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKromanfont{Noto Serif CJK SC}
@@ -50,6 +50,25 @@
 	}
 }
 
+
+\newcommand{\tabukvlist}[2]{%
+	\begingroup%
+	\tabulinesep=0.5pt%
+	\tabcolsep=8pt%
+	#1%
+	\hspace{-\tabcolsep}\begin{tabu}{ll}
+		#2
+	\end{tabu}%
+	\endgroup%
+}
+
+\newcommand{\lettertitle}[1]{
+    \toparea{%
+        \vfill%
+        \sffamily\LARGE\bfseries\upshape%
+        \strut#1%
+    }
+}
 \newcommand{\emailheading}[1]{
     \toparea{
         \vfill\tabcolsep=0pt
@@ -124,4 +143,7 @@
 		\put(203mm,95mm){\rule{2mm}{0.4pt}}
 		\put(203mm,190mm){\rule{2mm}{0.4pt}}
 	}
+}
+\newcommand{\CJKsloppy}[0]{
+    \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt plus 0.2pt minus 0.1pt,CJKecglue=\hskip 0.35em plus 0.3em minus 0.05em}
 }

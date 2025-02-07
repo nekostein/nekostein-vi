@@ -6,6 +6,9 @@ case $1 in
     gc)
         find _dist/wwwmisc/patterns -name '.goutputstream*' -delete
         ;;
+    latexlib/)
+        bash sh/01-texlib.sh
+        ;;
     sh)
         mkdir -p wwwmisc _dist/wwwmisc
         chmod +x sh/*.sh
@@ -27,7 +30,7 @@ case $1 in
     install|ins)
         ln -svf "$PWD/misc/nekostein-installvilib.sh" "$HOME/.local/bin/nekostein-installvilib.sh"
         ;;
-    rel|release)
+    rel|release|tag)
         tagid="snapshot-$(TZ=UTC date +%Y%m%d)"
         echo '$' git tag "$tagid" ';' git push origin "$tagid"
         echo "url:  https://github.com/nekostein/nekostein-vi/releases/new"
@@ -51,7 +54,6 @@ case $1 in
         ;;
     fonts)
         exit 0
-        # cfoss2 ~/.fonts/inter-tight/InterTight-Medium.ttf
         ;;
     patterns/js/*.js)
         svgpath="$(sed 's|js|svg|g' <<< "$1")"
