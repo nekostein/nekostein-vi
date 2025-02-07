@@ -2,8 +2,8 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[textwidth=31em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
 \newcommand{\calculatedlogowidth}[0]{210mm-50mm-31em-1mm}
-\usepackage{calc,fontspec,tocloft,longtable,tabu,tabulary,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
-\usepackage{amssymb,amsmath,multicol,fancyhdr,adjustbox}
+\usepackage{calc,fontspec,tabulary,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
+\usepackage{,adjustbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xeCJK,xeCJKfntef}
 \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
@@ -13,8 +13,9 @@
 \setmonofont{JetBrains Mono NL}
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKromanfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans CJK SC}
+\setCJKsansfont[BoldFont={Noto Sans CJK SC Bold}]{Noto Sans CJK SC}
+\setCJKmonofont[BoldFont={Noto Sans CJK SC Bold}]{Noto Sans CJK SC}
+\pagestyle{empty}
 
 \setdefaultleftmargin{2em}{2em}{2em}{2em}{2em}{2em}
 
@@ -27,23 +28,15 @@
 \usepackage{sectsty}
 \allsectionsfont{\sffamily\raggedright}
 
-\pagestyle{fancy}
-\fancyhead[L]{}
-\fancyhead[C]{}
-\fancyhead[R]{}
-\fancyfoot[C]{}
-\fancyfoot[R]{}
-\renewcommand{\headrulewidth}{0pt}
-\setlength{\headheight}{15pt}
 
 
 
 \newlength{\sendtoareaextraraise}
-\setlength{\sendtoareaextraraise}{0pt}
+\setlength{\sendtoareaextraraise}{-4pt}
 \newcommand{\sendto}[1]{
 	\AddToShipoutPictureFG*{
-		\put(25mm,55mm+\sendtoareaextraraise){%
-			\noindent\begin{minipage}[b][150mm][t]{43mm}%
+		\put(25mm,0mm){%
+			\noindent\begin{minipage}[b][207mm+\sendtoareaextraraise][t]{43mm}%
 				\footnotesize\sffamily\noindent#1%
 			\end{minipage}%
 		}%
@@ -63,31 +56,32 @@
 }
 
 \newcommand{\lettertitle}[1]{
-    \toparea{%
-        \vfill%
-        \sffamily\LARGE\bfseries\upshape%
-        \strut#1%
-    }
+	\toparea{%
+		\vfill%
+		\sffamily\LARGE\bfseries\upshape%
+		\strut#1%
+	}
 }
 \newcommand{\emailheading}[1]{
-    \toparea{
-        \vfill\tabcolsep=0pt
-        \small\sffamily\mdseries
-        \begin{tabulary}\linewidth{ll}
-            {\hspace{6em}} & {} \\
-            #1
-        \end{tabulary}
-        \hrule
-    }
+	\toparea{
+		\vfill\tabcolsep=0pt
+		\small\sffamily\mdseries
+		% \begin{tabulary}\linewidth{ll}
+		% 	{\hspace{6em}} & {} \\
+		% 	#1
+		% \end{tabulary}
+        \tabukvlist{}{#1}
+		\hrule
+	}
 }
 \newcommand{\toparea}[1]{
-    \AddToShipoutPictureFG*{
-        \put(\paperwidth-\textwidth-25mm,307mm){%
-            \begin{minipage}[t][90mm][t]{\textwidth}%
-                \vfill#1
-            \end{minipage}
-        }
-    }
+	\AddToShipoutPictureFG*{
+		\put(\paperwidth-\textwidth-25mm,307mm){%
+			\begin{minipage}[t][90mm][t]{\textwidth}%
+				\vfill#1
+			\end{minipage}
+		}
+	}
 }
 
 \newcommand{\letterhello}[1]{\noindent#1\par\vskip 1em}
@@ -101,32 +95,36 @@
 
 \newcommand{\footercontentleft}[0]{NEKOSTEIN HQ}
 \newcommand{\footercontentright}[0]{\thepage}
-% Neko and Kuma are friends forever
+% NEKO AND KUMA ARE FRIENDS FOREVER
 
 
 
+\newcommand{\setupfooters}[2]{%
+    \renewcommand{\footercontentleft}[0]{##1}%
+    \renewcommand{\footercontentright}[0]{##2}%
+}
 \newcommand{\setupdecorations}[0]{
 	\AddToShipoutPictureBG{
 		\put(25mm,265mm){%
-            \noindent%
-            \normalsize
+			\noindent%
+			\normalsize
 			\includegraphics[width=\calculatedlogowidth]{_dist/libvi/logocomb/Nekostein-logocombH.black.png}
 		}
 		\put(25mm,18mm){%
 			\parbox{\paperwidth-50mm}{%
-                \noindent%
+				\noindent%
 				\adjustbox{width=\linewidth,height=0.5pt}{%
-                    \noindent%
+					\noindent%
 					\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}%
 				}%
 			}
 		}
 		\put(25mm,23mm){%
 			\parbox{\paperwidth-50mm}{%
-				\footnotesize%
+				\small%
 				\rmfamily\noindent%
-                \strut%
-                \footercontentleft%
+				\strut%
+				\footercontentleft%
 				\hfill%
 				\footercontentright%
 			}
@@ -145,5 +143,5 @@
 	}
 }
 \newcommand{\CJKsloppy}[0]{
-    \xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt plus 0.2pt minus 0.1pt,CJKecglue=\hskip 0.35em plus 0.3em minus 0.05em}
+	\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt plus 0.2pt minus 0.1pt,CJKecglue=\hskip 0.35em plus 0.3em minus 0.05em}
 }
