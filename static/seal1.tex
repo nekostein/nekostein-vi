@@ -1,0 +1,24 @@
+\documentclass[10pt]{article}
+\usepackage[margin=5mm,paperwidth=45mm,paperheight=45mm]{geometry}
+\usepackage{calc,fontspec,graphicx,eso-pic,tikz,adjustbox}
+\setmainfont{Myriad Pro}
+\usetikzlibrary{decorations.text}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+
+\begin{document}
+\AddToShipoutPictureBG{
+    \put(0mm,0mm){%
+		\includegraphics[width=\paperwidth]{_dist/static/seal1-component1.pdf}%
+	}
+    \put(0.5\paperwidth-13.00mm,0.5\paperwidth-13.00mm){%
+		\includegraphics[width=13.00mm+13.00mm]{_dist/wwwmisc/avatar/Nekostein-avatar.black_white.circ.png}%
+    }%
+}
+
+~~~
+\end{document}
+
+

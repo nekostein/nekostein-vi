@@ -1,0 +1,25 @@
+\documentclass[10pt]{standalone}
+\usepackage{calc,xcolor,fontspec,graphicx,eso-pic,tikz,adjustbox}
+\usetikzlibrary{decorations.text}
+\setmainfont{Myriad Pro Black}
+
+
+\begin{document}%
+\begin{tikzpicture}%
+    % Set up canvas size
+    \draw[white] (0mm,0mm) circle (22.4mm);
+
+    % \fontspec{Myriad Pro Black}
+	\draw[blue,draw opacity=0,postaction={decorate},decoration={text along path,text align=fit to path,text color=black,
+        text={~~~~~~~~~~~~~~~~~~~~~~~~!· · !·! !!! ·! !· !·· !·! ··! !! ·!~~~~~~~~~~~~~~~~~~~~~~~~},text align=center}]
+	(0mm,-17.0mm) arc [start angle=270,end angle=-90,radius=17.0mm];
+
+    \fontspec{Myriad Pro Bold}
+	\draw[red,draw opacity=0,postaction={decorate},decoration={text along path,text align=fit to path,text color=black,
+				text={~~~~~~~~~~~~~~~~~~~~~~~~>~NEKOSTEIN GRAND SEAL~<~~~~~~~~~~~~~~~~~~~~~~~~},text align=center}]
+	(0mm,19.10mm) arc [start angle=90,end angle=450,radius=19.10mm];
+\end{tikzpicture}%
+\end{document}
+
+
+

@@ -1,13 +1,14 @@
-const RAW_CODE_SEQ = `.- .-.. .-.. . ... .. ... - .-. .. -.-. .... - .. --. -- .. - -.. . .-. .-- . .-.. -`;
-
-// NEKOSTEIN
-// NEKOUNDKUMASINDTOMODACHIFOREVER
 // ALLESISTRICHTIGMITDERWELT
+// const RAW_CODE_SEQ = `.- .-.. .-.. . ... .. ... - .-. .. -.-. .... - .. --. -- .. - -.. . .-. .-- . .-.. -`;
+
+
+// NEKOANDKUMAAREFRIENDSFOREVER
+const RAW_CODE_SEQ = process.env.MSG || `-. . -.- --- .- -. -.. -.- ..- -- .- .- .-. . ..-. .-. .. . -. -.. ... ..-. --- .-. . ...- . .-.`;
 
 const CONVERT_MAP = {
-    '-': '\\rule{9pt}{1pt}~',
-    '.': '\\rule{4pt}{1pt}~',
-    ' ': '~~',
+    '-': process.env.LONG || '\\rule{9pt}{1pt}~',
+    '.': process.env.SHORT || '\\rule{4pt}{1pt}~',
+    ' ': process.env.SPACE || '~~',
     '/': '~~~~~~',
 }
 

@@ -1,0 +1,36 @@
+\documentclass[10pt]{article}
+\usepackage[margin=5mm,paperwidth=45mm,paperheight=45mm]{geometry}
+\usepackage{calc,fontspec,graphicx,eso-pic,tikz,adjustbox}
+
+\pagestyle{empty}
+
+
+\begin{document}
+\AddToShipoutPictureBG{
+    \put(-1.9mm,-1.9mm){%
+        \adjustbox{width=\paperwidth+1.9mm+1.9mm}{%
+            \begin{tikzpicture}%
+                \draw[white] (0mm,0mm) circle (9.4mm);
+
+                \draw[black] (0mm,0mm) circle (8.4mm);
+                \draw[black] (0mm,0mm) circle (8.3mm);
+                \draw[black] (0mm,0mm) circle (8.2mm);
+                
+                \draw[black] (0mm,0mm) circle (5.6mm);
+                \draw[black] (0mm,0mm) circle (5.7mm);
+                \draw[black] (0mm,0mm) circle (5.8mm);
+            \end{tikzpicture}%
+        }%
+	}
+    \put(-0.50mm,-0.50mm){%
+		\includegraphics[width=\paperwidth+0.50mm+0.50mm]{_dist/static/seal1-component1.pdf}%
+	}
+    \put(0.5\paperwidth-13.00mm,0.5\paperwidth-13.00mm){%
+		\includegraphics[width=13.00mm+13.00mm]{_dist/wwwmisc/avatar/Nekostein-avatar.white_black.circ.png}%
+    }%
+}
+
+~~~
+\end{document}
+
+

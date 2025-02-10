@@ -43,3 +43,9 @@ function makeTransparentGeologo() {
 
 makeTransparentGeologo '#FFFFFF' white
 makeTransparentGeologo '#000000' black
+
+
+
+### And finally make circle cropped avatar...
+magick _dist/wwwmisc/avatar/Nekostein-avatar.white_black.png -bordercolor black -border 200 +repage -alpha set -background none \( +clone -alpha extract -draw "circle %[fx:w/2],%[fx:h/2] %[fx:w/2],1" -blur 0x2 -threshold 50% -channel A -negate +channel \) -compose CopyOpacity -level 49%,51% -composite _dist/wwwmisc/avatar/Nekostein-avatar.white_black.circ.png
+magick _dist/wwwmisc/avatar/Nekostein-avatar.white_black.circ.png -channel RGB -negate -level 49%,51% _dist/wwwmisc/avatar/Nekostein-avatar.black_white.circ.png

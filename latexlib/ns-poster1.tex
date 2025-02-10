@@ -3,15 +3,15 @@
 \usepackage{calc,fontspec,graphicx,eso-pic,adjustbox}
 
 \usepackage{xeCJK,xeCJKfntef}
-\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,CJKglue=\hskip 0pt,CJKecglue=\hskip 0.35em plus 5em minus 0.09em}
-\setmainfont{XCharter}
-\setromanfont{XCharter}
-\setsansfont{Inter}
+\xeCJKsetup{PunctStyle=plain,RubberPunctSkip=false,AllowBreakBetweenPuncts=true,LoadFandol=false,WidowPenalty=1000,CJKglue=\strut\hskip 0pt,CJKecglue=\strut\hskip 0.35em plus 5em minus 0.09em}
+\setmainfont{CMU Serif}
+\setromanfont{CMU Serif}
+\setsansfont{Roboto}
 \setmonofont{JetBrains Mono NL}
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKromanfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans CJK SC}
+\setCJKsansfont[BoldFont={Noto Sans CJK SC Bold}]{Noto Sans CJK SC}
+\setCJKmonofont[BoldFont={Noto Sans CJK SC Bold}]{Noto Sans CJK SC}
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}

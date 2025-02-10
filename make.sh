@@ -2,14 +2,14 @@
 
 mkdir -p _dist _pkg .tmp
 
-case $1 in
+case "$1" in
     gc)
         find _dist/wwwmisc/patterns -name '.goutputstream*' -delete
         ;;
     latexlib/)
         bash sh/01-texlib.sh
         ;;
-    sh)
+    sh | sh/)
         mkdir -p wwwmisc _dist/wwwmisc
         chmod +x sh/*.sh
         export MASSIVE_MODE=y
@@ -76,6 +76,10 @@ case $1 in
         nekostein-installvilib.sh
         ;;
     *)
-        echo "[ERROR] Invalid target"
+        echo "No explicit rule for '$1'; attempting 'recipe.sh'..."
+        bash recipe.sh "$1"
         ;;
 esac
+
+
+

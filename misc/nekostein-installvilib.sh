@@ -6,9 +6,12 @@ mkdir -p _dist/{libvi,libvitmp}
 rm -rf _dist/{libvi,libvitmp}
 mkdir -p _dist/{libvi,libvitmp}
 
-### Command parameters
-[[ "$1" == '--local' ]] && USE_LOCAL=y
-[[ "$1" == '-l' ]] && USE_LOCAL=y
+
+### Parse argv in a simple way
+case " $* " in
+  *" -l "* ) USE_LOCAL=y ;;
+  *" --local "* ) USE_LOCAL=y ;;
+esac
 
 
 function download_fonts() {
