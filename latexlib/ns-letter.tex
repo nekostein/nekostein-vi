@@ -2,7 +2,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[textwidth=31em,rmargin=25mm,tmargin=90mm,bmargin=37mm]{geometry}
 \newcommand{\calculatedlogowidth}[0]{210mm-50mm-31em-1mm}
-\usepackage{calc,fontspec,tabulary,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
+\usepackage{calc,fontspec,tabularx,longtable,tabu,booktabs,xcolor,datetime2,paralist,enumitem,hyphenat,graphicx,eso-pic}
 \usepackage{,adjustbox}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xeCJK,xeCJKfntef}
@@ -66,10 +66,6 @@
 	\toparea{
 		\vfill\tabcolsep=0pt
 		\small\sffamily\mdseries
-		% \begin{tabulary}\linewidth{ll}
-		% 	{\hspace{6em}} & {} \\
-		% 	#1
-		% \end{tabulary}
         \tabukvlist{}{#1}
 		\hrule
 	}
@@ -116,7 +112,7 @@
 				\noindent%
 				\adjustbox{width=\linewidth,height=0.5pt}{%
 					\noindent%
-					\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~%
+					\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{9pt}{1pt}~\rule{9pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{4pt}{1pt}~\rule{9pt}{1pt}~~~\rule{4pt}{1pt}~~~\rule{4pt}{1pt}~\rule{9pt}{1pt}~\rule{4pt}{1pt}%
 				}%
 			}
 		}

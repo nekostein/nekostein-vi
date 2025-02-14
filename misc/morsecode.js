@@ -12,4 +12,4 @@ const CONVERT_MAP = {
     '/': '~~~~~~',
 }
 
-console.log(RAW_CODE_SEQ.split('').map(x => CONVERT_MAP[x]).join(''));
+console.log(RAW_CODE_SEQ.split('').map(x => CONVERT_MAP[x]).join('').replace(/~$/, ''));

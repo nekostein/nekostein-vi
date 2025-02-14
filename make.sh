@@ -25,7 +25,6 @@ case "$1" in
         ;;
     up|upload)
         cfoss2 _pkg/Nekostein-VI.zip
-        # minoss _pkg/Nekostein-VI.zip
         ;;
     install|ins)
         ln -svf "$PWD/misc/nekostein-installvilib.sh" "$HOME/.local/bin/nekostein-installvilib.sh"
@@ -36,8 +35,9 @@ case "$1" in
         echo "url:  https://github.com/nekostein/nekostein-vi/releases/new"
         echo "zip:  $(realpath _pkg/Nekostein-VI.zip)"
         ;;
-    local)
+    local | ci)
         bash sh/000-prepare.sh
+        bash "$0" zip
         nekostein-installvilib.sh --local
         ;;
     fast)
