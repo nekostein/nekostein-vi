@@ -4,10 +4,12 @@
 %   - Output h/w ratio is 6425/9500, like h = 1200 and w = 1200/6425*9500
 %   - p01 raw size 5000x5000
 %
-% Build script for dependencies:
+% #Build script for dependencies:
+% BEGIN DANGEROUS SHELL INJECTION
 %   magick _dist/wwwmisc/patterns/p03.js.png -crop "2070x1400+$((2500+250-2070/2))+2900" _dist/static/freqvisitorpass1-bg1.png
+% END DANGEROUS SHELL INJECTION
 %
-% Create PNG:
+% #Create PNG:
 %   magick -density 600 _dist/static/freqvisitorpass1.pdf -background white -flatten _dist/static/freqvisitorpass1.pdf-1.png
 % =======================================================
 

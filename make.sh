@@ -18,7 +18,7 @@ case "$1" in
         done
         ;;
     zip)
-        bash "$0" gc
+        ./make.sh gc
         rm _pkg/Nekostein-VI.zip
         zip -9vr _pkg/Nekostein-VI _dist/wwwmisc -x "_dist/wwwmisc/patterns/*.js.png"
         du -h _pkg/*
@@ -37,13 +37,13 @@ case "$1" in
         ;;
     local | ci)
         bash sh/000-prepare.sh
-        bash "$0" zip
+        ./make.sh zip
         nekostein-installvilib.sh --local
         ;;
     fast)
         bash sh/000-prepare.sh
-        bash "$0" zip
-        bash "$0" upload
+        ./make.sh zip
+        ./make.sh upload
         nekostein-installvilib.sh --local
         ;;
     send)
@@ -69,11 +69,13 @@ case "$1" in
         esac
         rsync -av patterns/svg/ _dist/wwwmisc/patterns/
         ;;
-    '')
-        bash "$0" zip
-        bash "$0" upload
-        bash "$0" release
-        nekostein-installvilib.sh
+    all | '')
+        ./make.sh sh
+        echo ./make.sh $(ls wwwmisc/*/*.tex)
+        echo ntex static/*.tex static/stage{2..3}/*.tex # Not really required for creating other stuff
+        ./make.sh zip
+        ./make.sh install
+        nekostein-installvilib.sh -l
         ;;
     *)
         echo "No explicit rule for '$1'; attempting 'recipe.sh'..."
