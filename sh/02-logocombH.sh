@@ -12,7 +12,7 @@ function makecombH() {
 
     extra_y_offset=20
 
-    convert "$word_file" -resize "x$wordHeight" "$word_file2"
+    magick "$word_file" -resize "x$wordHeight" "$word_file2"
 
     # Get the dimensions of the input images
     geo_W=$(identify -format "%w" "$geo_file")
@@ -35,7 +35,7 @@ function makecombH() {
 }
 
 cp -a _dist/wwwmisc/geologo/Nekostein-geologo.white_null.png .tmp/ef8be658c38b.white.png
-convert _dist/wwwmisc/avatar/Nekostein-avatar.white_black.rounded.png -resize x1200 .tmp/ef8be658c38b.black.png
+magick _dist/wwwmisc/avatar/Nekostein-avatar.white_black.rounded.png -resize x1200 .tmp/ef8be658c38b.black.png
 
 gap=560 wordHeight=580 makecombH white
 gap=430 wordHeight=470 makecombH black
