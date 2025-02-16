@@ -71,8 +71,8 @@ case "$1" in
         ;;
     all | '')
         ./make.sh sh
-        echo ./make.sh $(ls wwwmisc/*/*.tex)
-        echo ntex static/*.tex static/stage{2..3}/*.tex # Not really required for creating other stuff
+        ./make.sh $(ls wwwmisc/*/*.tex)
+        ntex static/*.tex static/stage{2..3}/*.tex # Not really required for creating other stuff
         ./make.sh zip
         ./make.sh install
         nekostein-installvilib.sh -l

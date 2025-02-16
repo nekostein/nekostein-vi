@@ -1,3 +1,5 @@
+#!/bin/bash
+
 case "$1" in
     static/seal1.tex )
         ntex static/seal1-component1.tex
