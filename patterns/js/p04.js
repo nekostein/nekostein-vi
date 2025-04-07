@@ -47,7 +47,7 @@ let SVG_CONTENTS_OUTER = '';
 
 
 
-SVG_CONTENTS_OUTER += (function () { // Center star
+SVG_CONTENTS_OUTER += `<g filter="url(#blurMe)">` + (function () { // Center star
     let tmpstr1 = '';
     let tmpstr2 = '';
     const HALFMAX = 2;
@@ -62,7 +62,7 @@ SVG_CONTENTS_OUTER += (function () { // Center star
         const _transform_str = `translate(701,266) scale(4) rotate(${ROTATE})`
         tmpstr2 += svgplotlib.drawpolarcircle({
             attrs: {
-                'fill': 'none',
+                'fill': '#FFFFFF33',
                 'stroke': COLOR_RING,
                 'stroke-width': '5',
                 'transform': _transform_str
@@ -70,7 +70,7 @@ SVG_CONTENTS_OUTER += (function () { // Center star
         });
     };
     return tmpstr1 + tmpstr2;
-})();
+})() + '</g>\n';
 
 
 
@@ -108,6 +108,9 @@ const OUTPUT_SVG = `<svg viewBox="-1485 -1050 2970 2100" data-height="100vh" xml
 <desc>Copyright (c) 2024 Nekostein, an unincorporated game development team. All rights reserved.</desc>
 
 <defs>
+    <filter id="blurMe">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="22" />
+    </filter>
     ${SVG_DEFS}
     <rect id="contentsizebox"
         x="-${(2970 - MAGIC_GLOBAL_PADDING) / 2}" y="-${(2100 - MAGIC_GLOBAL_PADDING) / 2}"
