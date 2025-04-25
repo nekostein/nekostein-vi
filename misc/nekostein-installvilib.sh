@@ -43,7 +43,7 @@ else
     unzip Nekostein-VI.zip
     rm *.zip
     cd "$REPODIR"
-    rsync -auv --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
+    rsync -auvpx --delete _dist/libvitmp/_dist/wwwmisc/ _dist/libvi/
     rm -rf _dist/libvitmp
     # download_fonts
 fi
