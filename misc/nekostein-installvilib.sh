@@ -2,9 +2,7 @@
 REPODIR="$PWD"
 # ZIPURL="https://pub-714f8d634e8f451d9f2fe91a4debfa23.r2.dev/keep/nekostein-vi/Nekostein-VI.zip--932cd19c36bdde979f5fefbd23876e61.zip"
 ZIPURL="https://pub-714f8d634e8f451d9f2fe91a4debfa23.r2.dev/nekostein-vi/8ca76cdc91872ed0150f3182/Nekostein-VI.zip"
-mkdir -p _dist/{libvi,libvitmp}
-rm -rf _dist/{libvi,libvitmp}
-mkdir -p _dist/{libvi,libvitmp}
+
 
 
 ### Parse argv in a simple way
@@ -35,9 +33,12 @@ function download_font_from_google() {
 if [[ "$USE_LOCAL" == y ]]; then
     LOCAL_DISTDIR="$(realpath "$0" | xargs dirname | xargs dirname)/_dist/wwwmisc"
     # echo "LOCAL_DISTDIR = $LOCAL_DISTDIR"
-    rsync -auv "$LOCAL_DISTDIR/" "$REPODIR/_dist/libvi/"
+    rsync -auvpx "$LOCAL_DISTDIR/" "$REPODIR/_dist/libvi/"
     rm -rf _dist/libvitmp 2>/dev/null
 else
+    mkdir -p _dist/{libvi,libvitmp}
+    rm -rf _dist/{libvi,libvitmp}
+    mkdir -p _dist/{libvi,libvitmp}
     cd "$REPODIR/_dist/libvitmp"
     wget "$ZIPURL" -O Nekostein-VI.zip
     unzip Nekostein-VI.zip

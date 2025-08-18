@@ -1,0 +1,39 @@
+\documentclass[10pt]{article}
+\usepackage{calc,xcolor,fontspec,xeCJK,graphicx,adjustbox,pbox,eso-pic}
+\usepackage[paperwidth=54mm+4mm,paperheight=85mm+4mm]{geometry}
+\pagecolor{black}
+\color{white}
+\pagestyle{empty}
+
+
+\setmainfont{Roboto}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}%
+\leavevmode\vskip 3mm
+\bfseries%
+\includegraphics[height=10mm]{_dist/libvi/geologo/Nekostein-geologo.white_null.4x.png}
+
+\vfill%
+\huge%
+\adjustbox{width=\linewidth}{%
+	\pbox{\linewidth}{%
+		OFFICE\\
+		ONE-DAY\\
+		PASS%
+	}
+}
+
+\clearpage
+
+
+~~~~
+\AddToShipoutPictureFG*{
+	\put(0.5\paperwidth-0.5\paperheight,0mm){\includegraphics[height=\paperheight]{static/office1daypass-1.tex.d/pattern-001.js.pdf}}
+}
+\end{document}
+
+
+% Build this document:
+%       bash static/office1daypass-1.tex.d/build.sh
