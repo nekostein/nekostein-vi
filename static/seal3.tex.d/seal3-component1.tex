@@ -1,0 +1,25 @@
+\documentclass[10pt]{standalone}
+\usepackage{calc,xcolor,fontspec,graphicx,eso-pic,tikz,adjustbox}
+\usetikzlibrary{decorations.text}
+\setmainfont{Myriad Pro Black}
+
+
+\begin{document}%
+\begin{tikzpicture}%
+    % Set up canvas size
+    \draw[white] (0mm,0mm) circle (42mm);
+    \draw[white, line width=9mm] (0mm,0mm) circle (18.30mm);
+    \draw[black, line width=6mm] (0mm,0mm) circle (18.30mm);
+
+	\draw[blue,draw opacity=0,postaction={decorate},decoration={text along path,text align=fit to path,text color=white,
+        text={~~~~~~~~~~~~~~~~~~~~~NEKO~~AND~~KUMA~~ARE~~FRIENDS~~FOREVER~~~~~~~~~~~~~~~~~~~~~},text align=center}]
+	(0mm,-17.0mm) arc [start angle=270,end angle=-90,radius=17.0mm];
+
+	\draw[red,draw opacity=0,postaction={decorate},decoration={text along path,text align=fit to path,text color=white,
+				text={~~~~~~~~~~~~~~~~~~~~~~~~~~~-~NEKOSTEIN~-~~~~~~~~~~~~~~~~~~~~~~~~~~~},text align=center}]
+	(0mm,19.50mm) arc [start angle=90,end angle=450,radius=19.50mm];
+\end{tikzpicture}%
+\end{document}
+
+
+

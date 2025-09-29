@@ -1,0 +1,87 @@
+<svg viewBox="-2150 -2150 4300 4300" xmlns="http://www.w3.org/2000/svg">
+<desc>Copyright (c) 2024 Nekostein, an unincorporated game development team. All rights reserved.</desc>
+
+<defs>
+    
+</defs>
+
+
+<g><polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(0) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(7.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(0) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(0) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(15) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(22.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(30) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(37.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(30) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(30) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(45) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(52.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(60) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(67.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(60) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(60) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(75) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(82.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(90) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(97.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(90) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(90) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(105) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(112.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(120) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(127.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(120) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(120) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(135) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(142.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(150) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(157.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(150) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(150) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(165) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(172.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(180) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(187.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(180) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(180) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(195) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(202.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(210) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(217.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(210) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(210) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(225) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(232.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(240) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(247.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(240) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(240) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(255) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(262.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(270) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(277.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(270) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(270) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(285) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(292.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(300) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(307.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(300) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(300) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(315) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(322.5) translate(0,1610)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(330) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(337.5) translate(0,1610)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(330) translate(0,1220)" />
+<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(330) translate(0,1020)" />
+<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(345) translate(0,2000)" />
+<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(352.5) translate(0,1610)" />
+</g>
+
+<circle cx="0" cy="0" r="1950" stroke="white" stroke-width="50" fill="none" opacity="1" />
+
+
+
+</svg>

@@ -10,4 +10,7 @@ case "$1" in
         USE_POPPLER=y DPI=1800 ntex static/seal2.tex --png
         magick _dist/static/seal2.pdf-1.png -level 49%,51% -fuzz 25% -transparent white -level 49%,51% -scale 50% _dist/static/seal2.pdf-1.png
         ;;
+    * )
+        [[ -e "$1.sh" ]] && bash "$1.sh"
+        ;;
 esac
