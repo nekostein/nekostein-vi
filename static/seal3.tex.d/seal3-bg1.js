@@ -1,4 +1,6 @@
 const fs = require('fs');
+const svgplotlib = require('../../patterns/svgplotlib.js');
+
 
 let SVG_DEFS = '';
 let SVG_CONTENT_MAIN = '';
@@ -8,24 +10,22 @@ SVG_CONTENT_MAIN += `<g>` + (function () {
     const __total_steps = 24;
     let tmpstr = '';
     for (let step = 0; step < __total_steps; step++) {
-        let distance = 2000 + Math.cos(12 * (step / __total_steps * 2 * Math.PI)) * 0;
+        let distance = 2000;
         // Outer solid dots
         tmpstr += `<polygon points="0,120 290,0 0,-340 -290,0" transform="rotate(${step / __total_steps * 360}) translate(0,${distance})" />\n`;
         // Inner hollow dots
-        tmpstr += `<polygon fill="none" stroke="black" stroke-width="40" points="0,182 99,0 0,-66 -99,0" transform="rotate(${(step+0.5) / __total_steps * 360}) translate(0,${distance - 390})" />\n`;
-        if (step % 2 === 0) {
-            // Inner ring
-            tmpstr += `<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="40" transform="rotate(${step / __total_steps * 360}) translate(0,${distance - 780})" />\n`;
-            tmpstr += `<path d="M 340,0 L 0,244 -340,0" fill="none" stroke="black" stroke-width="160" transform="rotate(${step / __total_steps * 360}) translate(0,${distance - 780 - 200})" />\n`;
-        }
+        tmpstr += `<polygon fill="none" stroke="black" stroke-width="40" stroke-linejoin="round" points="0,182 99,0 0,-66 -99,0" transform="rotate(${(step + 0.5) / __total_steps * 360}) translate(0,${distance - 390})" />\n`;
     };
     return tmpstr;
 })() + `</g>`;
 
 
+SVG_CONTENT_MAIN += svgplotlib.drawstar({ vert: 24, short: 1195, long: 1195 * 1.16, attrs: { fill: 'black' } });
+SVG_CONTENT_MAIN += svgplotlib.drawstar({ vert: 24, short: 1275, long: 1275 * 1.16, attrs: { fill: 'none', stroke: 'black', 'stroke-width': '50' } });
 
 
-const OUTPUT_SVG = `<svg viewBox="-2150 -2150 ${2150*2} ${2150*2}" xmlns="http://www.w3.org/2000/svg">
+
+const OUTPUT_SVG = `<svg viewBox="-2150 -2150 ${2150 * 2} ${2150 * 2}" xmlns="http://www.w3.org/2000/svg">
 <desc>Copyright (c) 2024 Nekostein, an unincorporated game development team. All rights reserved.</desc>
 
 <defs>

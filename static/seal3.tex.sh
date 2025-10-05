@@ -15,3 +15,11 @@ magick _dist/static/seal3.pdf-1.png -level 49%,51% -fuzz 25% -colors 2 -transpar
 for opacity in 05 10 15 20 50 60 70 80; do
     magick _dist/static/seal3.pdf-1.png -alpha Set -channel A -evaluate Multiply "0.$opacity" "_dist/static/seal3.pdf-1.opa$opacity.png"
 done
+
+
+mkdir -p _dist/wwwmisc/static
+
+rsync --dry-run -av \
+  --include 'seal3*' \
+  --exclude '*' \
+  _dist/static/ _dist/wwwmisc/static/
