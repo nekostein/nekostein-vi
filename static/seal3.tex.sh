@@ -1,14 +1,18 @@
 #!/bin/bash
 
-node static/seal3.tex.d/seal3-bg1.js &&
-rsvg-convert static/seal3.tex.d/seal3-bg1.js.svg --format=pdf -o .tmp/seal3-bg1.js.svg.pdf
-# rsvg-convert static/seal3.tex.d/seal3-bg1.js.svg -o .tmp/seal3-bg1.js.svg.png
+for bg in bg1 bg2; do
+    node static/seal3.tex.d/seal3-$bg.js &&
+    rsvg-convert static/seal3.tex.d/seal3-$bg.js.svg --format=pdf -o .tmp/seal3-$bg.js.svg.pdf
+done
+
 
 ntex static/seal3.tex.d/seal3-component1.tex
 # ntex static/seal3.tex
 
 ### Enable these later...
-USE_POPPLER=y DPI=1800 ntex static/seal3.tex --png
+# USE_POPPLER=y DPI=1800 ntex static/seal3.tex --png
+ntex static/seal3.tex
+DPI=1800 gspdftopng _dist/static/seal3.pdf
 magick _dist/static/seal3.pdf-1.png -level 49%,51% -fuzz 25% -colors 2 -transparent white -level 49%,51% -scale 50% _dist/static/seal3.pdf-1.png
 
 ### Generate alternative artifacts
@@ -19,7 +23,11 @@ done
 
 mkdir -p _dist/wwwmisc/static
 
-rsync --dry-run -av \
+rsync -av \
   --include 'seal3*' \
   --exclude '*' \
   _dist/static/ _dist/wwwmisc/static/
+
+
+
+echo cp _dist/static/seal3.pdf _bincache/seal3.pdf
