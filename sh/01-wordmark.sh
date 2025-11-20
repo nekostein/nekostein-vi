@@ -13,7 +13,7 @@ function makeLogo() {
     local outputFilePrefix="_dist/wwwmisc/wordmark/Nekostein-logo.$2"
 
     # Generate the input image with the transparent background and specified color
-    convert -size '5000x1200' xc:none -gravity center \
+    magick -size '5000x1200' xc:none -gravity center \
     -font "$font" -pointsize $fontSize -kerning $letterSpacing \
     -fill "$1" -draw "text 50,50 '$text'" "$inputFile"
 

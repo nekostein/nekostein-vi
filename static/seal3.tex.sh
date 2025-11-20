@@ -20,6 +20,12 @@ for opacity in 05 10 15 20 50 60 70 80; do
     magick _dist/static/seal3.pdf-1.png -alpha Set -channel A -evaluate Multiply "0.$opacity" "_dist/static/seal3.pdf-1.opa$opacity.png"
 done
 
+function make_colorized() {
+    magick _dist/static/seal3.pdf-1.png -fill "#$2" -colorize 100 "_dist/static/seal3.colorized-$1.png"
+}
+make_colorized 'red'    'FF0000'
+make_colorized 'blue'   '0000FF'
+
 
 mkdir -p _dist/wwwmisc/static
 
