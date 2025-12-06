@@ -8,3 +8,9 @@ function make_colorized() {
 }
 make_colorized 'red'    'FF0000'
 make_colorized 'blue'   '0000FF'
+
+
+rsync -av \
+  --include 'seal2*' \
+  --exclude '*' \
+  _dist/static/ _dist/wwwmisc/static/
