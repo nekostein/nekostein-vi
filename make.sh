@@ -4,7 +4,7 @@ mkdir -p _dist _pkg .tmp
 
 case "$1" in
     gc)
-        find _dist/wwwmisc/patterns -name '.goutputstream*' -delete
+        find . -name '.goutputstream*' -delete
         ;;
     latexlib/)
         bash sh/01-texlib.sh
@@ -70,7 +70,7 @@ case "$1" in
         rsync -av patterns/svg/ _dist/wwwmisc/patterns/
         ;;
     *.typ )
-        PPI=600 typst c --root . "$1" --input USE_NOTO=1
+        PPI=600 TYPST_FONT_PATHS=. typst c --root . "$1" --input USE_NOTO=1
         pdf_path="${1/.typ/.pdf}"
         if [[ -e "$pdf_path" ]]; then
             dirname "_dist/$pdf_path" | xargs mkdir -p &&

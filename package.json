@@ -1,5 +1,12 @@
 {
-  "dependencies": {
-    "svg-round-corners": "^0.4.3"
-  }
+    "dependencies": {
+        "svg-round-corners": "^0.4.3"
+    },
+    "fontsdep": {
+        "dest": "_fontsdir",
+        "list": [
+            "CTAN:tex-gyre/opentype/texgyretermes-regular.otf",
+            "https://github.com/vercel/geist-font/releases/download/1.6.0/geist-font-1.6.0.zip"
+        ]
+    }
 }

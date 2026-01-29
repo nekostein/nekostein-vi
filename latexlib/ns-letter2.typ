@@ -1,50 +1,4 @@
-#let __global_foreground_registry = state("__global_foreground_registry", (:))
-#let __global_background_registry = state("__global_background_registry", (:))
-
-// --- The Factory ---
-#let ___common_bgfg_handler_factory(is_background: true) = {
-  return () => {
-    context {
-      let reg_state = if is_background { __global_background_registry } else { __global_foreground_registry }
-      let p = str(counter(page).get().first())
-
-      // Use .final() to ensure we see updates made later in the page flow
-      let reg = reg_state.final()
-
-      if reg.keys().contains(p) {
-        reg.at(p).join()
-      }
-    }
-  }
-}
-
-#let osepic_default_foreground_handler = ___common_bgfg_handler_factory(is_background: false)
-#let osepic_default_background_handler = ___common_bgfg_handler_factory(is_background: true)
-
-// --- The Registry Helpers ---
-#let _add_to_reg(reg_state, content) = context {
-  let p = str(counter(page).get().first())
-  reg_state.update(reg => {
-    let reg = if type(reg) != dictionary { (:) } else { reg }
-    let items = reg.at(p, default: ())
-    items.push(content)
-    reg.insert(p, items)
-    reg
-  })
-}
-
-#let add_to_shipout_bg(content) = _add_to_reg(__global_background_registry, content)
-#let add_to_shipout_fg(content) = _add_to_reg(__global_foreground_registry, content)
-
-
-
-
-
-
-
-
-
-
+#import "@preview/ose-pic:0.1.1": *
 #import "@preview/based:0.2.0": base64
 #import "@preview/cjk-unbreak:0.2.1": remove-cjk-break-space
 
@@ -55,11 +9,24 @@
 #let __ideal_right_margin = (210mm - __textwidth_alt) / 2
 
 
-#let __font_serif = ("New Computer Modern", "Latin Modern Roman", "Noto Serif CJK SC")
-#let __font_sans = ("Geist", "TeX Gyre Heros", "Open Sans", "Noto Sans CJK SC")
+#let __font_serif = ("New Computer Modern", "Latin Modern Roman", "XCharter", "Libertinus Serif", "Noto Serif CJK SC", "LXGW Neo ZhiSong")
+#let __font_sans = ("Geist", "TeX Gyre Heros", "Open Sans", "Noto Sans CJK SC", "LXGW Neo XiHei")
+#let __font_mono = ("Geist Mono", "JetBrains Mono NL", "Noto Sans Mono", "Noto Sans Mono CJK SC","Noto Sans CJK SC", "LXGW Neo XiHei")
+
 
 #let __footer_left_content = state("__footer_left_content", [NEKOSTEIN HQ])
+#let __state_is_wide = state("__state_is_wide", false)
 
+#let __internal_show_rule_setupPageGeometry(doc) = context {
+  let now_textwidth = if (__state_is_wide.get()) { __textwidth_alt } else { __textwidth }
+  set page(margin: (
+    top: 50mm,
+    bottom: 30mm,
+    right: __ideal_right_margin,
+    left: 210mm - now_textwidth - __ideal_right_margin,
+  ))
+  doc
+}
 
 
 
@@ -178,54 +145,53 @@
 
 
 #let make_letter(is_wide: false, doc) = {
-  let now_textwidth = if (is_wide) { __textwidth_alt } else { __textwidth }
-  set page(margin: (
-    top: 50mm,
-    bottom: 30mm,
-    right: __ideal_right_margin,
-    left: 210mm - now_textwidth - __ideal_right_margin,
-  ))
-  set page(background: context box(width: 100%, height: 100%)[
-    #context osepic_default_background_handler()
-    #place(top + left, dx: __ideal_right_margin, dy: 20mm, image(
-      height: 8.5mm,
-      // "../_dist/libvi/logocomb/Nekostein-logocombH.black.png",
-      base64.decode(__logo_img_base64),
-    ))
-    #set text(font: __font_serif, size: 9.0pt, tracking: 0.3pt, ligatures: false)
-    #place(bottom + left, dx: __ideal_right_margin, dy: -17mm, box(stroke: none, stack(
-      box(width: __textwidth_alt)[#context __footer_left_content.get() #h(1fr) #context str(counter(page).get().at(0))],
-      box(height: 3mm),
-      box(scale(x: __textwidth_alt, reflow: true, box(__superfooterdecomorse))),
-    )))
-  ])
-  // Heading styles
-  set heading(numbering: "1.1.1.1.1. ")
-  show heading: it => text(font: __font_sans, it)
-  let __vv_wrap(depth, it) = v(33pt * (1 - depth / 5.1), weak: true) + it + v(17pt * (1 - depth / 11), weak: true)
-  show heading: it => {
-    if it.depth <= 5 { __vv_wrap(it.depth, it) } else { it }
+  __state_is_wide.update(is_wide)
+  context {
+    show: __internal_show_rule_setupPageGeometry
+    doc
   }
-
-  // CJK punct width fix
-  show regex("[，。、]"): it => box(width: 1em, align(left, it))
-  show regex("[！？；：（）【】「」『』❲❳［］《》]"): it => box(width: 1em, align(center, it))
-
-  doc
 }
 
 
-
-
 #let docinit(doc) = {
+  show: __internal_show_rule_setupPageGeometry
+  show: remove-cjk-break-space
+  show: ose-pic-init
   set par(justify: true)
+  set par(leading: 0.55em, spacing: 0.88em)
   set text(
     font: __font_serif,
     size: __font_size,
     number-width: "tabular",
   )
   set list(body-indent: 1em, indent: 1em, marker: box(width: 0pt, align(right, [•])))
-  show: remove-cjk-break-space
+  set enum(body-indent: 1em, indent: 1em)
+  // Page backgrounds...
+  AddToShipoutBGAll(place(top + left, dx: __ideal_right_margin, dy: 20mm, box(image(
+    height: 8.5mm,
+    // "../_dist/libvi/logocomb/Nekostein-logocombH.black.png",
+    base64.decode(__logo_img_base64),
+  ))))
+  AddToShipoutBGAll(place(bottom + left, dx: __ideal_right_margin, dy: -17mm, box(stroke: none, {
+    set text(font: __font_serif, size: 9.0pt, tracking: 0.3pt, ligatures: false)
+    stack(
+      box(width: __textwidth_alt)[#context __footer_left_content.get() #h(1fr) #context str(counter(page).get().at(0))],
+      box(height: 3mm),
+      box(scale(x: __textwidth_alt, reflow: true, box(__superfooterdecomorse))),
+    )
+  })))
+  // Heading styles
+  set heading(numbering: "1.1.1.1.1. ")
+  show heading: it => text(font: __font_sans, it)
+  let __vv_wrap(depth, it) = v(33pt * (1 - depth / 5.0), weak: true) + it + v(17pt * (1 - depth / 11), weak: true)
+  show heading: it => {
+    if it.depth <= 4 { __vv_wrap(it.depth, it) } else { it }
+  }
+  show raw: it => text(font: ("JetBrains Mono NL", "TeX Gyre Cursor", "Noto Sans CJK SC"), it)
+
+  // CJK punct width fix
+  show regex("[，。、]"): it => box(width: 1em, align(left, it))
+  show regex("[！？；：（）【】「」『』❲❳［］《》]"): it => box(width: 1em, align(center, it))
 
   doc
 }
@@ -240,19 +206,19 @@
   ..list_items
 ))
 
-#let make_header(title, extra) = {
+#let make_header(title, extra, spacing_ratio: 100%) = {
   set text(font: __font_sans)
   stack(
     box(width: 100%, [
       #set text(size: 19pt, weight: "bold")
       #if (title != none) { title } else { [Untitled Document] }
     ]),
-    box(height: 5mm),
+    box(height: 5mm * spacing_ratio),
     box(width: 100%, [
       #set text(size: 9.5pt)
       #if (extra != none) { extra }
     ]),
-    box(height: 10mm),
+    box(height: 10mm * spacing_ratio),
   )
   parbreak()
 }
@@ -264,7 +230,7 @@
   content
 }
 
-#let letter_to(content) = add_to_shipout_bg(place(
+#let letter_to(content) = AddToShipoutBG(place(
   top + left,
   dx: (210mm - __textwidth_alt) / 2,
   dy: 50mm + __lettertopskip,
@@ -298,10 +264,10 @@
 ]
 
 #let letter_sig(content) = (
-  v(10fr, weak: true)
+  v(2fr, weak: true)
     + block(align(right, block(h(1fr) + box(width: 50%, align(left, content)))))
     + v(1fr, weak: true)
-    + v(20mm)
+    + v(5mm)
 )
 
 
