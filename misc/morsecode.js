@@ -24,3 +24,4 @@ console.log(
 
 
 // node misc/morsecode.js | pbcopy
+// LONG=- SHORT=. SPACE=' ' node misc/morsecode.js | pbcopy

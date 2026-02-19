@@ -61,8 +61,8 @@ case "$1" in
         realpath "$svgpath"
         extra_output_prefix="_dist/wwwmisc/patterns/$(basename "$1" | cut -d- -f1)"
         dirname "$extra_output_prefix" | xargs mkdir -p
-        case $2 in
-            png|pdf)
+        case "$2" in
+            png|pdf|eps)
                 rsvg-convert "$svgpath" -f "$2" -z1 -o "$extra_output_prefix.$2"
                 realpath "$extra_output_prefix.$2" | xargs du -h
                 ;;
@@ -70,7 +70,7 @@ case "$1" in
         rsync -av patterns/svg/ _dist/wwwmisc/patterns/
         ;;
     *.typ )
-        PPI=600 TYPST_FONT_PATHS=. typst c --root . "$1" --input USE_NOTO=1
+        PPI=600 TYPST_FONT_PATHS=. typst c --root . "$1" --input USE_NOTO=1 $TYPST_EXTRA_ARGS
         pdf_path="${1/.typ/.pdf}"
         if [[ -e "$pdf_path" ]]; then
             dirname "_dist/$pdf_path" | xargs mkdir -p &&

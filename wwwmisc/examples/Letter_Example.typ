@@ -8,7 +8,7 @@
 
   #image(width: 35mm, "/.miscpic/neruthes-sigalt1.png")
 
-  #set text(size: 9pt)
+  #set text(size: 9 * kp)
   ~ \
   President\
   Nekostein

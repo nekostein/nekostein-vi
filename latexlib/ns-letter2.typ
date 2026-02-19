@@ -1,17 +1,34 @@
+#let kp = 25.4mm / 72.27
+
+
 #import "@preview/ose-pic:0.1.1": *
 #import "@preview/based:0.2.0": base64
 #import "@preview/cjk-unbreak:0.2.1": remove-cjk-break-space
 
 
-#let __font_size = 10pt
+#let __font_size = 10 * kp
 #let __textwidth = __font_size * 34
 #let __textwidth_alt = __font_size * 46
 #let __ideal_right_margin = (210mm - __textwidth_alt) / 2
 
 
-#let __font_serif = ("New Computer Modern", "Latin Modern Roman", "XCharter", "Libertinus Serif", "Noto Serif CJK SC", "LXGW Neo ZhiSong")
+#let __font_serif = (
+  "New Computer Modern",
+  "Latin Modern Roman",
+  "XCharter",
+  "Libertinus Serif",
+  "Noto Serif CJK SC",
+  "LXGW Neo ZhiSong",
+)
 #let __font_sans = ("Geist", "TeX Gyre Heros", "Open Sans", "Noto Sans CJK SC", "LXGW Neo XiHei")
-#let __font_mono = ("Geist Mono", "JetBrains Mono NL", "Noto Sans Mono", "Noto Sans Mono CJK SC","Noto Sans CJK SC", "LXGW Neo XiHei")
+#let __font_mono = (
+  "Geist Mono",
+  "JetBrains Mono NL",
+  "Noto Sans Mono",
+  "Noto Sans Mono CJK SC",
+  "Noto Sans CJK SC",
+  "LXGW Neo XiHei",
+)
 
 
 #let __footer_left_content = state("__footer_left_content", [NEKOSTEIN HQ])
@@ -35,115 +52,6 @@
 
 
 
-#let __superfooterdecomorse = box(width: __textwidth_alt)[
-  #box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(
-    1fr,
-  )#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(
-    1fr,
-  )#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#h(
-    1fr,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(
-    1fr,
-  )#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(
-    1fr,
-  )#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(
-    1fr,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(
-    1fr,
-  )#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(
-    1fr,
-  )#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 4fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#h(1fr)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#h(
-    1fr,
-  )#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)#h(1fr)#h(1fr)#h(1fr)#box(
-    width: 1.5fr,
-    height: 0.8pt,
-    fill: black,
-  )#h(1fr)#box(width: 4fr, height: 0.8pt, fill: black)#h(1fr)#box(width: 1.5fr, height: 0.8pt, fill: black)
-]
-
-
 #let make_letter(is_wide: false, doc) = {
   __state_is_wide.update(is_wide)
   context {
@@ -157,14 +65,16 @@
   show: __internal_show_rule_setupPageGeometry
   show: remove-cjk-break-space
   show: ose-pic-init
-  set par(justify: true)
+  set par(justify: true, linebreaks: "optimized")
   set par(leading: 0.55em, spacing: 0.88em)
   set text(
     font: __font_serif,
     size: __font_size,
     number-width: "tabular",
   )
-  set list(body-indent: 1em, indent: 1em, marker: box(width: 0pt, align(right, [•])))
+  set underline(offset: 0.20em)
+  set smartquote(enabled: false)
+  set list(body-indent: 1em, indent: 1em, marker: box(width: 0 * kp, align(right, [•])))
   set enum(body-indent: 1em, indent: 1em)
   // Page backgrounds...
   AddToShipoutBGAll(place(top + left, dx: __ideal_right_margin, dy: 20mm, box(image(
@@ -173,20 +83,49 @@
     base64.decode(__logo_img_base64),
   ))))
   AddToShipoutBGAll(place(bottom + left, dx: __ideal_right_margin, dy: -17mm, box(stroke: none, {
-    set text(font: __font_serif, size: 9.0pt, tracking: 0.3pt, ligatures: false)
+    set text(font: __font_serif, size: 9.0 * kp, tracking: 0.3 * kp, ligatures: false)
     stack(
       box(width: __textwidth_alt)[#context __footer_left_content.get() #h(1fr) #context str(counter(page).get().at(0))],
       box(height: 3mm),
-      box(scale(x: __textwidth_alt, reflow: true, box(__superfooterdecomorse))),
+      box(scale(x: __textwidth_alt, reflow: true, box(
+        width: 100mm,
+        inset: (left: -1 * kp, right: -1 * kp),
+        "-. . -.- --- .- -. -.. -.- ..- -- .- .- .-. . ..-. .-. .. . -. -.. ... ..-. --- .-. . ...- . .-."
+          .split("")
+          .map(it => {
+            if it == "-" { box(width: 4fr, height: 0.8 * kp, fill: black) }
+            if it == "." { box(width: 1.5fr, height: 0.8 * kp, fill: black) }
+            if it == " " { box(width: 1fr) }
+          })
+          .join(h(1fr)),
+      ))),
     )
   })))
   // Heading styles
   set heading(numbering: "1.1.1.1.1. ")
-  show heading: it => text(font: __font_sans, it)
-  let __vv_wrap(depth, it) = v(33pt * (1 - depth / 5.0), weak: true) + it + v(17pt * (1 - depth / 11), weak: true)
+  // show heading: it => text(font: __font_sans, it)
+  show heading: it => {
+    set text(font: __font_sans, weight: "bold", size: (50 * kp, 14.8 * kp, 13.8 * kp, 12.5 * kp, 11.5 * kp, 10.5 * kp, 10.5 * kp).at(
+      it.depth,
+    ))
+    if it.numbering != none {
+      stack(
+        dir: ltr,
+        box(width: (2em, 2em, 50 * kp, 50 * kp, 60 * kp, 60 * kp, 60 * kp).at(it.depth), numbering(
+          it.numbering,
+          ..counter(heading).at(it.location()),
+        )),
+        it.body,
+      )
+    } else {
+      it
+    }
+  }
+  let __vv_wrap(depth, it) = v(33 * kp * (1 - depth / 5.0), weak: true) + it + v(17 * kp * (1 - depth / 11), weak: true)
   show heading: it => {
     if it.depth <= 4 { __vv_wrap(it.depth, it) } else { it }
   }
+
   show raw: it => text(font: ("JetBrains Mono NL", "TeX Gyre Cursor", "Noto Sans CJK SC"), it)
 
   // CJK punct width fix
@@ -197,36 +136,35 @@
 }
 
 
-#let header_kv_pairs(..list_items, col1width: auto) = text(font: __font_sans, size: 9.5pt, table(
+#let header_kv_pairs(..list_items, col1width: auto) = text(font: __font_sans, size: 9.5 * kp, table(
   columns: (col1width, auto),
   stroke: none,
-  row-gutter: 7pt,
+  row-gutter: 7 * kp,
   column-gutter: 12mm,
-  inset: 0pt,
+  inset: 0 * kp,
   ..list_items
 ))
 
-#let make_header(title, extra, spacing_ratio: 100%) = {
+#let make_header(title, extra, spacing_ratio: 100%) = block(below: 13mm * spacing_ratio, {
   set text(font: __font_sans)
   stack(
     box(width: 100%, [
-      #set text(size: 19pt, weight: "bold")
+      #set text(size: 19 * kp, weight: "bold")
+      #set par(leading: 0.44em, spacing: 0.67em)
       #if (title != none) { title } else { [Untitled Document] }
     ]),
-    box(height: 5mm * spacing_ratio),
+    box(height: 5.5mm * spacing_ratio),
     box(width: 100%, [
-      #set text(size: 9.5pt)
+      #set text(size: 9.5 * kp)
       #if (extra != none) { extra }
     ]),
-    box(height: 10mm * spacing_ratio),
   )
-  parbreak()
-}
+})
 
 #let __lettertopskip = 37mm
 #let __stylerauxtext(content) = {
-  set text(size: 9.2pt, font: __font_sans)
-  set par(leading: 5.6pt, spacing: 9.5pt)
+  set text(size: 9.2 * kp, font: __font_sans)
+  set par(leading: 5.6 * kp, spacing: 9.5 * kp)
   content
 }
 
@@ -256,7 +194,7 @@
 // )
 #let letter_from(content) = block(
   width: 100%,
-  height: __lettertopskip - 12pt,
+  height: __lettertopskip - 12 * kp,
   fill: none,
 )[
   #set align(right)

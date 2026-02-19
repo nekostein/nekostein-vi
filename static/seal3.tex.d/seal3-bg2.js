@@ -16,7 +16,7 @@ SVG_CONTENT_MAIN += `<g>` + (function () {
         let path_data = `
             M 0 0 C 97 0 97 -97 97 -97 q 0 -319 -580 -885
         `;
-        let path_attrs = `  fill="none" stroke="black" stroke-width="40" stroke-linejoin="round" stroke-linecap="round"  `;
+        let path_attrs = `  fill="none" stroke="black" stroke-width="30" stroke-linejoin="round" stroke-linecap="round"  `;
         tmpstr += `<path d="${path_data}" ${path_attrs} transform="rotate(${step / __total_steps * 360}) translate(0,${distance})" />\n`;
         tmpstr += `<path d="${path_data}" ${path_attrs} transform="rotate(${step / __total_steps * 360}) translate(0,${distance}) scale(-1,1)" />\n`;
         // Inner hollow dots

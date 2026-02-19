@@ -1,12 +1,16 @@
 /*
     File name: svgplotlib.js
-    Copyright (c) 2023-2025 Neruthes.
+    Copyright (c) 2023-2026 Neruthes.
     This file is released with the MIT license.
+
+    Canonical publishing address: https://github.com/neruthes/ntexlibs/blob/master/patterns/utils/jslib/svgplotlib.js
+    
+    refetchw=https://raw.githubusercontent.com/neruthes/ntexlibs/refs/heads/master/patterns/utils/jslib/svgplotlib.js
 */
 
 function drawstar(opt) {
     let myshape_POINTS = [];
-    const VERTEX_QTY = opt.vert;
+    const VERTEX_QTY = opt.vert || 12;
     for (let itr = 0; itr < VERTEX_QTY; itr += 1) {
         const vertexDistance = (itr % 2 === 0) ? opt.long : opt.short;
         const theta_rad = Math.PI * 2 / VERTEX_QTY * itr;
@@ -17,7 +21,7 @@ function drawstar(opt) {
     const DEFAULT_ATTRS = {
         'stroke-width': '1.00'
     };
-    let attrs = ''
+    let attrs = '';
     if (opt.attrs) {
         let new_attr_obj = {};
         Object.keys(DEFAULT_ATTRS).map(function (attrname) { new_attr_obj[attrname] = DEFAULT_ATTRS[attrname] }); // Initialize content
@@ -46,7 +50,7 @@ function drawpolarcircle(opt) {
     const DEFAULT_ATTRS = {
         'stroke-width': '1.00'
     };
-    let attrs = ''
+    let attrs = '';
     if (opt.attrs) {
         let new_attr_obj = Object.assign({}, DEFAULT_ATTRS, opt.attrs);
         attrs = flatten_attr_obj(new_attr_obj);
@@ -58,14 +62,44 @@ function drawpolarcircle(opt) {
     return tmpnode;
 };
 
-function _join_points(data_arr) {
-    let counter = 0;
-    let tmpstr = '';
-    while (counter < data_arr.length) {
-        const separator = (counter % 100 === 0) ? '\n' : ' ';
-        tmpstr += data_arr[counter] + separator;
-        counter += 1;
+function drawpolarcircle2({
+    steps = 360,
+    func = function () { return [0, 100] },
+    attrs = {},
+} = opt) {
+    /*
+        Version 2 major changes:
+            - Callback returns not only the vertexDistance, but also theta_rad shifting intensity
+    */
+    let myshape_POINTS = [];
+    for (let itr = 0; itr < steps; itr += 1) {
+        const theta_rad = itr / steps * Math.PI * 2;
+        const [d_theta, vertexDistance] = func(theta_rad);
+        const x1 = Math.round(100 * vertexDistance * Math.sin(theta_rad + d_theta)) / 100;
+        const y1 = Math.round(100 * vertexDistance * Math.cos(theta_rad + d_theta)) / 100;
+        myshape_POINTS.push(x1, y1);
     };
+    const DEFAULT_ATTRS = {
+        // 'stroke-width': '1.00'
+    };
+    let new_attr_obj = Object.assign({}, DEFAULT_ATTRS, attrs);
+    let tmp_attrs = flatten_attr_obj(new_attr_obj);
+    let tmpnode = `<polygon ${tmp_attrs} points="${_join_points(myshape_POINTS)}" />`;
+    return tmpnode;
+};
+
+function _join_points(data_arr) {
+    // let counter = 0;
+    let tmpstr = '';
+    // while (counter < data_arr.length) {
+    //     const separator = (counter % 100 === 0) ? '\n' : ' ';
+    //     tmpstr += data_arr[counter] + separator;
+    //     counter += 1;
+    // };
+    data_arr.forEach((val, ind) => {
+        const separator = (ind % 100 === 0) ? '\n' : ' ';
+        tmpstr += val + separator;
+    });
     return tmpstr;
 }
 
@@ -76,4 +110,4 @@ function flatten_attr_obj(attr_obj) {
     }).join('');
 };
 
-module.exports = { drawstar, drawpolarcircle };
+module.exports = { drawstar, drawpolarcircle, drawpolarcircle2 };

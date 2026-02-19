@@ -1,9 +1,8 @@
 const fs = require('fs');
 const svgplotlib = require('../svgplotlib.js');
 
-const svg_round_corners = require('svg-round-corners');
-
-const COLOR1 = `#AF8260`;
+const COLOR1 = '#AF8260';
+const COLOR1_02777 = '#e9dcd3';
 const COLOR2 = '#803D3B';
 const COLOR3 = '#EADBC8';
 
@@ -135,16 +134,16 @@ const spiral_c1 = (function () {
     const SKIP = 25;
     for (let itr = 0; itr < PERIOD; itr += 1) {
         let X = itr * SKIP + 0;
-        const initY = 3;
+        // const initY = 3;
         let rawpath = `M ${X},0 `;
         for (let step = 0; step < 2900; step += 2) {
             const realX = step + itr * SKIP;
             const apt = Math.pow((realX) * 0.055, 1.02);
             // const apt = 100;
-            const Y = Math.sin((realX+X) / (PERIOD * SKIP) * 2 * Math.PI) * apt;
+            const Y = Math.sin((realX + X) / (PERIOD * SKIP) * 2 * Math.PI) * apt;
             rawpath += `L ${25 + realX * 0.8},${Y} `;
         }
-        tmpstr += `\n<path class="spiral-item-path" fill="none" opacity="${0.95 - itr * 0.0775}" stroke="${COLOR3}" stroke-width="5" d="${rawpath}" />\n`;
+        tmpstr += `\n<path class="spiral-item-path" fill="none" opacity="${0.95 - itr * 0.0775}" stroke="${COLOR3}" stroke-width="3.5" d="${rawpath}" />\n`;
     };
     return tmpstr;
 })();
@@ -156,48 +155,13 @@ for (let itr = 0; itr < 40; itr++) {
     if (itr % 2 === 0) {
         extra = 'scale(-1,1)';
     };
-    SVG_CONTENTS_INNER += `<use href="#spiral_c1" transform="rotate(${(itr+0.5) * (360 / 40)}) ${extra}" />`
+    SVG_CONTENTS_INNER += `<use href="#spiral_c1" transform="rotate(${(itr + 0.5) * (360 / 40)}) ${extra}" />`
 };
 
 
 
 
 
-
-
-// Center flower
-// for (let itr = 12; itr > 0; itr--) {
-//     SVG_CONTENTS_INNER += svgplotlib.drawpolarcircle({
-//         attrs: { fill: 'white', stroke: COLOR3, 'stroke-width': 4 },
-//         func: function (theta_rad) {
-//             const theta_rad_alt = theta_rad;
-//             return itr * 13 + 305 * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
-//         }
-//     });
-// }
-SVG_CONTENTS_INNER += (function () {
-    let tmpstr_low = '';
-    let tmpstr_high = '';
-    for (let itr = -7; itr <= 7; itr++) {
-        const degskip = 3;
-        tmpstr_low += svgplotlib.drawpolarcircle({
-            attrs: { fill: 'white', stroke: 'white', 'stroke-width': 4 },
-            func: function (theta_rad) {
-                const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
-                return (205 + Math.cos(8 * theta_rad_alt) * 99) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
-            }
-        });
-        tmpstr_high += svgplotlib.drawpolarcircle({
-            attrs: { fill: 'none', stroke: COLOR3, 'stroke-width': 4 },
-            func: function (theta_rad) {
-                const theta_rad_alt = theta_rad + deg2rad(itr * degskip);
-                return (205 + Math.cos(8 * theta_rad_alt) * 99) * (1.15 + 0.07 * Math.cos(8 * theta_rad)) * (1.2 - 0.15 * Math.cos(2 * theta_rad));
-            }
-        });
-    };
-    return '';
-    // return tmpstr_low + tmpstr_high;
-})();
 
 
 
@@ -210,16 +174,16 @@ const cneter_flower_outer_ring_big = function (extra_rotate) {
         const ROTATE = 1.4 * itr;
         tmpstr_low += svgplotlib.drawpolarcircle({
             attrs: {
-                'fill': 'white', 'stroke': 'white',
+                'fill': 'white', 'stroke': 'white', 'stroke-width': '1.4',
                 'transform': `scale(3.5) rotate(${ROTATE + extra_rotate})`
             }, func: function (theta_rad) {
                 const ROTATE_rad = (ROTATE / 360) * (2 * Math.PI);
                 return 147 + Math.cos(theta_rad * 10) * 45 + Math.cos(ROTATE_rad * 10) * 9 + extra_rotate * 0.5;
             }
         });
-        tmpstr_up += '<g opacity="0.2777">' + svgplotlib.drawpolarcircle({
+        tmpstr_up += '<g data-original-opacity="0.2777">' + svgplotlib.drawpolarcircle({
             attrs: {
-                'fill': 'none', 'stroke': COLOR1,
+                'fill': 'none', 'stroke': COLOR1_02777, 'stroke-width': '1',
                 'transform': `scale(3.5) rotate(${ROTATE + extra_rotate})`
             }, func: function (theta_rad) {
                 const ROTATE_rad = (ROTATE / 360) * (2 * Math.PI);
@@ -228,10 +192,13 @@ const cneter_flower_outer_ring_big = function (extra_rotate) {
         }) + '</g>\n';
     };
     return tmpstr_low + tmpstr_up;
+    // return '';
 }
 
-SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(360/20);
+SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(360 / 20);
 SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(0);
+
+
 SVG_CONTENTS_INNER += (function () { // Center star
     let tmpstr = '';
     const HALFMAX = 7;
@@ -250,8 +217,49 @@ SVG_CONTENTS_INNER += (function () { // Center star
             }
         });
     };
-    return tmpstr;
+    // return tmpstr;
+    return '';
 })();
+
+
+
+
+
+
+
+// CentralContentMask
+SVG_DEFS += `<mask id="MASK__CentralContentMask">${svgplotlib.drawpolarcircle2({
+    steps: 360 * 5,
+    attrs: {
+        'fill': 'white',
+        'stroke': COLOR3,
+        'stroke-width': '0',
+        'stroke-linejoin': 'round',
+        'transform': `rotate(${0})`,
+    },
+    func: function (theta_rad) {
+        let rounds = 10;
+        let vertexDistance = 342 + Math.cos(rounds * theta_rad) * -32;
+        // let d_th = Math.sin(rounds * theta_rad) * -1 / 8;
+        return [0, vertexDistance];
+    }
+})}</mask>`;
+
+// Vertical lines with tangent
+SVG_CONTENTS_INNER += `<g mask="url(#MASK__CentralContentMask)" fill="none" stroke="${COLOR3}" stroke-width="4" stroke-linejoin="round">
+    ${(function () {
+        let tmpstr = '';
+        for (let xx = -34; xx <= 34; xx++) {
+            const h_scale = Math.abs(xx) * 0.005 + 1;
+            tmpstr += `<path d=" M ${xx * 18.00},500  L ${xx * 9.00 * h_scale},0  ${xx * 18.00},-500 " />\n`;
+        };
+        return tmpstr;
+    })()}
+</g>`;
+
+
+
+
 SVG_CONTENTS_INNER += (function () { // Center flat ring
     let tmpstr = '';
     const HALFMAX = 3;
@@ -268,22 +276,87 @@ SVG_CONTENTS_INNER += (function () { // Center flat ring
             }
         });
     };
-    return tmpstr;
+    // return tmpstr;
+    return '';
 })();
+
+
+
+
+// Fancy twisted pair of rings
+SVG_DEFS += svgplotlib.drawpolarcircle2({
+    steps: 360 * 4.000,
+    attrs: {
+        'id': 'twisted_pair_of_rings',
+        'fill': 'none',
+        // 'stroke': '#f1cbb2',
+        // 'stroke': '#e1d2c5',
+        // 'stroke': COLOR3,
+        // 'stroke-width': '3.5',
+        'stroke-linejoin': 'round',
+    },
+    func: function (theta_rad) {
+        let rounds = 30;
+        let vertexDistance = 229 + Math.cos(rounds * theta_rad) * 35;
+        vertexDistance += Math.cos(8 * theta_rad) * 7;
+        let d_th = Math.cos(rounds * theta_rad) * 4.81433 / rounds;
+        return [d_th, vertexDistance];
+    }
+});
+SVG_CONTENTS_INNER += `<use href="#twisted_pair_of_rings" stroke="white" stroke-width="11" />`;
+SVG_CONTENTS_INNER += `<use href="#twisted_pair_of_rings" stroke="white" stroke-width="11" transform="scale(-1,1)" />`;
+SVG_CONTENTS_INNER += `<use href="#twisted_pair_of_rings" stroke="${COLOR3}" stroke-width="3.5" />`;
+SVG_CONTENTS_INNER += `<use href="#twisted_pair_of_rings" stroke="${COLOR3}" stroke-width="3.5" transform="scale(-1,1)" />`;
+
+
+
+
+// Fancy wrangling
+SVG_DEFS += svgplotlib.drawpolarcircle2({
+    steps: 360 * 8,
+    attrs: {
+        'id': 'local_e5b23c6bfec7',
+        'fill': 'none',
+        // 'fill': 'red',
+        // 'stroke': COLOR1_02777,
+        // 'stroke': '#e7d4c7',
+        // 'stroke-width': '5',
+        'stroke-linejoin': 'round',
+        'transform': `rotate(${0})`,
+    },
+    func: function (theta_rad) {
+        let rounds = 50;
+        let vertexDistance = 380 + Math.cos(rounds * theta_rad) * 95;
+        let d_th = Math.sin(rounds * theta_rad) * -1 / 8;
+        return [d_th, vertexDistance];
+    }
+});
+SVG_CONTENTS_OVERLAY += `<use href="#local_e5b23c6bfec7" stroke="white" stroke-width="15" />`;
+SVG_CONTENTS_OVERLAY += `<use href="#local_e5b23c6bfec7" stroke="#e7d4c7" stroke-width="5" />`;
+
+
+
+
+
 // Embed a logo in the center
-SVG_DEFS += `<mask id="mask-circle-71fedfb611b8"><circle x="0" y="0" r="105" fill="white" /></mask>`; // Use a mask
+SVG_DEFS += `<mask id="mask-circle-71fedfb611b8"><circle x="0" y="0" r="265" fill="white" /></mask>`; // Use a mask
+SVG_DEFS += `<path id="local__geoLogo" d="M182 0 m -400,-300 c-56 0-182 171-182 357 0 166 202 243 400 243s400-77 400-243c0-186-126-357-182-357-38 0-84 143-84 143s-24-19-134-19-134 19-134 19-46-143-84-143zm43.9 240.44a25.5 25.5 0 016.54 1.27 25.5 25.5 0 0111 7.29l56.67 64.11a25.5 25.5 0 01-2.54 36.27l-65.04 55.6a25.5 25.5 0 01-35.95-2.81 25.5 25.5 0 012.82-35.95l45.32-38.76-39.49-44.68a25.5 25.5 0 012.21-36 25.5 25.5 0 0118.46-6.34zm348.2 0a25.5 25.5 0 0118.45 6.34 25.5 25.5 0 012.22 36l-39.5 44.68 45.34 38.76a25.5 25.5 0 012.81 35.95 25.5 25.5 0 01-35.95 2.81l-65.04-55.6a25.5 25.5 0 01-2.54-36.27l56.67-64.11a25.5 25.5 0 0111-7.29 25.5 25.5 0 016.54-1.27z"  />`;
 SVG_CONTENTS_INNER += `<g mask="url(#mask-circle-71fedfb611b8)">
-    ${(function () {
+    <g transform="scale(${0.28}) translate(0,0)" stroke="none" stroke-width="0">
+        <use href="#local__geoLogo" fill="white" stroke="none" stroke-width="0" opacity="1" />
+    </g>
+    ${(function () { // New approach...
         let tmpstr = '';
         const HALFMAX = 40;
         for (let index = -HALFMAX; index <= HALFMAX; index++) {
-            tmpstr += `<path d="M -1000 ${index * 9} l 2000 0" stroke="${COLOR3}" stroke-width="3" />`;
-        }
+            let yy = index * 9;
+            let xx = Math.sqrt(176 * 176 - yy * yy).toFixed(2);
+            tmpstr += `<path d="M -${xx},${yy} H ${xx}" stroke="${COLOR3}" stroke-width="3.5" />`;
+        };
         return tmpstr;
+        // return '';
     })()}
-    <g transform="scale(0.2) translate(-400,-300)">
-        ${fs.readFileSync('res/geologo.svg').toString().replace(/#BEEF01/g, 'white').replace(/#DEAD02/g, 'none')}
-    </g>
+    
 </g>`;
 
 
@@ -334,7 +407,7 @@ console.log(OUTPUT_SVG);
 
 
 // Build SVG:
-// ./make.sh patterns/js/p03.js png
+// ./make.sh patterns/js/p03a.js png
 
 
 
