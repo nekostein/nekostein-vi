@@ -80,7 +80,7 @@ function drawpolarcircle2({
         myshape_POINTS.push(x1, y1);
     };
     const DEFAULT_ATTRS = {
-        // 'stroke-width': '1.00'
+        'stroke-width': '1.00'
     };
     let new_attr_obj = Object.assign({}, DEFAULT_ATTRS, attrs);
     let tmp_attrs = flatten_attr_obj(new_attr_obj);

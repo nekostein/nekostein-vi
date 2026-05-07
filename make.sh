@@ -70,13 +70,7 @@ case "$1" in
         rsync -av patterns/svg/ _dist/wwwmisc/patterns/
         ;;
     *.typ )
-        PPI=600 TYPST_FONT_PATHS=. typst c --root . "$1" --input USE_NOTO=1 $TYPST_EXTRA_ARGS
-        pdf_path="${1/.typ/.pdf}"
-        if [[ -e "$pdf_path" ]]; then
-            dirname "_dist/$pdf_path" | xargs mkdir -p &&
-            mv "$pdf_path" "_dist/$pdf_path" &&
-            realpath "_dist/$pdf_path" | xargs du -h
-        fi
+        ntypstpro "$1"
         ;;
     all | '')
         ./make.sh sh

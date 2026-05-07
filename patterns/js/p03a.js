@@ -35,8 +35,8 @@ SVG_DEFS += `<mask id="mask-border1H">
         const W = USABLE_CONTENT_SIZE_W;
         const H = USABLE_CONTENT_SIZE_H;
         const yy = (H - W) / 2;
-        tmpstr += `<path transform="scale(1,1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W}  -${2 * W},0 Z" />`;
-        tmpstr += `<path transform="scale(1,-1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W}  -${2 * W},0 Z" />`;
+        tmpstr += `<path transform="scale(1,1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W}  -${2 * W},0 Z" />\n`;
+        tmpstr += `<path transform="scale(1,-1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W}  -${2 * W},0 Z" />\n`;
         return tmpstr;
     })()}
 </mask>`;
@@ -46,8 +46,8 @@ SVG_DEFS += `<mask id="mask-border1V">
         const W = USABLE_CONTENT_SIZE_W;
         const H = USABLE_CONTENT_SIZE_H;
         const yy = (H - W) / 2;
-        tmpstr += `<path transform="scale(1,1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W} 0,-${2 * W + 2 * yy} L 0,-${yy} Z" />`;
-        tmpstr += `<path transform="scale(-1,1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W} 0,-${2 * W + 2 * yy} L 0,-${yy} Z" />`;
+        tmpstr += `<path transform="scale(1,1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W} 0,-${2 * W + 2 * yy} L 0,-${yy} Z" />\n`;
+        tmpstr += `<path transform="scale(-1,1)" fill="white" stroke="white" stroke-width="1" d="M 0,${yy} l ${W},${W} 0,-${2 * W + 2 * yy} L 0,-${yy} Z" />\n`;
         return tmpstr;
     })()}
 </mask>`;
@@ -73,7 +73,7 @@ const border_deco_c1 = `<g id="border_deco_c1" mask="url(#maskfor-border_deco_c1
                 const shrink = 9;
                 return 250 - Math.cos(9 * theta_rad) * 22 - itr * shrink;
             }
-        });
+        }) + '\n';
     };
     // Inner ribbons
     for (let itr = 0; itr < 9; itr += 1) {
@@ -83,12 +83,12 @@ const border_deco_c1 = `<g id="border_deco_c1" mask="url(#maskfor-border_deco_c1
                 const shrink = 9;
                 return 170 + Math.cos(12 * theta_rad) * 8 - itr * shrink;
             }
-        });
+        }) + '\n';
     };
     // Middle star
     for (let itr = 0; itr < 36; itr += 1) {
-        tmpstr += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" fill="white" />`;
-        tmpstr_over += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" stroke="${COLOR1}" stroke-width="4" fill="none" />`;
+        tmpstr += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" fill="white" />\n`;
+        tmpstr_over += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" stroke="${COLOR1}" stroke-width="4" fill="none" />\n`;
     };
     // Extra Outer Rim
     for (let itr = 0; itr < 6; itr += 1) {
@@ -101,7 +101,7 @@ const border_deco_c1 = `<g id="border_deco_c1" mask="url(#maskfor-border_deco_c1
         });
     };
     return tmpstr + tmpstr_over;
-})() + '</g></g>';
+})() + '</g></g>\n';
 SVG_DEFS += border_deco_c1;
 
 
@@ -116,14 +116,14 @@ const border_row_std = `<g>
         };
         return tmpstr;
     })()}
-</g>`;
+</g>\n`;
 
 // Borders: horizontal
-SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1H)"><g transform="rotate(0) translate(0,${USABLE_CONTENT_SIZE_H / 2})">${border_row_std}</g></g>`;
-SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1H)"><g transform="rotate(180) translate(0,${USABLE_CONTENT_SIZE_H / 2})">${border_row_std}</g></g>`;
+SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1H)"><g transform="rotate(0) translate(0,${USABLE_CONTENT_SIZE_H / 2})">${border_row_std}</g></g>\n`;
+SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1H)"><g transform="rotate(180) translate(0,${USABLE_CONTENT_SIZE_H / 2})">${border_row_std}</g></g>\n`;
 // Borders: vertical
-SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1V)"><g transform="rotate(90) translate(0,${USABLE_CONTENT_SIZE_W / 2})">${border_row_std}</g></g>`;
-SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1V)"><g transform="rotate(270) translate(0,${USABLE_CONTENT_SIZE_W / 2})">${border_row_std}</g></g>`;
+SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1V)"><g transform="rotate(90) translate(0,${USABLE_CONTENT_SIZE_W / 2})">${border_row_std}</g></g>\n`;
+SVG_CONTENTS_OUTER += `<g mask="url(#mask-border1V)"><g transform="rotate(270) translate(0,${USABLE_CONTENT_SIZE_W / 2})">${border_row_std}</g></g>\n`;
 
 
 
@@ -155,7 +155,7 @@ for (let itr = 0; itr < 40; itr++) {
     if (itr % 2 === 0) {
         extra = 'scale(-1,1)';
     };
-    SVG_CONTENTS_INNER += `<use href="#spiral_c1" transform="rotate(${(itr + 0.5) * (360 / 40)}) ${extra}" />`
+    SVG_CONTENTS_INNER += `<use href="#spiral_c1" transform="rotate(${((itr + 0.5) * (360 / 40)).toFixed(3)}) ${extra}" />\n`;
 };
 
 
@@ -166,12 +166,12 @@ for (let itr = 0; itr < 40; itr++) {
 
 
 
-const cneter_flower_outer_ring_big = function (extra_rotate) {
+const center_flower_outer_ring_big = function (extra_rotate) {
     let tmpstr_low = '';
     let tmpstr_up = '';
     const HALFMAX = 12;
     for (let itr = -HALFMAX; itr <= HALFMAX; itr++) {
-        const ROTATE = 1.4 * itr;
+        const ROTATE = 1.45 * itr;
         tmpstr_low += svgplotlib.drawpolarcircle({
             attrs: {
                 'fill': 'white', 'stroke': 'white', 'stroke-width': '1.4',
@@ -195,8 +195,8 @@ const cneter_flower_outer_ring_big = function (extra_rotate) {
     // return '';
 }
 
-SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(360 / 20);
-SVG_CONTENTS_INNER += cneter_flower_outer_ring_big(0);
+SVG_CONTENTS_INNER += center_flower_outer_ring_big(360 / 20);
+SVG_CONTENTS_INNER += center_flower_outer_ring_big(0);
 
 
 SVG_CONTENTS_INNER += (function () { // Center star

@@ -5,7 +5,7 @@
     "fontsdep": {
         "dest": "_fontsdir",
         "list": [
-            "CTAN:tex-gyre/opentype/texgyretermes-regular.otf",
+            "CTAN:tex-gyre/opentype/texgyre{termes,heros,cursor,schola}-{{rbi}}.otf",
             "https://github.com/vercel/geist-font/releases/download/1.6.0/geist-font-1.6.0.zip"
         ]
     }

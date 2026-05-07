@@ -41,3 +41,8 @@ convert -size 2200x2200 xc:black -gravity center "$output_file" -composite _dist
 TYPST_EXTRA_ARGS="--pdf-standard a-2b" ./make.sh res/logocombV.circ_black.typ
 cp _dist/res/logocombV.circ_black.pdf _dist/wwwmisc/logocomb/Nekostein-logocombV.circ_black.pdf
 DPI=600 gspdftopng _dist/wwwmisc/logocomb/Nekostein-logocombV.circ_black.pdf
+magick _dist/wwwmisc/logocomb/Nekostein-logocombV.circ_black.pdf-1.png -alpha off \
+    \( +clone -negate \) \
+    -compose copy_opacity -composite \
+    -fill black -opaque white \
+    _dist/wwwmisc/logocomb/Nekostein-logocombV.circ_black.pdf-1.transparent.png
