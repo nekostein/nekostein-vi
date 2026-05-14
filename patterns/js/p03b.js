@@ -60,21 +60,22 @@ SVG_DEFS += `<mask id="mask-border1V">
 // Border decoration component: c1
 SVG_DEFS += `<mask id="maskfor-border_deco_c1">
     <rect x="-${0.5 * CORNER_DECORATION_BORDER_CIRCLE_SKIP}" y="-500"
-        width="${CORNER_DECORATION_BORDER_CIRCLE_SKIP}" height="1000" fill="white" stroke="white" stroke-width="0.5" />
+        width="${CORNER_DECORATION_BORDER_CIRCLE_SKIP}" height="1000" fill="white" stroke="white" stroke-width="1" />
 </mask>`;
 const border_deco_c1 = `<g id="border_deco_c1" mask="url(#maskfor-border_deco_c1)"><g transform="translate(0,-15)">` + (function () {
     let tmpstr = '';
     let tmpstr_over = '';
     // Outer Waves
     for (let itr = 0; itr < 13; itr += 1) {
-        tmpstr += svgplotlib.drawpolarcircle({
+        tmpstr += svgplotlib.drawpolarcircle2({
             attrs: { fill: 'none', stroke: COLOR1, 'stroke-width': 4 },
             func: function (theta_rad) {
-                const shrink = 9;
-                return 250 - Math.cos(9 * theta_rad) * 22 - itr * shrink;
+                const shrink = 9 + itr * 0.11;
+                return [0, 250 - Math.cos(9 * theta_rad) * 22 - itr * shrink];
             }
         }) + '\n';
     };
+
     // Inner ribbons
     for (let itr = 0; itr < 9; itr += 1) {
         tmpstr += svgplotlib.drawpolarcircle({
@@ -87,21 +88,39 @@ const border_deco_c1 = `<g id="border_deco_c1" mask="url(#maskfor-border_deco_c1
             }
         }) + '\n';
     };
+
     // Middle star
     for (let itr = 0; itr < 36; itr += 1) {
         tmpstr += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" fill="white" />\n`;
         tmpstr_over += `<ellipse transform="rotate(${itr * (360 / 36)})" cx="0" cy="60" rx="24" ry="60" stroke="${COLOR1}" stroke-width="4" fill="none" />\n`;
     };
-    // Extra Outer Rim
-    for (let itr = 0; itr < 6; itr += 1) {
-        tmpstr_over += svgplotlib.drawpolarcircle({
-            attrs: { fill: 'none', stroke: COLOR2, 'stroke-width': 4 },
-            func: function (theta_rad) {
-                const shrink = 10;
-                return 259 + Math.cos(7 * theta_rad) * 13 - itr * shrink;
-            }
-        });
+    // Extra Outer Rim  --- Old code
+    // for (let itr = 0; itr < 6; itr += 1) {
+    //     tmpstr_over += svgplotlib.drawpolarcircle({
+    //         attrs: { fill: 'none', stroke: COLOR2, 'stroke-width': 4 },
+    //         func: function (theta_rad) {
+    //             const shrink = 10;
+    //             return 259 + Math.cos(7 * theta_rad) * 13 - itr * shrink;
+    //         }
+    //     });
+    // };
+
+    // New extra outer rim
+    let MASK__extraOuterRim = ''
+    for (let itr = 2; itr >= 0; itr--) {
+        const ipath = `
+            M -150 192 h 12 C -48 192 -57 243 0 243 s 48 -51 138 -51 h 12
+        `.trim();
+        const rulewidth = 4;
+        const ruleskip = 10;
+        const rulegap = ruleskip - rulewidth;
+        MASK__extraOuterRim += `
+            <path d="${ipath}" fill="none" stroke="white" stroke-width="${rulegap + itr * 2 * ruleskip + 2 * rulewidth}" />
+            <path d="${ipath}" fill="none" stroke="black" stroke-width="${rulegap + itr * 2 * ruleskip}" />
+        `;
     };
+    tmpstr += `<mask id="MASK__extraOuterRim">${MASK__extraOuterRim}</mask>\n`;
+    tmpstr_over += `<circle cx="0" cy="0" r="380" fill="${COLOR2}" mask="url(#MASK__extraOuterRim)" />\n`;
     return tmpstr + tmpstr_over;
 })() + '</g></g>\n';
 SVG_DEFS += border_deco_c1;
